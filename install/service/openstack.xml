@@ -1,0 +1,53 @@
+<clusters>
+<cluster name="openstack">
+    <environment path="/root/openstackchef/openstack-installation"
+        env_name="openstack" username="root" ssh_key="/root/.ssh/id_rsa">
+        <dbtype>mysql</dbtype>
+        <mqtype>qpid</mqtype>
+        <enable_iptables>false</enable_iptables>
+        <networktype>nova-network</networktype>
+        <quantum>
+            <tenant_network_type>vlan</tenant_network_type>
+            <network_vlan_range>520:550</network_vlan_range>
+            <bridge_mapping_nic>eth0</bridge_mapping_nic>
+            <floating_if>eth0</floating_if>
+            <enable_tunneling>true</enable_tunneling>
+            <tunnel_id_range>1:1000</tunnel_id_range>
+        </quantum>
+            <networks>
+             <pubnet>10.90.34.0/16</pubnet>
+             <novanet>10.90.34.0/16</novanet>
+             <mgmtnet>10.90.34.0/16</mgmtnet>
+
+             <dns1>10.90.1.10</dns1>
+             <bridge>br-vmnet</bridge>
+             <bridgedev>eth1</bridgedev>
+             <vmnet>198.23.64.104/29</vmnet>
+             <vmnetnum>1</vmnetnum>
+             <vmnetsize>8</vmnetsize>
+
+             <firewall_driver>nova.virt.firewall.NoopFirewallDriver</firewall_driver>
+             <network_manager>nova.network.manager.FlatDHCPManager</network_manager>
+             <vlan vlan_end="550" vlan_start="520" vlan_interface="vlan1" />
+        </networks>
+        <glance>
+             <image_upload>true</image_upload>
+        </glance>
+        <gpfs>
+            <gpfs_cluster_name>gpfs_01</gpfs_cluster_name>
+        </gpfs>
+        <packageserver>10.66.222.216</packageserver>
+        <imageserver>10.66.222.216</imageserver>
+    </environment>
+    <nodes>
+        <node>
+            <hostname>10.90.34.212</hostname>
+            <role>yum,base,init-db,keystone,init-mq,glance,cinder-api,cinder-scheduler,cinder-volume,nova-api,ec2-api,nova-scheduler,nova-conductor,nova-compute,nova-network</role>
+        </node>
+        <node>
+            <hostname>10.90.34.218</hostname>
+            <role>yum,base,nova-compute,nova-network</role>
+        </node>
+    </nodes>
+</cluster>
+</clusters>

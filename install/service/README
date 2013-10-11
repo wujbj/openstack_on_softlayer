@@ -1,0 +1,8 @@
+Usage
+
+1. To check openstack status
+   Firstly, modify the file : node.xml.
+   Secondly, run command: python CheckOpenstack.py node.xml
+
+2. To check OSSSP status
+   Run command: python CheckOsssp.py -s <osssp_host> -f <osssp_home>

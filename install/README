@@ -1,0 +1,2 @@
+command line:
+	./install.sh -s controller_hostname -c compute_hostname
