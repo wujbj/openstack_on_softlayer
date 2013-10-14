@@ -24,6 +24,5 @@ if __name__=="__main__":
     thread2.start()
     thread1.join()
     thread2.join()
-    host01= thread1.stop()[0].strip()
-    host02 = thread2.stop()[0].strip()
-    print host01+"/"+host02
+    host01= thread1.stop()
+    host02 = thread2.stop()
