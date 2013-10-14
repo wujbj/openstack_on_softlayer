@@ -1,2 +1,0 @@
-service openstack-nova-api stop ; openstack-nova-scheduler stop ; service openstack-nova-cert stop ; service openstack-nova-consoleauth stop ; service openstack-nova-vncproxy stop ; yum remove -y openstack-nova-scheduler ; yum remove -y openstack-nova-api ; yum remove -y openstack-nova-cert ; yum remove -y openstack-nova-console ; yum remove -y novnc ; yum remove -y openstack-nova-common ; yum remove -y openstack-utils ; rm -rf /var/log/nova/* ; rm -rf /var/lib/nova ; rm -rf /var/log/nova ; cd /etc/yum.repos.d;ls * | egrep -v \"rbel|rhel|local\" | xargs rm -rf
-

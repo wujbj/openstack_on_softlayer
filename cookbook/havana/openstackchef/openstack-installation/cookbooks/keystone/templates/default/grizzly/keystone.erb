@@ -1,7 +1,0 @@
-<% if node["openstack"]["db"]["service_type"] == "db2" %>
-export IBM_DB_DIR=<%= @node["db2"]["odbc"]["path"] %>
-export IBM_DB_LIB=$IBM_DB_DIR/lib
-export LD_LIBRARY_PATH=$IBM_DB_DIR/lib
-export IBM_DB_HOME=$IBM_DB_DIR
-alias sudo='sudo LD_LIBRARY_PATH=$IBM_DB_DIR/lib'
-<% end %>

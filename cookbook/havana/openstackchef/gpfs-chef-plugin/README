@@ -1,8 +1,0 @@
-#Author: Dai Baohua  (bhdai@cn.ibm.com)
-
-1. These files are  knife plugin, you should put them to ~/.chef/plugins/knife.
-
-2. Usage:
-knife gpfs install --master-node="devr1n31" --second-node="devr1n33" --nodeslist-file="/root/buddha/openstackchef-grizzly/openstack-installation/nodeslist.txt"  --roles-list="role[gpfs_installation]" --gpfs-cluster-name="gpfs_01" --env-file="grizzly-devr1n32"   --rsa-file="/root/.ssh/id_rsa"  --disktro-option=rhel
-
-knife gpfs erase --master-node="devr1n31" --nodeslist-file="/root/buddha/openstackchef-grizzly/openstack-installation/nodeslist.txt"  --roles-list="role[gpfs_deletion]"  --env-file="grizzly-devr1n32"  --rsa-file="/root/.ssh/id_rsa"  --disktro-option=rhel

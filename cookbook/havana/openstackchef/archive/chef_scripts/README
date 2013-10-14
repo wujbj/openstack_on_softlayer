@@ -1,8 +1,0 @@
-List of files
--------------
-
-(1) createchefenvironment.pyi -c CLUSTERNAME -f nodelist.xml
-
-creates chef environment file for use in openstack-installation/environment directory
-
-(2) 

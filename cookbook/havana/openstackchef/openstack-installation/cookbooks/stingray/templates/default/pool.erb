@@ -1,6 +1,0 @@
-load_balancing!algorithm    <%= @params["algorithm"] %>
-<% @params['nodes'].each do |node| %>
-load_balancing!weighting!<%= node %>  1
-<% end %>
-monitors    "<%= @params['monitors'] %>"
-nodes   <%= @params['nodes'] * ' ' %>

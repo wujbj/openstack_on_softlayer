@@ -1,1 +1,0 @@
--A FWR -p tcp -m multiport --dports <%= node["openstack"]["identity"]["service_port"] %>,<%= node["openstack"]["identity"]["admin_port"] %> -j ACCEPT -m comment --comment "keystone"
