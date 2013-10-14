@@ -1,0 +1,8 @@
+log_level                :info
+log_location             STDOUT
+node_name                'root'
+client_key               '/root/openstackchef/openstack-installation/install-scripts/root.pem'
+validation_client_name   'chef-validator'
+validation_key           '/etc/chef/validation.pem'
+chef_server_url          'http://host03.privatecloud.ibm.com:4000'
+syntax_check_cache_path  '/root/openstackchef/openstack-installation/install-scripts/syntax_check_cache'

@@ -1,0 +1,5 @@
+export ADMIN_TOKEN=password
+export OS_USERNAME=admin
+export OS_TENANT_NAME=admin
+export OS_PASSWORD=secrete
+export OS_AUTH_URL=http://10.1.2.20:5000/v2.0

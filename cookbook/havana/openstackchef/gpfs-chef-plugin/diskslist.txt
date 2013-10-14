@@ -1,0 +1,28 @@
+#NSD description and definition file
+%pool:
+pool=system
+layoutMap=cluster
+allowWriteAffinity=no
+blockSize=1024k
+ 
+%pool:
+pool=datapool
+layoutMap=cluster
+allowWriteAffinity=yes
+writeAffinityDepth=1
+blockGroupFactor=1
+blockSize=1024k
+ 
+%nsd: device=/dev/sdb1
+nsd=devr1n2metadata
+servers=devr1n2
+usage=metadataOnly
+failureGroup=1
+pool=system
+ 
+%nsd: device=/dev/sdb2
+nsd=devr1n2data
+servers=devr1n2
+usage=dataOnly
+failureGroup=101,0,0
+pool=datapool

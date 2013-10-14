@@ -1,0 +1,21 @@
+# Uninstall Scripts
+
+This script will stop all OpenStack related services, remove alll OpenStack related packages, files and users.
+
+## Clean All Nodes
+
+`uninstall_all.sh` script will get your node list from chef server, and clean up all these nodes.
+
+`uninstall_openstack.sh` script will only clean up a speficied node.
+
+```
+# bash uninstall_all.bash
+# ssh 172.15.1.255 < uninstall_openstack.sh
+```
+
+If you only clean up one node, you need to delete this node from you chef server:
+
+```
+# knife node delete -y 172.16.1.255
+# knife client delete -y 172.16.1.255
+```

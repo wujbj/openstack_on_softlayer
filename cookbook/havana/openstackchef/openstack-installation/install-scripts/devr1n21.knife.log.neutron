@@ -1,0 +1,2569 @@
+Bootstrapping Chef on devr1n21
+devr1n21 Starting Chef Client, version 11.4.0[0m
+devr1n21 resolving cookbooks for run list: ["yum::rhel", "yum::epel", "yum::openstack", "yum::addition", "iptables", "openstack-common", "openstack-ops-database::server", "openstack-ops-database::openstack-db", "openstack-ops-messaging::server", "openstack-identity::server", "openstack-identity::registration", "openstack-common::rcfile", "openstack-image::registry", "openstack-image::identity_registration", "openstack-image::api", "openstack-block-storage::api", "openstack-block-storage::identity_registration", "openstack-block-storage::scheduler", "openstack-dashboard::server", "openstack-network-havana::dhcp_agent", "openstack-network-havana::metadata_agent", "openstack-network-havana::openvswitch", "openstack-network-havana::l3_agent", "openstack-network::setup", "openstack-network-havana::server", "openstack-network-havana::identity_registration"][0m
+devr1n21 Synchronizing Cookbooks:[0m
+devr1n21   - postgresql[0m
+devr1n21   - mysql[0m
+devr1n21   - openstack-common[0m
+devr1n21   - openstack-identity[0m
+devr1n21   - openstack-network-havana[0m
+devr1n21   - iptables[0m
+devr1n21   - nova[0m
+devr1n21   - osops-utils[0m
+devr1n21   - selinux[0m
+devr1n21   - keystone[0m
+devr1n21   - openstack-ops-database[0m
+devr1n21   - openstack-ops-messaging[0m
+devr1n21   - quantum[0m
+devr1n21   - openstack-patch[0m
+devr1n21   - sysctl[0m
+devr1n21   - glance[0m
+devr1n21   - cinder[0m
+devr1n21   - databag[0m
+devr1n21   - yum[0m
+devr1n21   - apache2[0m
+devr1n21   - openstack-dashboard[0m
+devr1n21   - build-essential[0m
+devr1n21   - python[0m
+devr1n21   - openssl[0m
+devr1n21   - apt[0m
+devr1n21   - openstack-network[0m
+devr1n21   - openstack-image[0m
+devr1n21   - openstack-compute[0m
+devr1n21   - openstack-block-storage[0m
+devr1n21   - keepalived[0m
+devr1n21   - qpid[0m
+devr1n21   - erlang[0m
+devr1n21   - rabbitmq[0m
+devr1n21   - db2[0m
+devr1n21   - database[0m
+devr1n21 Compiling Cookbooks...[0m
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant YumKey
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant YumRepository
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant YumKey
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant YumRepository
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant OpenstackIdentityRegister
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant OpenstackIdentityRegister
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant OpenstackImageImage
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant OpenstackImageImage
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for directory[/var/lib/mysql] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous directory[/var/lib/mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:109:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  directory[/var/lib/mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:109:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for service[mysql] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous service[mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:155:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  service[mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:219:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-identity/recipes/server.rb:39:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:49:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[python-keystone] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[python-keystone]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:31:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[python-keystone]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:35:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[curl] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[curl]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:43:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[curl]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:39:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[openstack-glance] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[openstack-glance]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[openstack-glance]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[openstack-swift] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[openstack-swift]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[openstack-swift]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[cronie] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[cronie]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[cronie]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[python-glanceclient] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[python-glanceclient]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[python-glanceclient]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for directory[/etc/glance] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous directory[/etc/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:84:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  directory[/etc/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:56:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for directory[/var/cache/glance] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous directory[/var/cache/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:60:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  directory[/var/cache/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:62:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:49:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/api.rb:41:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/api.rb:41:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/scheduler.rb:37:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[perl] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[perl]: /var/chef/cache/cookbooks/iptables/recipes/default.rb:21:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[perl]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:51:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for service[apache2] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous service[apache2]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:24:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  service[apache2]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:221:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for file[/etc/httpd/conf.d/ssl.conf] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous file[/etc/httpd/conf.d/ssl.conf]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:84:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  file[/etc/httpd/conf.d/ssl.conf]: /var/chef/cache/cookbooks/apache2/recipes/mod_ssl.rb:31:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for template[/etc/httpd/ports.conf] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous template[/etc/httpd/ports.conf]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:195:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  template[/etc/httpd/ports.conf]: /var/chef/cache/cookbooks/apache2/recipes/mod_ssl.rb:37:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/scheduler.rb:37:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-dashboard/recipes/server.rb:69:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for package[python-memcached] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous package[python-memcached]: /var/chef/cache/cookbooks/openstack-identity/recipes/server.rb:45:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  package[python-memcached]: /var/chef/cache/cookbooks/openstack-dashboard/recipes/server.rb:77:in `block in from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Cloning resource attributes for directory[/var/cache/neutron] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Previous directory[/var/cache/neutron]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/common.rb:57:in `from_file'
+devr1n21 [2013-09-26T03:34:56-05:00] WARN: Current  directory[/var/cache/neutron]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/common.rb:64:in `from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Cloning resource attributes for package[openstack-neutron] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Previous package[openstack-neutron]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/common.rb:44:in `block in from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Current  package[openstack-neutron]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/dhcp_agent.rb:27:in `block in from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Cloning resource attributes for package[openstack-neutron-openvswitch] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Previous package[openstack-neutron-openvswitch]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/common.rb:44:in `block in from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Current  package[openstack-neutron-openvswitch]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/dhcp_agent.rb:42:in `from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Cloning resource attributes for package[openstack-neutron-openvswitch] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Previous package[openstack-neutron-openvswitch]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/dhcp_agent.rb:42:in `from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Current  package[openstack-neutron-openvswitch]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/openvswitch.rb:66:in `block in from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Cloning resource attributes for service[neutron-plugin-openvswitch-agent] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Previous service[neutron-plugin-openvswitch-agent]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/common.rb:324:in `from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Current  service[neutron-plugin-openvswitch-agent]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/openvswitch.rb:72:in `from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Cloning resource attributes for package[openstack-neutron] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Previous package[openstack-neutron]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/dhcp_agent.rb:27:in `block in from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Current  package[openstack-neutron]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/l3_agent.rb:27:in `block in from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Cloning resource attributes for service[neutron-server] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Previous service[neutron-server]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/common.rb:141:in `from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Current  service[neutron-server]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/server.rb:41:in `from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Cloning resource attributes for openstack-identity_register[Register Service Tenant] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Previous openstack-identity_register[Register Service Tenant]: /var/chef/cache/cookbooks/openstack-image/recipes/identity_registration.rb:67:in `from_file'
+devr1n21 [2013-09-26T03:34:57-05:00] WARN: Current  openstack-identity_register[Register Service Tenant]: /var/chef/cache/cookbooks/openstack-network-havana/recipes/identity_registration.rb:61:in `from_file'
+devr1n21 Converging 275 resources[0m
+devr1n21 Recipe: yum::rhel[0m
+devr1n21   * yum_repository[rhel] action add[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: yum::epel[0m
+devr1n21   * yum_key[] action add[0m (up to date)[0m
+devr1n21   * yum_repository[epel] action add[0m (up to date)[0m
+devr1n21 Recipe: yum::openstack[0m
+devr1n21   * yum_repository[openstack] action add[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: yum::addition[0m
+devr1n21   * yum_repository[addition] action add[0m (up to date)[0m
+devr1n21 Recipe: iptables::default[0m
+devr1n21   * package[iptables] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * package[perl] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[rebuild-iptables] action nothing[0m (up to date)[0m
+devr1n21   * directory[/etc/iptables.d] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * cookbook_file[/usr/sbin/rebuild-iptables] action create[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: mysql::client[0m
+devr1n21   * package[mysql] action install[0m (up to date)[0m
+devr1n21   * package[mysql-devel] action install[0m (up to date)[0m
+devr1n21 Recipe: mysql::server[0m
+devr1n21   * package[mysql-server] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/var/run/mysqld] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/var/log/mysql] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc/mysql/conf.d] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/var/lib/mysql] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/var/lib/mysql] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[mysql-install-db] action run[0m
+devr1n21  (skipped due to not_if)[0m
+devr1n21   * service[mysql] action enable[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[assign-root-password] action run[0m
+devr1n21  (skipped due to only_if)[0m
+devr1n21   * template[/etc/mysql_grants.sql] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[mysql-install-privileges] action nothing[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/my.cnf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * service[mysql] action start[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: openstack-ops-database::mysql-server[0m
+devr1n21   * execute[update mysql.user] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -u root -ppassword -e "UPDATE mysql.user SET host='172.16.1.21' WHERE host='127.0.0.1'"[0m
+devr1n21 [0m
+devr1n21 Recipe: openstack-ops-database::openstack-db[0m
+devr1n21   * execute[create database(nova) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS nova"[0m
+devr1n21 [0m
+devr1n21   * execute[grant user(nova) to database(nova) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON nova.* TO 'nova'@'%' IDENTIFIED BY 'nova'"[0m
+devr1n21 [0m
+devr1n21   * execute[create database(horizon) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS horizon"[0m
+devr1n21 [0m
+devr1n21   * execute[grant user(horizon) to database(horizon) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON horizon.* TO 'horizon'@'%' IDENTIFIED BY 'horizon'"[0m
+devr1n21 [0m
+devr1n21   * execute[create database(keystone) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS keystone"[0m
+devr1n21 [0m
+devr1n21   * execute[grant user(keystone) to database(keystone) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON keystone.* TO 'keystone'@'%' IDENTIFIED BY 'keystone'"[0m
+devr1n21 [0m
+devr1n21   * execute[create database(glance) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS glance"[0m
+devr1n21 [0m
+devr1n21   * execute[grant user(glance) to database(glance) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON glance.* TO 'glance'@'%' IDENTIFIED BY 'glance'"[0m
+devr1n21 [0m
+devr1n21   * execute[create database(ceilometer) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS ceilometer"[0m
+devr1n21 [0m
+devr1n21   * execute[grant user(ceilometer) to database(ceilometer) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON ceilometer.* TO 'ceilometer'@'%' IDENTIFIED BY 'ceilometer'"[0m
+devr1n21 [0m
+devr1n21   * execute[create database(network) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS network"[0m
+devr1n21 [0m
+devr1n21   * execute[grant user(network) to database(network) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON network.* TO 'network'@'%' IDENTIFIED BY 'quantum'"[0m
+devr1n21 [0m
+devr1n21   * execute[create database(cinder) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS cinder"[0m
+devr1n21 [0m
+devr1n21   * execute[grant user(cinder) to database(cinder) on 172.16.1.21] action run[0m
+devr1n21 [32m
+devr1n21     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON cinder.* TO 'cinder'@'%' IDENTIFIED BY 'cinder'"[0m
+devr1n21 [0m
+devr1n21 Recipe: qpid::single[0m
+devr1n21   * qpid_setup[setup qpid] action create[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: <Dynamically Defined Resource>[0m
+devr1n21   * package[qpid-cpp-server] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * package[qpid-tools] action install[0m (up to date)[0m
+devr1n21   * service[qpidd] action nothing[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/qpidd.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: openstack-identity::server[0m
+devr1n21   * package[MySQL-python] action install[0m (up to date)[0m
+devr1n21   * package[python-memcached] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * package[openstack-keystone] action upgrade[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[Keystone: sleep] action nothing[0m (up to date)[0m
+devr1n21   * service[keystone] action enable[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc/keystone] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc/keystone/ssl] action create[0m (skipped due to only_if)[0m
+devr1n21   * file[/var/lib/keystone/keystone.db] action delete[0m (up to date)[0m
+devr1n21   * execute[keystone-manage pki_setup] action run[0m
+devr1n21  (skipped due to only_if)[0m
+devr1n21   * template[/etc/keystone/keystone.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/keystone/default_catalog.templates] action create[0m (skipped due to only_if)[0m
+devr1n21   * execute[keystone-manage db_sync] action run[0m
+devr1n21 [32m
+devr1n21     - execute keystone-manage db_sync[0m
+devr1n21 [0m
+devr1n21 Recipe: openstack-identity::registration[0m
+devr1n21   * bash[bootstrap-keystone-admin] action run[0m
+devr1n21 [32m
+devr1n21     - execute "bash"  "/tmp/chef-script20130926-12321-1crfatc"[0m
+devr1n21 [0m
+devr1n21   * openstack-identity_register[Register 'admin' Tenant] action create_tenant[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register 'service' Tenant] action create_tenant[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register 'admin' Role] action create_role[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register 'Member' Role] action create_role[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register 'KeystoneAdmin' Role] action create_role[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register 'KeystoneServiceAdmin' Role] action create_role[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register 'admin' User] action create_user[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Grant 'admin' Role to 'admin' User in 'admin' Tenant] action grant_role[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Grant 'KeystoneAdmin' Role to 'admin' User in 'admin' Tenant] action grant_role[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Grant 'KeystoneServiceAdmin' Role to 'admin' User in 'admin' Tenant] action grant_role[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register 'monitoring' User] action create_user[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Grant 'Member' Role to 'monitoring' User in 'admin' Tenant] action grant_role[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register Identity Service] action create_service[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register Identity Endpoint] action create_endpoint[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Create EC2 credentials for 'admin' user] action create_ec2_credentials[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Create EC2 credentials for 'monitoring' user] action create_ec2_credentials[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: openstack-common::rcfile[0m
+devr1n21   * template[/root/keystonerc] action create[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: openstack-image::registry[0m
+devr1n21   * package[python-keystone] action install[0m (up to date)[0m
+devr1n21   * package[curl] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * package[MySQL-python] action install[0m (up to date)[0m
+devr1n21   * package[openstack-glance] action upgrade[0m
+devr1n21  (up to date)[0m
+devr1n21   * package[openstack-swift] action upgrade[0m (up to date)[0m
+devr1n21   * package[cronie] action upgrade[0m
+devr1n21  (up to date)[0m
+devr1n21   * package[python-glanceclient] action upgrade[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/var/cache/glance] action create[0m (up to date)[0m
+devr1n21   * service[image-registry] action enable[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[glance-manage version_control 0] action run[0m (skipped due to only_if)[0m
+devr1n21   * file[/var/lib/glance/glance.sqlite] action delete[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc/glance] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/glance/glance-registry.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[glance-manage db_sync] action run[0m
+devr1n21 [32m
+devr1n21     - execute glance-manage db_sync[0m
+devr1n21 [0m
+devr1n21   * template[/etc/glance/glance-registry-paste.ini] action create[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: openstack-image::identity_registration[0m
+devr1n21   * openstack-identity_register[Register Image Service] action create_service[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register Image Endpoint] action create_endpoint[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register Service Tenant] action create_tenant[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register glance User] action create_user[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Grant 'admin' Role to glance User for service Tenant] action grant_role[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: openstack-image::api[0m
+devr1n21   * package[python-keystone] action install[0m (up to date)[0m
+devr1n21   * package[curl] action install[0m (up to date)[0m
+devr1n21   * package[openstack-glance] action upgrade[0m (up to date)[0m
+devr1n21   * package[openstack-swift] action upgrade[0m
+devr1n21  (up to date)[0m
+devr1n21   * package[cronie] action upgrade[0m (up to date)[0m
+devr1n21   * package[python-glanceclient] action upgrade[0m
+devr1n21  (up to date)[0m
+devr1n21   * service[image-api] action enable[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc/glance] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/var/cache/glance] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/glance/policy.json] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/glance/glance-api.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/glance/glance-api-paste.ini] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/glance/glance-cache.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/glance/glance-cache-paste.ini] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/glance/glance-scrubber.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * cron[glance-cache-pruner] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * cron[glance-cache-cleaner] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/glance/glance-scrubber-paste.ini] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-image_image[Image setup for cirros] action upload[0m
+devr1n21 http://172.16.0.13:8080/images/cirros-0.3.0-x86_64-uec.tar.gz
+devr1n21 
+devr1n21 [0m
+devr1n21 Recipe: <Dynamically Defined Resource>[0m
+devr1n21   * bash[Uploading AMI image cirros] action run[0m
+devr1n21  (skipped due to not_if)[0m
+devr1n21 Recipe: openstack-image::api[0m
+devr1n21   * openstack-image_image[Image setup for precise] action upload[0m
+devr1n21 
+devr1n21 [0m
+devr1n21 Recipe: <Dynamically Defined Resource>[0m
+devr1n21   * execute[Uploading QCOW2 image precise] action run[0m
+devr1n21  (skipped due to not_if)[0m
+devr1n21 Recipe: openstack-block-storage::cinder-common[0m
+devr1n21   * package[openstack-cinder] action upgrade[0m (up to date)[0m
+devr1n21   * directory[/etc/cinder] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/var/lock/cinder] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/cinder/cinder.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: openstack-block-storage::api[0m
+devr1n21   * package[python-cinderclient] action upgrade[0m
+devr1n21  (up to date)[0m
+devr1n21   * package[MySQL-python] action upgrade[0m (up to date)[0m
+devr1n21   * directory[/var/cache/cinder] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * service[cinder-api] action enable[0m
+devr1n21  (up to date)[0m
+devr1n21   * service[cinder-api] action start[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[cinder-manage db sync] action run[0m
+devr1n21 [32m
+devr1n21     - execute cinder-manage db sync[0m
+devr1n21 [0m
+devr1n21   * template[/etc/cinder/api-paste.ini] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/cinder/policy.json] action create[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: openstack-block-storage::identity_registration[0m
+devr1n21   * openstack-identity_register[Register Cinder Volume Service] action create_service[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register Cinder Volume Endpoint] action create_endpoint[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Register Cinder Service User] action create_user[0m
+devr1n21  (up to date)[0m
+devr1n21   * openstack-identity_register[Grant service Role to Cinder Service User for Cinder Service Tenant] action grant_role[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: openstack-block-storage::scheduler[0m
+devr1n21   * package[MySQL-python] action upgrade[0m (up to date)[0m
+devr1n21   * service[cinder-scheduler] action enable[0m
+devr1n21  (up to date)[0m
+devr1n21   * service[cinder-scheduler] action start[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: openstack-dashboard::server[0m
+devr1n21   * execute[set-selinux-permissive] action run[0m
+devr1n21  (skipped due to only_if)[0m
+devr1n21 Recipe: apache2::default[0m
+devr1n21   * package[apache2] action install[0m (up to date)[0m
+devr1n21   * service[apache2] action enable[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/var/log/httpd] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * package[perl] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * cookbook_file[/usr/local/bin/apache2_module_conf_generate.pl] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc/httpd/sites-available] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc/httpd/sites-enabled] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc/httpd/mods-available] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc/httpd/mods-enabled] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[generate-module-list] action nothing[0m (up to date)[0m
+devr1n21   * template[/usr/sbin/a2ensite] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/usr/sbin/a2dissite] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/usr/sbin/a2enmod] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/usr/sbin/a2dismod] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/conf.d/proxy_ajp.conf] action delete[0m (up to date)[0m
+devr1n21   * file[/etc/httpd/conf.d/auth_pam.conf] action delete[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/conf.d/authz_ldap.conf] action delete[0m (up to date)[0m
+devr1n21   * file[/etc/httpd/conf.d/webalizer.conf] action delete[0m (up to date)[0m
+devr1n21   * file[/etc/httpd/conf.d/ssl.conf] action delete[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/conf.d/welcome.conf] action delete[0m (up to date)[0m
+devr1n21   * file[/etc/httpd/conf.d/README] action delete[0m (up to date)[0m
+devr1n21 Recipe: apache2::mod_deflate[0m
+devr1n21   * template[/etc/httpd/mods-available/deflate.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/mods-available/deflate.load] action create[0m (up to date)[0m
+devr1n21   * execute[a2enmod deflate] action run[0m
+devr1n21  (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::default[0m
+devr1n21   * directory[/etc/httpd/ssl] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/etc/httpd/conf.d] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/var/cache/httpd] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/sysconfig/httpd] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[apache2.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[apache2-conf-security] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[apache2-conf-charset] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/httpd/ports.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/httpd/sites-available/default] action create[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: apache2::mod_status[0m
+devr1n21   * template[/etc/httpd/mods-available/status.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/mods-available/status.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod status] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_alias[0m
+devr1n21   * template[/etc/httpd/mods-available/alias.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/mods-available/alias.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod alias] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_auth_basic[0m
+devr1n21   * file[/etc/httpd/mods-available/auth_basic.load] action create[0m (up to date)[0m
+devr1n21   * execute[a2enmod auth_basic] action run[0m
+devr1n21  (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_authn_file[0m
+devr1n21   * file[/etc/httpd/mods-available/authn_file.load] action create[0m (up to date)[0m
+devr1n21   * execute[a2enmod authn_file] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_authz_default[0m
+devr1n21   * file[/etc/httpd/mods-available/authz_default.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod authz_default] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_authz_groupfile[0m
+devr1n21   * file[/etc/httpd/mods-available/authz_groupfile.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod authz_groupfile] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_authz_host[0m
+devr1n21   * file[/etc/httpd/mods-available/authz_host.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod authz_host] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_authz_user[0m
+devr1n21   * file[/etc/httpd/mods-available/authz_user.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod authz_user] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_autoindex[0m
+devr1n21   * template[/etc/httpd/mods-available/autoindex.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/mods-available/autoindex.load] action create[0m (up to date)[0m
+devr1n21   * execute[a2enmod autoindex] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_dir[0m
+devr1n21   * template[/etc/httpd/mods-available/dir.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/mods-available/dir.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod dir] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_env[0m
+devr1n21   * file[/etc/httpd/mods-available/env.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod env] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_mime[0m
+devr1n21   * template[/etc/httpd/mods-available/mime.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/mods-available/mime.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod mime] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_negotiation[0m
+devr1n21   * template[/etc/httpd/mods-available/negotiation.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/mods-available/negotiation.load] action create[0m (up to date)[0m
+devr1n21   * execute[a2enmod negotiation] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_setenvif[0m
+devr1n21   * template[/etc/httpd/mods-available/setenvif.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/mods-available/setenvif.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod setenvif] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_log_config[0m
+devr1n21   * file[/etc/httpd/mods-available/log_config.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod log_config] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_logio[0m
+devr1n21   * file[/etc/httpd/mods-available/logio.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod logio] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::default[0m
+devr1n21   * execute[a2dissite default] action run[0m (skipped due to only_if)[0m
+devr1n21   * service[apache2] action start[0m
+devr1n21  (up to date)[0m
+devr1n21 Recipe: apache2::mod_wsgi[0m
+devr1n21   * package[mod_wsgi] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/conf.d/wsgi.conf] action delete[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/mods-available/wsgi.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod wsgi] action run[0m
+devr1n21  (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_rewrite[0m
+devr1n21   * file[/etc/httpd/mods-available/rewrite.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod rewrite] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: apache2::mod_ssl[0m
+devr1n21   * package[mod_ssl] action install[0m (up to date)[0m
+devr1n21   * file[/etc/httpd/conf.d/ssl.conf] action delete[0m (up to date)[0m
+devr1n21   * template[/etc/httpd/ports.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/httpd/mods-available/ssl.conf] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/mods-available/ssl.load] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[a2enmod ssl] action run[0m (skipped due to not_if)[0m
+devr1n21 Recipe: openstack-dashboard::server[0m
+devr1n21   * execute[set-selinux-enforcing] action run[0m
+devr1n21  (skipped due to only_if)[0m
+devr1n21   * package[openstack-dashboard] action upgrade[0m
+devr1n21  (up to date)[0m
+devr1n21   * package[MySQL-python] action upgrade[0m (up to date)[0m
+devr1n21   * package[python-memcached] action install[0m (up to date)[0m
+devr1n21   * template[/etc/openstack-dashboard/local_settings] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * execute[openstack-dashboard syncdb] action run[0m
+devr1n21 [32m
+devr1n21     - execute python manage.py syncdb --noinput[0m
+devr1n21 [0m
+devr1n21   * cookbook_file[/etc/pki/tls/certs/horizon.pem] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * cookbook_file[/etc/pki/tls/private/horizon.key] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * directory[/usr/share/openstack-dashboard/openstack_dashboard/.blackhole] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/httpd/conf.d/openstack-dashboard] action create[0m
+devr1n21  (up to date)[0m
+devr1n21   * file[/etc/httpd/conf.d/openstack-dashboard.conf] action delete[0m (up to date)[0m
+devr1n21   * package[openstack-dashboard-ubuntu-theme] action purge[0m (skipped due to only_if)[0m
+devr1n21   * execute[a2ensite openstack-dashboard] action run[0m (skipped due to only_if)[0m
+devr1n21   * execute[restore-selinux-context] action nothing[0m (skipped due to only_if)[0m
+devr1n21 Recipe: openstack-network-havana::common[0m
+devr1n21   * package[openstack-nova-network] action purge[0m (up to date)[0m
+devr1n21   * package[openstack-neutron] action install[0m
+devr1n21 [32m
+devr1n21     - install version 2013.2-201309030033.ibm.45 of package openstack-neutron[0m
+devr1n21 [0m
+devr1n21   * package[openstack-neutron-openvswitch] action install[0m
+devr1n21 [32m
+devr1n21     - install version 2013.2-201309030033.ibm.45 of package openstack-neutron-openvswitch[0m
+devr1n21 [0m
+devr1n21   * directory[/etc/neutron/plugins] action create[0m[32m
+devr1n21     - change mode from '02755' to '0700'[0m[32m
+devr1n21     - change owner from 'root' to 'neutron'[0m[32m
+devr1n21     - change group from 'root' to 'neutron'[0m
+devr1n21 [0m
+devr1n21   * directory[/var/cache/neutron] action create[0m
+devr1n21 [32m
+devr1n21     - create new directory /var/cache/neutron[0m
+devr1n21 [32m
+devr1n21     - change mode from '' to '0700'[0m[32m
+devr1n21     - change owner from '' to 'neutron'[0m[32m
+devr1n21     - change group from '' to 'neutron'[0m
+devr1n21 [0m
+devr1n21   * directory[/var/cache/neutron] action create[0m
+devr1n21  (skipped due to only_if)[0m
+devr1n21   * remote_directory[/etc/neutron/rootwrap.d] action create[0m
+devr1n21 Recipe: <Dynamically Defined Resource>[0m
+devr1n21   * cookbook_file[/etc/neutron/rootwrap.d/ryu-plugin.filters] action create[0m
+devr1n21 [32m
+devr1n21     - create a new cookbook_file /etc/neutron/rootwrap.d/ryu-plugin.filters[0m[37m
+devr1n21         --- /tmp/chef-tempfile20130926-12321-8l2puq	2013-09-26 03:35:40.003999232 -0500[0m[37m
+devr1n21         +++ /var/chef/cache/cookbooks/openstack-network-havana/files/default/etc/neutron/rootwrap.d/ryu-plugin.filters	2013-09-26 03:35:40.001999223 -0500[0m[37m
+devr1n21         @@ -0,0 +1,25 @@[0m[37m
+devr1n21         +# neutron-rootwrap command filters for nodes on which neutron is[0m[37m
+devr1n21         +# expected to control network[0m[37m
+devr1n21         +#[0m[37m
+devr1n21         +# This file should be owned by (and only-writeable by) the root user[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# format seems to be[0m[37m
+devr1n21         +# cmd-name: filter-name, raw-command, user, args[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[Filters][0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# ryu-agent[0m[37m
+devr1n21         +# unclear whether both variants are necessary, but I'm transliterating[0m[37m
+devr1n21         +# from the old mechanism[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# neutron/plugins/ryu/agent/ryu_neutron_agent.py:[0m[37m
+devr1n21         +#   "ovs-vsctl", "--timeout=2", ...[0m[37m
+devr1n21         +ovs-vsctl: CommandFilter, /bin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_usr: CommandFilter, /usr/bin/ovs-vsctl, root[0m
+devr1n21 [37m
+devr1n21         +ovs-vsctl_sbin: CommandFilter, /sbin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_sbin_usr: CommandFilter, /usr/sbin/ovs-vsctl, root[0m
+devr1n21 [37m
+devr1n21         +[0m[37m
+devr1n21         +# neutron/plugins/ryu/agent/ryu_neutron_agent.py:[0m
+devr1n21 [37m
+devr1n21         +#   "xe", "vif-param-get", ...[0m
+devr1n21 [37m
+devr1n21         +xe: CommandFilter, /bin/xe, root[0m[37m
+devr1n21         +xe_usr: CommandFilter, /usr/bin/xe, root[0m
+devr1n21 
+devr1n21 [0m
+devr1n21   * cookbook_file[/etc/neutron/rootwrap.d/openvswitch-plugin.filters] action create[0m
+devr1n21 [32m
+devr1n21     - create a new cookbook_file /etc/neutron/rootwrap.d/openvswitch-plugin.filters[0m[37m
+devr1n21         --- /tmp/chef-tempfile20130926-12321-gyqtjc	2013-09-26 03:35:40.215999230 -0500[0m[37m
+devr1n21         +++ /var/chef/cache/cookbooks/openstack-network-havana/files/default/etc/neutron/rootwrap.d/openvswitch-plugin.filters	2013-09-26 03:35:40.214999226 -0500[0m[37m
+devr1n21         @@ -0,0 +1,29 @@[0m[37m
+devr1n21         +# neutron-rootwrap command filters for nodes on which neutron is[0m[37m
+devr1n21         +# expected to control network[0m[37m
+devr1n21         +#[0m[37m
+devr1n21         +# This file should be owned by (and only-writeable by) the root user[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# format seems to be[0m[37m
+devr1n21         +# cmd-name: filter-name, raw-command, user, args[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[Filters][0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# openvswitch-agent[0m[37m
+devr1n21         +# unclear whether both variants are necessary, but I'm transliterating[0m[37m
+devr1n21         +# from the old mechanism[0m[37m
+devr1n21         +ovs-vsctl: CommandFilter, /bin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_usr: CommandFilter, /usr/bin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_sbin: CommandFilter, /sbin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_sbin_usr: CommandFilter, /usr/sbin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-ofctl: CommandFilter, /bin/ovs-ofctl, root[0m[37m
+devr1n21         +ovs-ofctl_usr: CommandFilter, /usr/bin/ovs-ofctl, root[0m[37m
+devr1n21         +ovs-ofctl_sbin: CommandFilter, /sbin/ovs-ofctl, root[0m[37m
+devr1n21         +ovs-ofctl_sbin_usr: CommandFilter, /usr/sbin/ovs-ofctl, root[0m[37m
+devr1n21         +xe: CommandFilter, /sbin/xe, root[0m[37m
+devr1n21         +xe_usr: CommandFilter, /usr/sbin/xe, root[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# ip_lib[0m[37m
+devr1n21         +ip: IpFilter, /sbin/ip, root[0m[37m
+devr1n21         +ip_usr: IpFilter, /usr/sbin/ip, root[0m[37m
+devr1n21         +ip_exec: IpNetnsExecFilter, /sbin/ip, root[0m[37m
+devr1n21         +ip_exec_usr: IpNetnsExecFilter, /usr/sbin/ip, root[0m
+devr1n21 [0m
+devr1n21   * cookbook_file[/etc/neutron/rootwrap.d/nec-plugin.filters] action create[0m
+devr1n21 [32m
+devr1n21     - create a new cookbook_file /etc/neutron/rootwrap.d/nec-plugin.filters[0m[37m
+devr1n21         --- /tmp/chef-tempfile20130926-12321-8mkoqy	2013-09-26 03:35:40.385999229 -0500[0m[37m
+devr1n21         +++ /var/chef/cache/cookbooks/openstack-network-havana/files/default/etc/neutron/rootwrap.d/nec-plugin.filters	2013-09-26 03:35:40.384999228 -0500[0m[37m
+devr1n21         @@ -0,0 +1,15 @@[0m[37m
+devr1n21         +# neutron-rootwrap command filters for nodes on which neutron is[0m[37m
+devr1n21         +# expected to control network[0m[37m
+devr1n21         +#[0m[37m
+devr1n21         +# This file should be owned by (and only-writeable by) the root user[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# format seems to be[0m[37m
+devr1n21         +# cmd-name: filter-name, raw-command, user, args[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[Filters][0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# nec_neutron_agent[0m[37m
+devr1n21         +ovs-vsctl: CommandFilter, /bin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_usr: CommandFilter, /usr/bin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_sbin: CommandFilter, /sbin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_sbin_usr: CommandFilter, /usr/sbin/ovs-vsctl, root[0m
+devr1n21 [0m
+devr1n21   * cookbook_file[/etc/neutron/rootwrap.d/linuxbridge-plugin.filters] action create[0m
+devr1n21 [32m
+devr1n21     - create a new cookbook_file /etc/neutron/rootwrap.d/linuxbridge-plugin.filters[0m[37m
+devr1n21         --- /tmp/chef-tempfile20130926-12321-jrwkbi	2013-09-26 03:35:40.558999230 -0500[0m[37m
+devr1n21         +++ /var/chef/cache/cookbooks/openstack-network-havana/files/default/etc/neutron/rootwrap.d/linuxbridge-plugin.filters	2013-09-26 03:35:40.556999226 -0500[0m[37m
+devr1n21         @@ -0,0 +1,21 @@[0m[37m
+devr1n21         +# neutron-rootwrap command filters for nodes on which neutron is[0m[37m
+devr1n21         +# expected to control network[0m[37m
+devr1n21         +#[0m[37m
+devr1n21         +# This file should be owned by (and only-writeable by) the root user[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# format seems to be[0m[37m
+devr1n21         +# cmd-name: filter-name, raw-command, user, args[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[Filters][0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# linuxbridge-agent[0m[37m
+devr1n21         +# unclear whether both variants are necessary, but I'm transliterating[0m[37m
+devr1n21         +# from the old mechanism[0m[37m
+devr1n21         +brctl: CommandFilter, /sbin/brctl, root[0m[37m
+devr1n21         +brctl_usr: CommandFilter, /usr/sbin/brctl, root[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# ip_lib[0m[37m
+devr1n21         +ip: IpFilter, /sbin/ip, root[0m[37m
+devr1n21         +ip_usr: IpFilter, /usr/sbin/ip, root[0m[37m
+devr1n21         +ip_exec: IpNetnsExecFilter, /sbin/ip, root[0m[37m
+devr1n21         +ip_exec_usr: IpNetnsExecFilter, /usr/sbin/ip, root[0m
+devr1n21 [0m
+devr1n21   * cookbook_file[/etc/neutron/rootwrap.d/lbaas-haproxy.filters] action create[0m
+devr1n21 [32m
+devr1n21     - create a new cookbook_file /etc/neutron/rootwrap.d/lbaas-haproxy.filters[0m[37m
+devr1n21         --- /tmp/chef-tempfile20130926-12321-xnpuqv	2013-09-26 03:35:40.727999229 -0500[0m[37m
+devr1n21         +++ /var/chef/cache/cookbooks/openstack-network-havana/files/default/etc/neutron/rootwrap.d/lbaas-haproxy.filters	2013-09-26 03:35:40.725999229 -0500[0m[37m
+devr1n21         @@ -0,0 +1,29 @@[0m[37m
+devr1n21         +# neutron-rootwrap command filters for nodes on which neutron is[0m[37m
+devr1n21         +# expected to control network[0m[37m
+devr1n21         +#[0m[37m
+devr1n21         +# This file should be owned by (and only-writeable by) the root user[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# format seems to be[0m[37m
+devr1n21         +# cmd-name: filter-name, raw-command, user, args[0m
+devr1n21 [37m
+devr1n21         +[0m[37m
+devr1n21         +[Filters][0m
+devr1n21 [37m
+devr1n21         +[0m[37m
+devr1n21         +# haproxy[0m
+devr1n21 [37m
+devr1n21         +haproxy: CommandFilter, /usr/sbin/haproxy, root[0m[37m
+devr1n21         +[0m
+devr1n21 [37m
+devr1n21         +# lbaas-agent uses kill as well, that's handled by the generic KillFilter[0m[37m
+devr1n21         +kill_haproxy_usr: KillFilter, root, /usr/sbin/haproxy, -9, -HUP[0m
+devr1n21 [37m
+devr1n21         +[0m
+devr1n21 [37m
+devr1n21         +# lbaas-agent uses cat[0m
+devr1n21 [37m
+devr1n21         +cat: RegExpFilter, /bin/cat, root, cat, /proc/\d+/cmdline[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +ovs-vsctl: CommandFilter, /bin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_usr: CommandFilter, /usr/bin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_sbin: CommandFilter, /sbin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_sbin_usr: CommandFilter, /usr/sbin/ovs-vsctl, root[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# ip_lib[0m[37m
+devr1n21         +ip: IpFilter, /sbin/ip, root[0m[37m
+devr1n21         +ip_usr: IpFilter, /usr/sbin/ip, root[0m[37m
+devr1n21         +ip_exec: IpNetnsExecFilter, /sbin/ip, root[0m[37m
+devr1n21         +ip_exec_usr: IpNetnsExecFilter, /usr/sbin/ip, root[0m
+devr1n21 [0m
+devr1n21   * cookbook_file[/etc/neutron/rootwrap.d/l3.filters] action create[0m
+devr1n21 [32m
+devr1n21     - create a new cookbook_file /etc/neutron/rootwrap.d/l3.filters[0m[37m
+devr1n21         --- /tmp/chef-tempfile20130926-12321-44nnmm	2013-09-26 03:35:40.892999229 -0500[0m[37m
+devr1n21         +++ /var/chef/cache/cookbooks/openstack-network-havana/files/default/etc/neutron/rootwrap.d/l3.filters	2013-09-26 03:35:40.890999229 -0500[0m[37m
+devr1n21         @@ -0,0 +1,43 @@[0m[37m
+devr1n21         +# neutron-rootwrap command filters for nodes on which neutron is[0m[37m
+devr1n21         +# expected to control network[0m[37m
+devr1n21         +#[0m[37m
+devr1n21         +# This file should be owned by (and only-writeable by) the root user[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# format seems to be[0m[37m
+devr1n21         +# cmd-name: filter-name, raw-command, user, args[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[Filters][0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# arping[0m[37m
+devr1n21         +arping: CommandFilter, /usr/bin/arping, root[0m[37m
+devr1n21         +arping_sbin: CommandFilter, /sbin/arping, root[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# l3_agent[0m[37m
+devr1n21         +sysctl: CommandFilter, /sbin/sysctl, root[0m[37m
+devr1n21         +route: CommandFilter, /sbin/route, root[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# metadata proxy[0m[37m
+devr1n21         +metadata_proxy: CommandFilter, /usr/bin/neutron-ns-metadata-proxy, root[0m[37m
+devr1n21         +# If installed from source (say, by devstack), the prefix will be[0m[37m
+devr1n21         +# /usr/local instead of /usr/bin.[0m[37m
+devr1n21         +metadata_proxy_local: CommandFilter, /usr/local/bin/neutron-ns-metadata-proxy, root[0m[37m
+devr1n21         +kill_metadata7: KillFilter, root, /usr/bin/python2.7, -9[0m[37m
+devr1n21         +kill_metadata6: KillFilter, root, /usr/bin/python2.6, -9[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# ip_lib[0m[37m
+devr1n21         +ip: IpFilter, /sbin/ip, root[0m[37m
+devr1n21         +ip_usr: IpFilter, /usr/sbin/ip, root[0m[37m
+devr1n21         +ip_exec: IpNetnsExecFilter, /sbin/ip, root[0m[37m
+devr1n21         +ip_exec_usr: IpNetnsExecFilter, /usr/sbin/ip, root[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# ovs_lib (if OVSInterfaceDriver is used)[0m[37m
+devr1n21         +ovs-vsctl: CommandFilter, /bin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_usr: CommandFilter, /usr/bin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_sbin: CommandFilter, /sbin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_sbin_usr: CommandFilter, /usr/sbin/ovs-vsctl, root[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# iptables_manager[0m[37m
+devr1n21         +iptables-save: CommandFilter, /sbin/iptables-save, root[0m[37m
+devr1n21         +iptables-restore: CommandFilter, /sbin/iptables-restore, root[0m[37m
+devr1n21         +ip6tables-save: CommandFilter, /sbin/ip6tables-save, root[0m[37m
+devr1n21         +ip6tables-restore: CommandFilter, /sbin/ip6tables-restore, root[0m
+devr1n21 [0m
+devr1n21   * cookbook_file[/etc/neutron/rootwrap.d/iptables-firewall.filters] action create[0m
+devr1n21 [32m
+devr1n21     - create a new cookbook_file /etc/neutron/rootwrap.d/iptables-firewall.filters[0m[37m
+devr1n21         --- /tmp/chef-tempfile20130926-12321-1vkkjxp	2013-09-26 03:35:41.066999229 -0500[0m[37m
+devr1n21         +++ /var/chef/cache/cookbooks/openstack-network-havana/files/default/etc/neutron/rootwrap.d/iptables-firewall.filters	2013-09-26 03:35:41.065999229 -0500[0m[37m
+devr1n21         @@ -0,0 +1,21 @@[0m[37m
+devr1n21         +# neutron-rootwrap command filters for nodes on which neutron is[0m[37m
+devr1n21         +# expected to control network[0m[37m
+devr1n21         +#[0m[37m
+devr1n21         +# This file should be owned by (and only-writeable by) the root user[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# format seems to be[0m[37m
+devr1n21         +# cmd-name: filter-name, raw-command, user, args[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[Filters][0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# neutron/agent/linux/iptables_manager.py[0m[37m
+devr1n21         +#   "iptables-save", ...[0m[37m
+devr1n21         +iptables-save: CommandFilter, /sbin/iptables-save, root[0m[37m
+devr1n21         +iptables-restore: CommandFilter, /sbin/iptables-restore, root[0m[37m
+devr1n21         +ip6tables-save: CommandFilter, /sbin/ip6tables-save, root[0m[37m
+devr1n21         +ip6tables-restore: CommandFilter, /sbin/ip6tables-restore, root[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# neutron/agent/linux/iptables_manager.py[0m[37m
+devr1n21         +#   "iptables", "-A", ...[0m[37m
+devr1n21         +iptables: CommandFilter, /sbin/iptables, root[0m[37m
+devr1n21         +ip6tables: CommandFilter, /sbin/ip6tables, root[0m
+devr1n21 
+devr1n21 [0m
+devr1n21   * cookbook_file[/etc/neutron/rootwrap.d/dhcp.filters] action create[0m
+devr1n21 [32m
+devr1n21     - create a new cookbook_file /etc/neutron/rootwrap.d/dhcp.filters[0m[37m
+devr1n21         --- /tmp/chef-tempfile20130926-12321-1eatc12	2013-09-26 03:35:41.233999229 -0500[0m[37m
+devr1n21         +++ /var/chef/cache/cookbooks/openstack-network-havana/files/default/etc/neutron/rootwrap.d/dhcp.filters	2013-09-26 03:35:41.231999229 -0500[0m[37m
+devr1n21         @@ -0,0 +1,40 @@[0m[37m
+devr1n21         +# neutron-rootwrap command filters for nodes on which neutron is[0m[37m
+devr1n21         +# expected to control network[0m[37m
+devr1n21         +#[0m[37m
+devr1n21         +# This file should be owned by (and only-writeable by) the root user[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# format seems to be[0m[37m
+devr1n21         +# cmd-name: filter-name, raw-command, user, args[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[Filters][0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# dhcp-agent[0m[37m
+devr1n21         +ip_exec_dnsmasq: DnsmasqNetnsFilter, /sbin/ip, root[0m[37m
+devr1n21         +dnsmasq: DnsmasqFilter, /sbin/dnsmasq, root[0m[37m
+devr1n21         +dnsmasq_usr: DnsmasqFilter, /usr/sbin/dnsmasq, root[0m[37m
+devr1n21         +# dhcp-agent uses kill as well, that's handled by the generic KillFilter[0m[37m
+devr1n21         +# it looks like these are the only signals needed, per[0m[37m
+devr1n21         +# neutron/agent/linux/dhcp.py[0m[37m
+devr1n21         +kill_dnsmasq: KillFilter, root, /sbin/dnsmasq, -9, -HUP[0m[37m
+devr1n21         +kill_dnsmasq_usr: KillFilter, root, /usr/sbin/dnsmasq, -9, -HUP[0m[37m
+devr1n21         +[0m
+devr1n21 [37m
+devr1n21         +# dhcp-agent uses cat[0m[37m
+devr1n21         +cat: RegExpFilter, /bin/cat, root, cat, /proc/\d+/cmdline[0m[37m
+devr1n21         +ovs-vsctl: CommandFilter, /bin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_usr: CommandFilter, /usr/bin/ovs-vsctl, root[0m
+devr1n21 [37m
+devr1n21         +ovs-vsctl_sbin: CommandFilter, /sbin/ovs-vsctl, root[0m[37m
+devr1n21         +ovs-vsctl_sbin_usr: CommandFilter, /usr/sbin/ovs-vsctl, root[0m
+devr1n21 [37m
+devr1n21         +[0m
+devr1n21 [37m
+devr1n21         +# metadata proxy[0m
+devr1n21 [37m
+devr1n21         +metadata_proxy: CommandFilter, /usr/bin/neutron-ns-metadata-proxy, root[0m
+devr1n21 [37m
+devr1n21         +# If installed from source (say, by devstack), the prefix will be[0m[37m
+devr1n21         +# /usr/local instead of /usr/bin.[0m
+devr1n21 [37m
+devr1n21         +metadata_proxy_local: CommandFilter, /usr/local/bin/neutron-ns-metadata-proxy, root[0m
+devr1n21 [37m
+devr1n21         +kill_metadata7: KillFilter, root, /usr/bin/python2.7, -9[0m
+devr1n21 [37m
+devr1n21         +kill_metadata6: KillFilter, root, /usr/bin/python2.6, -9[0m
+devr1n21 [37m
+devr1n21         +[0m
+devr1n21 [37m
+devr1n21         +# ip_lib[0m[37m
+devr1n21         +ip: IpFilter, /sbin/ip, root[0m[37m
+devr1n21         +ip_usr: IpFilter, /usr/sbin/ip, root[0m[37m
+devr1n21         +ip_exec: IpNetnsExecFilter, /sbin/ip, root[0m[37m
+devr1n21         +ip_exec_usr: IpNetnsExecFilter, /usr/sbin/ip, root[0m
+devr1n21 
+devr1n21 [0m
+devr1n21   * cookbook_file[/etc/neutron/rootwrap.d/debug.filters] action create[0m
+devr1n21 [32m
+devr1n21     - create a new cookbook_file /etc/neutron/rootwrap.d/debug.filters[0m[37m
+devr1n21         --- /tmp/chef-tempfile20130926-12321-16zumti	2013-09-26 03:35:41.408999230 -0500[0m[37m
+devr1n21         +++ /var/chef/cache/cookbooks/openstack-network-havana/files/default/etc/neutron/rootwrap.d/debug.filters	2013-09-26 03:35:41.406999228 -0500[0m[37m
+devr1n21         @@ -0,0 +1,14 @@[0m[37m
+devr1n21         +# neutron-rootwrap command filters for nodes on which neutron is[0m[37m
+devr1n21         +# expected to control network[0m[37m
+devr1n21         +#[0m[37m
+devr1n21         +# This file should be owned by (and only-writeable by) the root user[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# format seems to be[0m[37m
+devr1n21         +# cmd-name: filter-name, raw-command, user, args[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[Filters][0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# This is needed because we should ping[0m[37m
+devr1n21         +# from inside a namespace which requires root[0m[37m
+devr1n21         +ping: RegExpFilter, /bin/ping, root, ping, -w, \d+, -c, \d+, [0-9\.]+[0m[37m
+devr1n21         +ping6: RegExpFilter, /bin/ping6, root, ping6, -w, \d+, -c, \d+, [0-9A-Fa-f:]+[0m
+devr1n21 [0m
+devr1n21 
+devr1n21 [0m
+devr1n21 Recipe: openstack-network-havana::common[0m
+devr1n21   * template[/etc/neutron/rootwrap.conf] action create[0m
+devr1n21 [32m
+devr1n21     - update template[/etc/neutron/rootwrap.conf] from d61f7a to 7e63c4[0m[37m
+devr1n21         --- /etc/neutron/rootwrap.conf	2013-09-03 00:30:30.000000000 -0500[0m[37m
+devr1n21         +++ /tmp/chef-rendered-template20130926-12321-1rch6og	2013-09-26 03:35:41.578999229 -0500[0m[37m
+devr1n21         @@ -1,34 +1,9 @@[0m[37m
+devr1n21         -# Configuration for neutron-rootwrap[0m[37m
+devr1n21         -# This file should be owned by (and only-writeable by) the root user[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# This file autogenerated by Chef[0m[37m
+devr1n21         +# Do not edit, changes will be overwritten[0m[37m
+devr1n21         +[0m[37m
+devr1n21          [0m[37m
+devr1n21          [DEFAULT][0m[37m
+devr1n21          # List of directories to load filter definitions from (separated by ',').[0m[37m
+devr1n21          # These directories MUST all be only writeable by root ![0m[37m
+devr1n21         -filters_path=/etc/neutron/rootwrap.d,/usr/share/neutron/rootwrap,/etc/quantum/rootwrap.d,/usr/share/quantum/rootwrap[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# List of directories to search executables in, in case filters do not[0m[37m
+devr1n21         -# explicitely specify a full path (separated by ',')[0m[37m
+devr1n21         -# If not specified, defaults to system PATH environment variable.[0m[37m
+devr1n21         -# These directories MUST all be only writeable by root ![0m[37m
+devr1n21         -exec_dirs=/sbin,/usr/sbin,/bin,/usr/bin[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Enable logging to syslog[0m[37m
+devr1n21         -# Default value is False[0m[37m
+devr1n21         -use_syslog=False[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Which syslog facility to use.[0m[37m
+devr1n21         -# Valid values include auth, authpriv, syslog, user0, user1...[0m[37m
+devr1n21         -# Default value is 'syslog'[0m[37m
+devr1n21         -syslog_log_facility=syslog[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Which messages to log.[0m[37m
+devr1n21         -# INFO means log all usage[0m[37m
+devr1n21         -# ERROR means only log unsuccessful attempts[0m[37m
+devr1n21         -syslog_log_level=ERROR[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -[xenapi][0m[37m
+devr1n21         -# XenAPI configuration is only required by the L2 agent if it is to[0m[37m
+devr1n21         -# target a XenServer/XCP compute host's dom0.[0m[37m
+devr1n21         -xenapi_connection_url=<None>[0m[37m
+devr1n21         -xenapi_connection_username=root[0m[37m
+devr1n21         -xenapi_connection_password=<None>[0m[37m
+devr1n21         +filters_path=/etc/neutron/rootwrap.d,/usr/share/neutron/rootwrap[0m
+devr1n21 [0m
+devr1n21   * template[/etc/neutron/policy.json] action create[0m
+devr1n21 [32m
+devr1n21     - update template[/etc/neutron/policy.json] from cd8524 to 3566be[0m[37m
+devr1n21         --- /etc/neutron/policy.json	2013-09-03 00:30:30.000000000 -0500[0m
+devr1n21 [37m
+devr1n21         +++ /tmp/chef-rendered-template20130926-12321-w850ag	2013-09-26 03:35:41.746999229 -0500[0m
+devr1n21 [37m
+devr1n21         @@ -1,13 +1,21 @@[0m[37m
+devr1n21          {[0m[37m
+devr1n21              "context_is_admin":  "role:admin",[0m[37m
+devr1n21              "admin_or_owner": "rule:context_is_admin or tenant_id:%(tenant_id)s",[0m[37m
+devr1n21         -    "admin_or_network_owner": "rule:context_is_admin or tenant_id:%(network:tenant_id)s",[0m[37m
+devr1n21         +    "admin_or_network_owner": "rule:context_is_admin or tenant_id:%(network_tenant_id)s",[0m[37m
+devr1n21              "admin_only": "rule:context_is_admin",[0m[37m
+devr1n21              "regular_user": "",[0m[37m
+devr1n21              "shared": "field:networks:shared=True",[0m[37m
+devr1n21              "external": "field:networks:router:external=True",[0m[37m
+devr1n21              "default": "rule:admin_or_owner",[0m[37m
+devr1n21          [0m[37m
+devr1n21         +    "extension:provider_network:view": "rule:admin_only",[0m[37m
+devr1n21         +    "extension:provider_network:set": "rule:admin_only",[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +    "extension:router:view": "rule:regular_user",[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +    "extension:port_binding:view": "rule:admin_only",[0m[37m
+devr1n21         +    "extension:port_binding:set": "rule:admin_only",[0m[37m
+devr1n21         +[0m[37m
+devr1n21              "subnets:private:read": "rule:admin_or_owner",[0m[37m
+devr1n21              "subnets:private:write": "rule:admin_or_owner",[0m[37m
+devr1n21              "subnets:shared:read": "rule:regular_user",[0m[37m
+devr1n21         @@ -20,20 +28,12 @@[0m[37m
+devr1n21          [0m[37m
+devr1n21              "create_network": "",[0m[37m
+devr1n21              "get_network": "rule:admin_or_owner or rule:shared or rule:external",[0m
+devr1n21 [37m
+devr1n21         -    "get_network:router:external": "rule:regular_user",[0m[37m
+devr1n21         -    "get_network:segments": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         -    "get_network:provider:network_type": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         -    "get_network:provider:physical_network": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         -    "get_network:provider:segmentation_id": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         -    "get_network:queue_id": "rule:admin_only",[0m[37m
+devr1n21              "create_network:shared": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21              "create_network:router:external": "rule:admin_only",[0m[37m
+devr1n21         -    "create_network:segments": "rule:admin_only",[0m[37m
+devr1n21              "create_network:provider:network_type": "rule:admin_only",[0m[37m
+devr1n21              "create_network:provider:physical_network": "rule:admin_only",[0m[37m
+devr1n21              "create_network:provider:segmentation_id": "rule:admin_only",[0m[37m
+devr1n21              "update_network": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "update_network:segments": "rule:admin_only",[0m[37m
+devr1n21              "update_network:provider:network_type": "rule:admin_only",[0m[37m
+devr1n21              "update_network:provider:physical_network": "rule:admin_only",[0m[37m
+devr1n21              "update_network:provider:segmentation_id": "rule:admin_only",[0m[37m
+devr1n21         @@ -43,52 +43,26 @@[0m[37m
+devr1n21              "create_port:mac_address": "rule:admin_or_network_owner",[0m[37m
+devr1n21              "create_port:fixed_ips": "rule:admin_or_network_owner",[0m[37m
+devr1n21              "create_port:port_security_enabled": "rule:admin_or_network_owner",[0m[37m
+devr1n21         -    "create_port:binding:host_id": "rule:admin_only",[0m[37m
+devr1n21         -    "create_port:binding:profile": "rule:admin_only",[0m[37m
+devr1n21         -    "create_port:mac_learning_enabled": "rule:admin_or_network_owner",[0m[37m
+devr1n21              "get_port": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "get_port:queue_id": "rule:admin_only",[0m[37m
+devr1n21         -    "get_port:binding:vif_type": "rule:admin_only",[0m[37m
+devr1n21         -    "get_port:binding:capabilities": "rule:admin_only",[0m[37m
+devr1n21         -    "get_port:binding:host_id": "rule:admin_only",[0m[37m
+devr1n21         -    "get_port:binding:profile": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21              "update_port": "rule:admin_or_owner",[0m[37m
+devr1n21              "update_port:fixed_ips": "rule:admin_or_network_owner",[0m[37m
+devr1n21              "update_port:port_security_enabled": "rule:admin_or_network_owner",[0m
+devr1n21 [37m
+devr1n21         -    "update_port:binding:host_id": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         -    "update_port:binding:profile": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         -    "update_port:mac_learning_enabled": "rule:admin_or_network_owner",[0m
+devr1n21 [37m
+devr1n21              "delete_port": "rule:admin_or_owner",[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21         -    "create_router:external_gateway_info:enable_snat": "rule:admin_only",[0m[37m
+devr1n21         -    "update_router:external_gateway_info:enable_snat": "rule:admin_only",[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -    "create_firewall": "",[0m[37m
+devr1n21         -    "get_firewall": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "create_firewall:shared": "rule:admin_only",[0m[37m
+devr1n21         -    "get_firewall:shared": "rule:admin_only",[0m[37m
+devr1n21         -    "update_firewall": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "delete_firewall": "rule:admin_or_owner",[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -    "create_firewall_policy": "",[0m[37m
+devr1n21         -    "get_firewall_policy": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "create_firewall_policy:shared": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "update_firewall_policy": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "delete_firewall_policy": "rule:admin_or_owner",[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -    "create_firewall_rule": "",[0m[37m
+devr1n21         -    "get_firewall_rule": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "create_firewall_rule:shared": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "get_firewall_rule:shared": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "update_firewall_rule": "rule:admin_or_owner",[0m
+devr1n21 [37m
+devr1n21         -    "delete_firewall_rule": "rule:admin_or_owner",[0m[37m
+devr1n21         +    "extension:service_type:view_extended": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         +    "create_service_type": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         +    "update_service_type": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         +    "delete_service_type": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         +    "get_service_type": "rule:regular_user",[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21              "create_qos_queue": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21              "get_qos_queue": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         +    "get_qos_queues": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21              "update_agent": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21              "delete_agent": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21              "get_agent": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         +    "get_agents": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21              "create_dhcp-network": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21              "delete_dhcp-network": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21         @@ -97,35 +71,5 @@[0m
+devr1n21 [37m
+devr1n21              "delete_l3-router": "rule:admin_only",[0m
+devr1n21 [37m
+devr1n21              "get_l3-routers": "rule:admin_only",[0m[37m
+devr1n21              "get_dhcp-agents": "rule:admin_only",[0m[37m
+devr1n21         -    "get_l3-agents": "rule:admin_only",[0m[37m
+devr1n21         -    "get_loadbalancer-agent": "rule:admin_only",[0m[37m
+devr1n21         -    "get_loadbalancer-pools": "rule:admin_only",[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -    "create_router": "rule:regular_user",[0m[37m
+devr1n21         -    "get_router": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "update_router:add_router_interface": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "update_router:remove_router_interface": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "delete_router": "rule:admin_or_owner",[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -    "create_floatingip": "rule:regular_user",[0m[37m
+devr1n21         -    "update_floatingip": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "delete_floatingip": "rule:admin_or_owner",[0m[37m
+devr1n21         -    "get_floatingip": "rule:admin_or_owner",[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -    "create_network_profile": "rule:admin_only",[0m[37m
+devr1n21         -    "update_network_profile": "rule:admin_only",[0m[37m
+devr1n21         -    "delete_network_profile": "rule:admin_only",[0m[37m
+devr1n21         -    "get_network_profiles": "",[0m[37m
+devr1n21         -    "get_network_profile": "",[0m[37m
+devr1n21         -    "update_policy_profiles": "rule:admin_only",[0m[37m
+devr1n21         -    "get_policy_profiles": "",[0m[37m
+devr1n21         -    "get_policy_profile": "",[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -    "create_metering_label": "rule:admin_only",[0m[37m
+devr1n21         -    "delete_metering_label": "rule:admin_only",[0m[37m
+devr1n21         -    "get_metering_label": "rule:admin_only",[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -    "create_metering_label_rule": "rule:admin_only",[0m[37m
+devr1n21         -    "delete_metering_label_rule": "rule:admin_only",[0m[37m
+devr1n21         -    "get_metering_label_rule": "rule:admin_only"[0m[37m
+devr1n21         +    "get_l3-agents": "rule:admin_only"[0m[37m
+devr1n21          }[0m
+devr1n21 [0m
+devr1n21   * service[neutron-server] action nothing[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/neutron/neutron.conf] action create[0m
+devr1n21 [32m
+devr1n21     - update template[/etc/neutron/neutron.conf] from 6a1ac9 to 747af0[0m[37m
+devr1n21         --- /etc/neutron/neutron.conf	2013-09-03 00:33:08.000000000 -0500[0m[37m
+devr1n21         +++ /tmp/chef-rendered-template20130926-12321-92zr3b	2013-09-26 03:35:43.422999228 -0500[0m[37m
+devr1n21         @@ -1,11 +1,15 @@[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# This file autogenerated by Chef[0m[37m
+devr1n21         +# Do not edit, changes will be overwritten[0m[37m
+devr1n21         +[0m[37m
+devr1n21          [DEFAULT][0m[37m
+devr1n21          # Default log level is INFO[0m[37m
+devr1n21          # verbose and debug has the same result.[0m[37m
+devr1n21          # One of them will set DEBUG log level output[0m[37m
+devr1n21         -# debug = False[0m[37m
+devr1n21         -# verbose = False[0m[37m
+devr1n21         +debug = False[0m[37m
+devr1n21         +verbose = False[0m[37m
+devr1n21          [0m[37m
+devr1n21         -# Where to store Neutron state files.  This directory must be writable by the[0m[37m
+devr1n21         +# Where to store Neutron state files. This directory must be writable by the[0m[37m
+devr1n21          # user executing the agent.[0m[37m
+devr1n21          # state_path = /var/lib/neutron[0m[37m
+devr1n21          [0m[37m
+devr1n21         @@ -15,22 +19,12 @@[0m[37m
+devr1n21          # log_format = %(asctime)s %(levelname)8s [%(name)s] %(message)s[0m[37m
+devr1n21          # log_date_format = %Y-%m-%d %H:%M:%S[0m[37m
+devr1n21          [0m[37m
+devr1n21         -# use_syslog                           -> syslog[0m[37m
+devr1n21         -# log_file and log_dir                 -> log_dir/log_file[0m[37m
+devr1n21         -# (not log_file) and log_dir           -> log_dir/{binary_name}.log[0m
+devr1n21 [37m
+devr1n21         -# use_stderr                           -> stderr[0m[37m
+devr1n21         +# use_syslog -> syslog[0m[37m
+devr1n21         +# log_file and log_dir -> log_dir/log_file[0m
+devr1n21 [37m
+devr1n21         +# (not log_file) and log_dir -> log_dir/{binary_name}.log[0m[37m
+devr1n21         +# use_stderr -> stderr[0m[37m
+devr1n21          # (not user_stderr) and (not log_file) -> stdout[0m
+devr1n21 [37m
+devr1n21         -# publish_errors                       -> notification system[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# (Optional) In addition to the system's default language log,[0m[37m
+devr1n21         -# creates an additional log in the given language if such language is present[0m
+devr1n21 [37m
+devr1n21         -# in the operating system. This option is only enabled if the 'log-file' option[0m
+devr1n21 [37m
+devr1n21         -# is used, and the additional log will be created in the same directory as the[0m
+devr1n21 [37m
+devr1n21         -# main log, inside a directory named after the locale.[0m
+devr1n21 [37m
+devr1n21         -# This option is not available in community OpenStack Havana but it is in[0m
+devr1n21 [37m
+devr1n21         -# IBM OpenStack Enterprise Edition.[0m
+devr1n21 [37m
+devr1n21         -#log_additional_locale=<None>[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         +# publish_errors -> notification system[0m[37m
+devr1n21          [0m[37m
+devr1n21          # use_syslog = False[0m[37m
+devr1n21          # syslog_log_facility = LOG_USER[0m[37m
+devr1n21         @@ -42,13 +36,13 @@[0m[37m
+devr1n21          # publish_errors = False[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Address to bind the API server[0m[37m
+devr1n21         -# bind_host = 0.0.0.0[0m[37m
+devr1n21         +bind_host = 172.16.1.21[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Port the bind the API server to[0m[37m
+devr1n21         -# bind_port = 9696[0m[37m
+devr1n21         +bind_port = 9696[0m[37m
+devr1n21          [0m[37m
+devr1n21         -# Path to the extensions.  Note that this can be a colon-separated list of[0m[37m
+devr1n21         -# paths.  For example:[0m[37m
+devr1n21         +# Path to the extensions. Note that this can be a colon-separated list of[0m[37m
+devr1n21         +# paths. For example:[0m[37m
+devr1n21          # api_extensions_path = extensions:/path/to/more/extensions:/even/more/extensions[0m[37m
+devr1n21          # The __path__ of neutron.extensions is appended to this, so if your[0m[37m
+devr1n21          # extensions are in there you don't need to specify them here[0m[37m
+devr1n21         @@ -56,12 +50,13 @@[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Neutron plugin provider module[0m[37m
+devr1n21          # core_plugin =[0m[37m
+devr1n21         +core_plugin = neutron.plugins.openvswitch.ovs_neutron_plugin.OVSNeutronPluginV2[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Advanced service modules[0m[37m
+devr1n21          # service_plugins =[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Paste configuration file[0m[37m
+devr1n21         -# api_paste_config = api-paste.ini[0m[37m
+devr1n21         +api_paste_config = api-paste.ini[0m[37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # The strategy to be used for auth.[0m[37m
+devr1n21          # Supported values are 'keystone'(default), 'noauth'.[0m
+devr1n21 [37m
+devr1n21         @@ -79,7 +74,7 @@[0m[37m
+devr1n21          # mac_generation_retries = 16[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # DHCP Lease duration (in seconds)[0m
+devr1n21 [37m
+devr1n21         -# dhcp_lease_duration = 86400[0m
+devr1n21 [37m
+devr1n21         +# dhcp_lease_duration = 120[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # Allow sending resource operation notification to DHCP agent[0m
+devr1n21 [37m
+devr1n21          # dhcp_agent_notification = True[0m
+devr1n21 [37m
+devr1n21         @@ -92,7 +87,7 @@[0m
+devr1n21 [37m
+devr1n21          # allow_sorting = False[0m
+devr1n21 [37m
+devr1n21          # Enable or disable overlapping IPs for subnets[0m[37m
+devr1n21          # Attention: the following parameter MUST be set to False if Neutron is[0m[37m
+devr1n21         -# being used in conjunction with nova security groups[0m[37m
+devr1n21         +# being used in conjunction with nova security groups and/or metadata service.[0m[37m
+devr1n21          # allow_overlapping_ips = False[0m[37m
+devr1n21          # Ensure that configured gateway is on subnet[0m[37m
+devr1n21          # force_gateway_on_subnet = False[0m[37m
+devr1n21         @@ -102,7 +97,7 @@[0m[37m
+devr1n21          # The messaging module to use, defaults to kombu.[0m[37m
+devr1n21          # rpc_backend = neutron.openstack.common.rpc.impl_kombu[0m[37m
+devr1n21          # Size of RPC thread pool[0m[37m
+devr1n21         -# rpc_thread_pool_size = 64[0m[37m
+devr1n21         +# rpc_thread_pool_size = 64,[0m[37m
+devr1n21          # Size of RPC connection pool[0m[37m
+devr1n21          # rpc_conn_pool_size = 30[0m[37m
+devr1n21          # Seconds to wait for a response from call or multicall[0m[37m
+devr1n21         @@ -113,10 +108,7 @@[0m[37m
+devr1n21          # upon receiving exception data from an rpc call.[0m[37m
+devr1n21          # allowed_rpc_exception_modules = neutron.openstack.common.exception, nova.exception[0m[37m
+devr1n21          # AMQP exchange to connect to if using RabbitMQ or QPID[0m[37m
+devr1n21         -# control_exchange = neutron[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# If passed, use a fake RabbitMQ provider[0m[37m
+devr1n21         -# fake_rabbit = False[0m[37m
+devr1n21         +control_exchange = neutron[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Configuration options if sending notifications via kombu rpc (these are[0m[37m
+devr1n21          # the defaults)[0m[37m
+devr1n21         @@ -128,29 +120,30 @@[0m[37m
+devr1n21          # kombu_ssl_certfile =[0m[37m
+devr1n21          # SSL certification authority file (valid only if SSL enabled)'[0m[37m
+devr1n21          # kombu_ssl_ca_certs =[0m[37m
+devr1n21         -# IP address of the RabbitMQ installation[0m[37m
+devr1n21         -# rabbit_host = localhost[0m[37m
+devr1n21         -# Password of the RabbitMQ server[0m[37m
+devr1n21         -# rabbit_password = guest[0m[37m
+devr1n21         -# Port where RabbitMQ server is running/listening[0m[37m
+devr1n21         -# rabbit_port = 5672[0m[37m
+devr1n21         -# RabbitMQ single or HA cluster (host:port pairs i.e: host1:5672, host2:5672)[0m[37m
+devr1n21         -# rabbit_hosts is defaulted to '$rabbit_host:$rabbit_port'[0m[37m
+devr1n21         -# rabbit_hosts = localhost:5672[0m
+devr1n21 [37m
+devr1n21         -# User ID used for RabbitMQ connections[0m[37m
+devr1n21         -# rabbit_userid = guest[0m[37m
+devr1n21         -# Location of a virtual RabbitMQ installation.[0m
+devr1n21 [37m
+devr1n21         -# rabbit_virtual_host = /[0m
+devr1n21 [37m
+devr1n21         -# Maximum retries with trying to connect to RabbitMQ[0m
+devr1n21 [37m
+devr1n21         -# (the default of 0 implies an infinite retry count)[0m
+devr1n21 [37m
+devr1n21         -# rabbit_max_retries = 0[0m
+devr1n21 [37m
+devr1n21         -# RabbitMQ connection retry interval[0m
+devr1n21 [37m
+devr1n21         -# rabbit_retry_interval = 1[0m
+devr1n21 [37m
+devr1n21         -# Use HA queues in RabbitMQ (x-ha-policy: all).You need to[0m
+devr1n21 [37m
+devr1n21         -# wipe RabbitMQ database when changing this option. (boolean value)[0m
+devr1n21 [37m
+devr1n21         -# rabbit_ha_queues = false[0m
+devr1n21 [37m
+devr1n21         +[0m
+devr1n21 [37m
+devr1n21         +# allow_overlapping_ips = False[0m
+devr1n21 [37m
+devr1n21         +allow_overlapping_ips = False[0m
+devr1n21 [37m
+devr1n21         +##### RABBITMQ #####[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # QPID[0m
+devr1n21 [37m
+devr1n21         +[0m
+devr1n21 [37m
+devr1n21         +rpc_backend=neutron.openstack.common.rpc.impl_qpid[0m
+devr1n21 [37m
+devr1n21         +qpid_hostname = 172.16.1.21[0m
+devr1n21 [37m
+devr1n21         +qpid_port = 5672[0m[37m
+devr1n21         +qpid_username = ''[0m[37m
+devr1n21         +qpid_password = ''[0m[37m
+devr1n21         +qpid_sasl_mechanisms = ''[0m[37m
+devr1n21         +qpid_reconnect_timeout = 0[0m[37m
+devr1n21         +qpid_reconnect_limit = 0[0m[37m
+devr1n21         +qpid_reconnect_interval_min = 0[0m[37m
+devr1n21         +qpid_reconnect_interval_max = 0[0m[37m
+devr1n21         +qpid_reconnect_interval = 0[0m[37m
+devr1n21         +qpid_heartbeat = 5[0m[37m
+devr1n21         +# Set to 'ssl' to enable SSL[0m[37m
+devr1n21         +qpid_protocol = tcp[0m[37m
+devr1n21         +qpid_tcp_nodelay = True[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[0m
+devr1n21 [37m
+devr1n21          # rpc_backend=neutron.openstack.common.rpc.impl_qpid[0m
+devr1n21 [37m
+devr1n21          # Qpid broker hostname[0m
+devr1n21 [37m
+devr1n21          # qpid_hostname = localhost[0m
+devr1n21 [37m
+devr1n21         @@ -172,6 +165,7 @@[0m
+devr1n21 [37m
+devr1n21          # Disable Nagle algorithm[0m
+devr1n21 [37m
+devr1n21          # qpid_tcp_nodelay = True[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21         +[0m
+devr1n21 [37m
+devr1n21          # ZMQ[0m
+devr1n21 [37m
+devr1n21          # rpc_backend=neutron.openstack.common.rpc.impl_zmq[0m
+devr1n21 [37m
+devr1n21          # ZeroMQ bind address. Should be a wildcard (*), an ethernet interface, or IP.[0m
+devr1n21 [37m
+devr1n21         @@ -192,10 +186,9 @@[0m
+devr1n21 [37m
+devr1n21          # notification_driver = neutron.openstack.common.notifier.log_notifier[0m
+devr1n21 [37m
+devr1n21          # RPC driver. DHCP agents needs it.[0m[37m
+devr1n21          notification_driver = neutron.openstack.common.notifier.rpc_notifier[0m[37m
+devr1n21         -auth_strategy = noauth[0m[37m
+devr1n21          [0m[37m
+devr1n21          # default_notification_level is used to form actual topic name(s) or to set logging level[0m[37m
+devr1n21         -# default_notification_level = INFO[0m[37m
+devr1n21         +default_notification_level = INFO[0m[37m
+devr1n21          [0m[37m
+devr1n21          # default_publisher_id is a part of the notification payload[0m[37m
+devr1n21          # host = myhost.com[0m[37m
+devr1n21         @@ -203,7 +196,7 @@[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Defined in rpc_notifier, can be comma separated values.[0m[37m
+devr1n21          # The actual topic names will be %s.%(default_notification_level)s[0m[37m
+devr1n21         -# notification_topics = notifications[0m[37m
+devr1n21         +notification_topics = notifications[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Default maximum number of items returned in a single response,[0m[37m
+devr1n21          # value == infinite and value < 0 means no max limit, and value must[0m[37m
+devr1n21         @@ -224,15 +217,13 @@[0m[37m
+devr1n21          # =========== items for agent management extension =============[0m[37m
+devr1n21          # Seconds to regard the agent as down.[0m[37m
+devr1n21          # agent_down_time = 5[0m[37m
+devr1n21         -# ===========  end of items for agent management extension =====[0m[37m
+devr1n21         +# =========== end of items for agent management extension =====[0m[37m
+devr1n21          [0m[37m
+devr1n21          # =========== items for agent scheduler extension =============[0m[37m
+devr1n21          # Driver to use for scheduling network to DHCP agent[0m[37m
+devr1n21         -# network_scheduler_driver = neutron.scheduler.dhcp_agent_scheduler.ChanceScheduler[0m[37m
+devr1n21         +network_scheduler_driver = neutron.scheduler.dhcp_agent_scheduler.ChanceScheduler[0m
+devr1n21 [37m
+devr1n21          # Driver to use for scheduling router to a default L3 agent[0m[37m
+devr1n21         -# router_scheduler_driver = neutron.scheduler.l3_agent_scheduler.ChanceScheduler[0m[37m
+devr1n21         -# Driver to use for scheduling a loadbalancer pool to an lbaas agent[0m
+devr1n21 [37m
+devr1n21         -# loadbalancer_pool_scheduler_driver = neutron.services.loadbalancer.agent_scheduler.ChanceScheduler[0m
+devr1n21 [37m
+devr1n21         +router_scheduler_driver = neutron.scheduler.l3_agent_scheduler.ChanceScheduler[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # Allow auto scheduling networks to DHCP agent. It will schedule non-hosted[0m
+devr1n21 [37m
+devr1n21          # networks to first DHCP agent which sends get_active_networks message to[0m
+devr1n21 [37m
+devr1n21         @@ -242,41 +233,36 @@[0m
+devr1n21 [37m
+devr1n21          # Allow auto scheduling routers to L3 agent. It will schedule non-hosted[0m
+devr1n21 [37m
+devr1n21          # routers to first L3 agent which sends sync_routers message to neutron server[0m
+devr1n21 [37m
+devr1n21          # router_auto_schedule = True[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Number of DHCP agents scheduled to host a network. This enables redundant[0m
+devr1n21 [37m
+devr1n21         -# DHCP agents for configured networks.[0m
+devr1n21 [37m
+devr1n21         -# dhcp_agents_per_network = 1[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# ===========  end of items for agent scheduler extension =====[0m
+devr1n21 [37m
+devr1n21         +# =========== end of items for agent scheduler extension =====[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # =========== WSGI parameters related to the API server ==============[0m
+devr1n21 [37m
+devr1n21          # Sets the value of TCP_KEEPIDLE in seconds to use for each server socket when[0m
+devr1n21 [37m
+devr1n21          # starting API server. Not supported on OS X.[0m
+devr1n21 [37m
+devr1n21         -# tcp_keepidle = 600[0m
+devr1n21 [37m
+devr1n21         +#tcp_keepidle = 600[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Number of seconds to keep retrying to listen[0m[37m
+devr1n21         -# retry_until_window = 30[0m[37m
+devr1n21         +#retry_until_window = 30[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Number of backlog requests to configure the socket with.[0m[37m
+devr1n21         -# backlog = 4096[0m[37m
+devr1n21         +#backlog = 4096[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Enable SSL on the API server[0m[37m
+devr1n21         -# use_ssl = False[0m[37m
+devr1n21         +#use_ssl = False[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # Certificate file to use when starting API server securely[0m
+devr1n21 [37m
+devr1n21         -# ssl_cert_file = /path/to/certfile[0m
+devr1n21 [37m
+devr1n21         +#ssl_cert_file = /path/to/certfile[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # Private key file to use when starting API server securely[0m
+devr1n21 [37m
+devr1n21         -# ssl_key_file = /path/to/keyfile[0m
+devr1n21 [37m
+devr1n21         +#ssl_key_file = /path/to/keyfile[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # CA certificate file to use when starting API server securely to[0m
+devr1n21 [37m
+devr1n21          # verify connecting clients. This is an optional parameter only required if[0m
+devr1n21 [37m
+devr1n21          # API clients need to authenticate to the API server using SSL certificates[0m
+devr1n21 [37m
+devr1n21          # signed by a trusted CA[0m
+devr1n21 [37m
+devr1n21 
+devr1n21         -# ssl_ca_file = /path/to/cafile[0m
+devr1n21 [37m
+devr1n21         +#ssl_ca_file = /path/to/cafile[0m
+devr1n21 [37m
+devr1n21          # ======== end of WSGI parameters related to the API server ==========[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21         -[quotas][0m
+devr1n21 [37m
+devr1n21         +[QUOTAS][0m
+devr1n21 [37m
+devr1n21          # resource name(s) that are supported in quota features[0m
+devr1n21 [37m
+devr1n21          # quota_items = network,subnet,port[0m[37m
+devr1n21          [0m[37m
+devr1n21         @@ -301,85 +287,33 @@[0m[37m
+devr1n21          # default driver to use for quota checks[0m[37m
+devr1n21          # quota_driver = neutron.quota.ConfDriver[0m[37m
+devr1n21          [0m[37m
+devr1n21         -[agent][0m[37m
+devr1n21         +[DEFAULT_SERVICETYPE][0m[37m
+devr1n21         +# Description of the default service type (optional)[0m[37m
+devr1n21         +# description = "default service type"[0m[37m
+devr1n21         +# Enter a service definition line for each advanced service provided[0m[37m
+devr1n21         +# by the default service type.[0m[37m
+devr1n21         +# Each service definition should be in the following format:[0m[37m
+devr1n21         +# <service>:<plugin>[:driver][0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[AGENT][0m[37m
+devr1n21          # Use "sudo neutron-rootwrap /etc/neutron/rootwrap.conf" to use the real[0m[37m
+devr1n21          # root filter facility.[0m
+devr1n21 [37m
+devr1n21          # Change to "sudo" to skip the filtering and just run the comand directly[0m
+devr1n21 [37m
+devr1n21          # root_helper = sudo[0m
+devr1n21 [37m
+devr1n21         +root_helper = "sudo neutron-rootwrap /etc/neutron/rootwrap.conf"[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # =========== items for agent management extension =============[0m
+devr1n21 [37m
+devr1n21          # seconds between nodes reporting state to server, should be less than[0m
+devr1n21 [37m
+devr1n21          # agent_down_time[0m
+devr1n21 [37m
+devr1n21         -# report_interval = 4[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# ===========  end of items for agent management extension =====[0m
+devr1n21 [37m
+devr1n21         +report_interval = 4[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21          [keystone_authtoken][0m[37m
+devr1n21         -auth_host = 127.0.0.1[0m[37m
+devr1n21         -auth_port = 35357[0m[37m
+devr1n21         +auth_host = 172.16.1.21[0m[37m
+devr1n21         +auth_port = 5000[0m[37m
+devr1n21          auth_protocol = http[0m[37m
+devr1n21         -admin_tenant_name = %SERVICE_TENANT_NAME%[0m[37m
+devr1n21         -admin_user = %SERVICE_USER%[0m[37m
+devr1n21         -admin_password = %SERVICE_PASSWORD%[0m[37m
+devr1n21         -signing_dir = $state_path/keystone-signing[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -[lbaas][0m[37m
+devr1n21         -# ==================================================================================================[0m[37m
+devr1n21         -# driver_fqn is the fully qualified name of the lbaas driver that will be loaded by the lbass plugin[0m[37m
+devr1n21         -# ==================================================================================================[0m[37m
+devr1n21         -# driver_fqn = neutron.services.loadbalancer.drivers.haproxy.plugin_driver.HaproxyOnHostPluginDriver[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -[database][0m[37m
+devr1n21         -# This line MUST be changed to actually run the plugin.[0m[37m
+devr1n21         -# Example:[0m[37m
+devr1n21         -# connection = mysql://root:pass@127.0.0.1:3306/neutron[0m[37m
+devr1n21         -# Replace 127.0.0.1 above with the IP address of the database used by the[0m[37m
+devr1n21         -# main neutron server. (Leave it as is if the database runs on this host.)[0m[37m
+devr1n21         -# connection = sqlite://[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# The SQLAlchemy connection string used to connect to the slave database[0m[37m
+devr1n21         -# slave_connection =[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Database reconnection retry times - in event connectivity is lost[0m[37m
+devr1n21         -# set to -1 implies an infinite retry count[0m[37m
+devr1n21         -# max_retries = 10[0m[37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Database reconnection interval in seconds - if the initial connection to the[0m[37m
+devr1n21         -# database fails[0m[37m
+devr1n21         -# retry_interval = 10[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Minimum number of SQL connections to keep open in a pool[0m
+devr1n21 [37m
+devr1n21         -# min_pool_size = 1[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Maximum number of SQL connections to keep open in a pool[0m
+devr1n21 [37m
+devr1n21         -# max_pool_size = 10[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Timeout in seconds before idle sql connections are reaped[0m
+devr1n21 [37m
+devr1n21         -# idle_timeout = 3600[0m
+devr1n21 [37m
+devr1n21         -[0m[37m
+devr1n21         -# If set, use this value for max_overflow with sqlalchemy[0m[37m
+devr1n21         -# max_overflow = 20[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Verbosity of SQL debugging information. 0=None, 100=Everything[0m[37m
+devr1n21         -# connection_debug = 0[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Add python stack traces to SQL as comment strings[0m[37m
+devr1n21         -# connection_trace = False[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# If set, use this value for pool_timeout with sqlalchemy[0m[37m
+devr1n21         -# pool_timeout = 10[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -[service_providers][0m[37m
+devr1n21         -# Specify service providers (drivers) for advanced services like loadbalancer, VPN, Firewall.[0m[37m
+devr1n21         -# Must be in form:[0m[37m
+devr1n21         -# service_provider=<service_type>:<name>:<driver>[:default][0m[37m
+devr1n21         -# List of allowed service type include LOADBALANCER, FIREWALL, VPN[0m[37m
+devr1n21         -# Combination of <service type> and <name> must be unique; <driver> must also be unique[0m[37m
+devr1n21         -# this is multiline option, example for default provider:[0m[37m
+devr1n21         -# service_provider=LOADBALANCER:name:lbaas_plugin_driver_path:default[0m[37m
+devr1n21         -# example of non-default provider:[0m[37m
+devr1n21         -# service_provider=FIREWALL:name2:firewall_driver_path[0m[37m
+devr1n21         +admin_tenant_name = service[0m[37m
+devr1n21         +admin_user = neutron[0m[37m
+devr1n21         +admin_password = openstack-network[0m[37m
+devr1n21         +signing_dir = /var/lib/neutron/keystone-signing[0m[37m
+devr1n21          [0m[37m
+devr1n21         -[0m[37m
+devr1n21         -[AGENT][0m[37m
+devr1n21         -root_helper = sudo neutron-rootwrap /etc/neutron/rootwrap.conf[0m[37m
+devr1n21         +# =========== end of items for agent management extension =====[0m
+devr1n21 
+devr1n21 [0m
+devr1n21   * template[/etc/neutron/api-paste.ini] action create[0m
+devr1n21 [32m
+devr1n21     - update template[/etc/neutron/api-paste.ini] from a83cf5 to 8cec53[0m[37m
+devr1n21         --- /etc/neutron/api-paste.ini	2013-09-03 00:30:30.000000000 -0500[0m[37m
+devr1n21         +++ /tmp/chef-rendered-template20130926-12321-a9kik1	2013-09-26 03:35:43.596999228 -0500[0m[37m
+devr1n21         @@ -1,3 +1,8 @@[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# This file autogenerated by Chef[0m[37m
+devr1n21         +# Do not edit, changes will be overwritten[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[0m[37m
+devr1n21          [composite:neutron][0m[37m
+devr1n21          use = egg:Paste#urlmap[0m[37m
+devr1n21          /: neutronversions[0m[37m
+devr1n21         @@ -11,9 +16,6 @@[0m[37m
+devr1n21          [filter:keystonecontext][0m[37m
+devr1n21          paste.filter_factory = neutron.auth:NeutronKeystoneContext.factory[0m[37m
+devr1n21          [0m[37m
+devr1n21         -[filter:authtoken][0m
+devr1n21 [37m
+devr1n21         -paste.filter_factory = keystoneclient.middleware.auth_token:filter_factory[0m[37m
+devr1n21         -[0m[37m
+devr1n21          [filter:extensions][0m
+devr1n21 [37m
+devr1n21          paste.filter_factory = neutron.api.extensions:plugin_aware_extension_middleware_factory[0m[37m
+devr1n21          [0m[37m
+devr1n21         @@ -22,3 +24,14 @@[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21          [app:neutronapiapp_v2_0][0m
+devr1n21 [37m
+devr1n21          paste.app_factory = neutron.api.v2.router:APIRouter.factory[0m[37m
+devr1n21         +[0m
+devr1n21 [37m
+devr1n21         +[filter:authtoken][0m
+devr1n21 [37m
+devr1n21         +paste.filter_factory = keystoneclient.middleware.auth_token:filter_factory[0m[37m
+devr1n21         +auth_host = 172.16.1.21[0m
+devr1n21 [37m
+devr1n21         +auth_port = 5000[0m[37m
+devr1n21         +auth_protocol = http[0m[37m
+devr1n21         +admin_tenant_name = service[0m[37m
+devr1n21         +admin_user = neutron[0m[37m
+devr1n21         +admin_password = openstack-network[0m[37m
+devr1n21         +delay_auth_decision = true[0m[37m
+devr1n21         +signing_dir = /var/cache/neutron/api[0m
+devr1n21 [0m
+devr1n21   * directory[/etc/neutron/plugins/openvswitch] action create[0m
+devr1n21 [32m
+devr1n21     - change mode from '02755' to '0700'[0m[32m
+devr1n21     - change owner from 'root' to 'neutron'[0m[32m
+devr1n21     - change group from 'root' to 'neutron'[0m
+devr1n21 [0m
+devr1n21   * execute[make symbol links] action run[0m
+devr1n21 [32m
+devr1n21     - execute ln -sf /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini /etc/neutron/plugin.ini[0m
+devr1n21 [0m
+devr1n21   * service[neutron-plugin-openvswitch-agent] action nothing[0m
+devr1n21  (up to date)[0m
+devr1n21   * template[/etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini] action create[0m
+devr1n21 [32m
+devr1n21     - update template[/etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini] from e55a3c to 85b013[0m[37m
+devr1n21         --- /etc/neutron/plugins/openvswitch/ovs_neutron_plugin.ini	2013-09-03 00:30:30.000000000 -0500[0m[37m
+devr1n21         +++ /tmp/chef-rendered-template20130926-12321-brl4sf	2013-09-26 03:35:43.831999228 -0500[0m[37m
+devr1n21         @@ -1,15 +1,42 @@[0m[37m
+devr1n21         -[ovs][0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# This file autogenerated by Chef[0m[37m
+devr1n21         +# Do not edit, changes will be overwritten[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[DATABASE][0m[37m
+devr1n21         +# This line MUST be changed to actually run the plugin.[0m[37m
+devr1n21         +# Example:[0m[37m
+devr1n21         +# sql_connection = mysql://root:nova@127.0.0.1:3306/ovs_neutron[0m[37m
+devr1n21         +# Replace 127.0.0.1 above with the IP address of the database used by the[0m[37m
+devr1n21         +# main neutron server. (Leave it as is if the database runs on this host.)[0m[37m
+devr1n21         +sql_connection = mysql://network:quantum@172.16.1.21:3306/network[0m
+devr1n21 [37m
+devr1n21         +# Database reconnection retry times - in event connectivity is lost[0m[37m
+devr1n21         +# set to -1 implies an infinite retry count[0m[37m
+devr1n21         +# sql_max_retries = 10[0m[37m
+devr1n21         +# Database reconnection interval in seconds - if the initial connection to the[0m
+devr1n21 [37m
+devr1n21         +# database fails[0m[37m
+devr1n21         +reconnect_interval = 2[0m[37m
+devr1n21         +# Enable the use of eventlet's db_pool for MySQL. The flags sql_min_pool_size,[0m[37m
+devr1n21         +# sql_max_pool_size and sql_idle_timeout are relevant only if this is enabled.[0m
+devr1n21 [37m
+devr1n21         +# sql_dbpool_enable = False[0m[37m
+devr1n21         +# Minimum number of SQL connections to keep open in a pool[0m
+devr1n21 [37m
+devr1n21         +# sql_min_pool_size = 1[0m[37m
+devr1n21         +# Maximum number of SQL connections to keep open in a pool[0m[37m
+devr1n21         +# sql_max_pool_size = 5[0m[37m
+devr1n21         +# Timeout in seconds before idle sql connections are reaped[0m[37m
+devr1n21         +# sql_idle_timeout = 3600[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[OVS][0m[37m
+devr1n21          # (StrOpt) Type of network to allocate for tenant networks. The[0m[37m
+devr1n21          # default value 'local' is useful only for single-box testing and[0m[37m
+devr1n21          # provides no connectivity between hosts. You MUST either change this[0m[37m
+devr1n21          # to 'vlan' and configure network_vlan_ranges below or change this to[0m[37m
+devr1n21         -# 'gre' or 'vxlan' and configure tunnel_id_ranges below in order for[0m[37m
+devr1n21         -# tenant networks to provide connectivity between hosts. Set to 'none'[0m[37m
+devr1n21         -# to disable creation of tenant networks.[0m[37m
+devr1n21         +# 'gre' and configure tunnel_id_ranges below in order for tenant[0m[37m
+devr1n21         +# networks to provide connectivity between hosts. Set to 'none' to[0m[37m
+devr1n21         +# disable creation of tenant networks.[0m[37m
+devr1n21          #[0m[37m
+devr1n21         -# tenant_network_type = local[0m[37m
+devr1n21         +# Default: tenant_network_type = local[0m[37m
+devr1n21          # Example: tenant_network_type = gre[0m[37m
+devr1n21         -# Example: tenant_network_type = vxlan[0m[37m
+devr1n21         +tenant_network_type = gre[0m[37m
+devr1n21          [0m[37m
+devr1n21          # (ListOpt) Comma-separated list of[0m[37m
+devr1n21          # <physical_network>[:<vlan_min>:<vlan_max>] tuples enumerating ranges[0m[37m
+devr1n21         @@ -17,35 +44,26 @@[0m[37m
+devr1n21          # allocation. All physical networks listed are available for flat and[0m[37m
+devr1n21          # VLAN provider network creation. Specified ranges of VLAN IDs are[0m[37m
+devr1n21          # available for tenant network allocation if tenant_network_type is[0m[37m
+devr1n21         -# 'vlan'. If empty, only gre, vxlan and local networks may be created.[0m[37m
+devr1n21         +# 'vlan'. If empty, only gre and local networks may be created.[0m[37m
+devr1n21          #[0m[37m
+devr1n21         -# network_vlan_ranges =[0m[37m
+devr1n21         +# Default: network_vlan_ranges =[0m[37m
+devr1n21          # Example: network_vlan_ranges = physnet1:1000:2999[0m[37m
+devr1n21         +network_vlan_ranges = 520:550[0m[37m
+devr1n21          [0m[37m
+devr1n21          # (BoolOpt) Set to True in the server and the agents to enable support[0m[37m
+devr1n21         -# for GRE or VXLAN networks. Requires kernel support for OVS patch ports and[0m[37m
+devr1n21         -# GRE or VXLAN tunneling.[0m[37m
+devr1n21         +# for GRE networks. Requires kernel support for OVS patch ports and[0m
+devr1n21 [37m
+devr1n21         +# GRE tunneling.[0m[37m
+devr1n21          #[0m[37m
+devr1n21         -# WARNING: This option will be deprecated in the Icehouse release, at which[0m[37m
+devr1n21         -#          point setting tunnel_type below will be required to enable[0m[37m
+devr1n21         -#          tunneling.[0m[37m
+devr1n21         -#[0m[37m
+devr1n21         -# enable_tunneling = False[0m
+devr1n21 [37m
+devr1n21         -[0m[37m
+devr1n21         -# (StrOpt) The type of tunnel network, if any, supported by the plugin. If[0m
+devr1n21 [37m
+devr1n21         -# this is set, it will cause tunneling to be enabled. If this is not set and[0m[37m
+devr1n21         -# the option enable_tunneling is set, this will default to 'gre'.[0m
+devr1n21 [37m
+devr1n21         -#[0m[37m
+devr1n21         -# tunnel_type =[0m[37m
+devr1n21         -# Example: tunnel_type = gre[0m
+devr1n21 [37m
+devr1n21         -# Example: tunnel_type = vxlan[0m[37m
+devr1n21         +# Default: enable_tunneling = False[0m[37m
+devr1n21         +enable_tunneling = true[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21          # (ListOpt) Comma-separated list of <tun_min>:<tun_max> tuples[0m[37m
+devr1n21         -# enumerating ranges of GRE or VXLAN tunnel IDs that are available for[0m
+devr1n21 [37m
+devr1n21         -# tenant network allocation if tenant_network_type is 'gre' or 'vxlan'.[0m[37m
+devr1n21         +# enumerating ranges of GRE tunnel IDs that are available for tenant[0m[37m
+devr1n21         +# network allocation if tenant_network_type is 'gre'.[0m[37m
+devr1n21          #[0m
+devr1n21 [37m
+devr1n21         -# tunnel_id_ranges =[0m[37m
+devr1n21         +# Default: tunnel_id_ranges =[0m[37m
+devr1n21          # Example: tunnel_id_ranges = 1:1000[0m
+devr1n21 [37m
+devr1n21         +tunnel_id_ranges = 1:1000[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Do not change this parameter unless you have a good reason to.[0m
+devr1n21 [37m
+devr1n21          # This is the name of the OVS integration bridge. There is one per hypervisor.[0m[37m
+devr1n21         @@ -53,24 +71,27 @@[0m
+devr1n21 [37m
+devr1n21          # attached to this bridge and then "patched" according to their network[0m[37m
+devr1n21          # connectivity.[0m
+devr1n21 [37m
+devr1n21          #[0m[37m
+devr1n21         -# integration_bridge = br-int[0m
+devr1n21 [37m
+devr1n21         +# Default: integration_bridge = br-int[0m[37m
+devr1n21         +integration_bridge = br-int[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21          # Only used for the agent if tunnel_id_ranges (above) is not empty for[0m
+devr1n21 [37m
+devr1n21          # the server.  In most cases, the default value should be fine.[0m[37m
+devr1n21          #[0m
+devr1n21 [37m
+devr1n21         -# tunnel_bridge = br-tun[0m
+devr1n21 [37m
+devr1n21         +# Default: tunnel_bridge = br-tun[0m[37m
+devr1n21         +tunnel_bridge = br-tun[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21          # Peer patch port in integration bridge for tunnel bridge[0m[37m
+devr1n21         -# int_peer_patch_port = patch-tun[0m
+devr1n21 [37m
+devr1n21         +# Default: int_peer_patch_port = patch-tun[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Peer patch port in tunnel bridge for integration bridge[0m
+devr1n21 [37m
+devr1n21         -# tun_peer_patch_port = patch-int[0m[37m
+devr1n21         +# Default: tun_peer_patch_port = patch-int[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21          # Uncomment this line for the agent if tunnel_id_ranges (above) is not[0m[37m
+devr1n21          # empty for the server. Set local-ip to be the local IP address of[0m
+devr1n21 [37m
+devr1n21          # this hypervisor.[0m
+devr1n21 [37m
+devr1n21          #[0m
+devr1n21 [37m
+devr1n21         -# local_ip =[0m[37m
+devr1n21         +# Default: local_ip =[0m[37m
+devr1n21         +local_ip = 172.16.1.21[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21          # (ListOpt) Comma-separated list of <physical_network>:<bridge> tuples[0m
+devr1n21 [37m
+devr1n21          # mapping physical network names to the agent's node-specific OVS[0m[37m
+devr1n21         @@ -80,51 +101,26 @@[0m
+devr1n21 [37m
+devr1n21          # port. All physical networks listed in network_vlan_ranges on the[0m[37m
+devr1n21          # server should have mappings to appropriate bridges on each agent.[0m
+devr1n21 [37m
+devr1n21          #[0m[37m
+devr1n21         -# bridge_mappings =[0m
+devr1n21 [37m
+devr1n21         +# Default: bridge_mappings =[0m[37m
+devr1n21          # Example: bridge_mappings = physnet1:br-eth1[0m[37m
+devr1n21         +bridge_mappings = physnet1:br-eth1[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21         -[agent][0m
+devr1n21 [37m
+devr1n21         +[AGENT][0m[37m
+devr1n21          # Agent's polling interval in seconds[0m[37m
+devr1n21         -# polling_interval = 2[0m
+devr1n21 [37m
+devr1n21         +polling_interval = 2[0m[37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21         -# (ListOpt) The types of tenant network tunnels supported by the agent.[0m[37m
+devr1n21         -# Setting this will enable tunneling support in the agent. This can be set to[0m
+devr1n21 [37m
+devr1n21         -# either 'gre' or 'vxlan'. If this is unset, it will default to [] and[0m[37m
+devr1n21         -# disable tunneling support in the agent. When running the agent with the OVS[0m
+devr1n21 [37m
+devr1n21         -# plugin, this value must be the same as "tunnel_type" in the "[ovs]" section.[0m[37m
+devr1n21         -# When running the agent with ML2, you can specify as many values here as[0m
+devr1n21 [37m
+devr1n21         -# your compute hosts supports.[0m[37m
+devr1n21         -#[0m[37m
+devr1n21         -# tunnel_types =[0m
+devr1n21 [37m
+devr1n21         -# Example: tunnel_types = gre[0m[37m
+devr1n21         -# Example: tunnel_types = vxlan[0m
+devr1n21 [37m
+devr1n21         -# Example: tunnel_types = vxlan, gre[0m[37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# (IntOpt) The port number to utilize if tunnel_types includes 'vxlan'. By[0m
+devr1n21 [37m
+devr1n21         -# default, this will make use of the Open vSwitch default value of '4789' if[0m[37m
+devr1n21         -# not specified.[0m
+devr1n21 [37m
+devr1n21         -#[0m[37m
+devr1n21         -# vxlan_udp_port =[0m[37m
+devr1n21         -# Example: vxlan_udp_port = 8472[0m
+devr1n21 [37m
+devr1n21         -[0m[37m
+devr1n21         -# (IntOpt) This is the MTU size of veth interfaces.[0m
+devr1n21 [37m
+devr1n21         -# Do not change unless you have a good reason to.[0m[37m
+devr1n21         -# The default MTU size of veth interfaces is 1500.[0m
+devr1n21 [37m
+devr1n21         -# veth_mtu =[0m[37m
+devr1n21         -# Example: veth_mtu = 1504[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -[securitygroup][0m
+devr1n21 [37m
+devr1n21         -# Firewall driver for realizing neutron security group function.[0m[37m
+devr1n21         -# firewall_driver = neutron.agent.firewall.NoopFirewallDriver[0m
+devr1n21 [37m
+devr1n21         -# Example: firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver[0m
+devr1n21 [37m
+devr1n21         +[SECURITYGROUP][0m[37m
+devr1n21         +# Firewall driver for realizing neutron security group function[0m[37m
+devr1n21         +# Default: firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver[0m[37m
+devr1n21         +firewall_driver = neutron.agent.linux.iptables_firewall.OVSHybridIptablesFirewallDriver[0m[37m
+devr1n21          [0m[37m
+devr1n21          #-----------------------------------------------------------------------------[0m[37m
+devr1n21          # Sample Configurations.[0m[37m
+devr1n21          #-----------------------------------------------------------------------------[0m[37m
+devr1n21          #[0m[37m
+devr1n21          # 1. With VLANs on eth1.[0m[37m
+devr1n21         -# [database][0m[37m
+devr1n21         -# connection = mysql://root:nova@127.0.0.1:3306/ovs_neutron[0m[37m
+devr1n21         +# [DATABASE][0m[37m
+devr1n21         +# sql_connection = mysql://root:nova@127.0.0.1:3306/ovs_neutron[0m[37m
+devr1n21          # [OVS][0m[37m
+devr1n21          # network_vlan_ranges = default:2000:3999[0m[37m
+devr1n21          # tunnel_id_ranges =[0m[37m
+devr1n21         @@ -134,8 +130,8 @@[0m[37m
+devr1n21          # Add the following setting, if you want to log to a file[0m[37m
+devr1n21          #[0m[37m
+devr1n21          # 2. With tunneling.[0m[37m
+devr1n21         -# [database][0m[37m
+devr1n21         -# connection = mysql://root:nova@127.0.0.1:3306/ovs_neutron[0m[37m
+devr1n21         +# [DATABASE][0m[37m
+devr1n21         +# sql_connection = mysql://root:nova@127.0.0.1:3306/ovs_neutron[0m[37m
+devr1n21          # [OVS][0m[37m
+devr1n21          # network_vlan_ranges =[0m[37m
+devr1n21          # tunnel_id_ranges = 1:1000[0m
+devr1n21 [0m
+devr1n21   * template[/etc/default/neutron-server] action create[0m
+devr1n21  (skipped due to only_if)[0m
+devr1n21 Recipe: openstack-network-havana::dhcp_agent[0m
+devr1n21   * package[openstack-neutron] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * service[neutron-dhcp-agent] action enable[0m
+devr1n21 [32m
+devr1n21     - enable service service[neutron-dhcp-agent][0m
+devr1n21 [0m
+devr1n21   * package[openstack-neutron-openvswitch] action install[0m (up to date)[0m
+devr1n21   * execute[neutron-dhcp-setup --plugin openvswitch] action run[0m
+devr1n21 [32m
+devr1n21     - execute neutron-dhcp-setup --plugin openvswitch[0m
+devr1n21 [0m
+devr1n21   * template[/etc/neutron/dnsmasq.conf] action create[0m
+devr1n21 [32m
+devr1n21     - create template[/etc/neutron/dnsmasq.conf][0m[37m
+devr1n21         --- /tmp/chef-tempfile20130926-12321-jnn8ny	2013-09-26 03:35:44.752999228 -0500[0m[37m
+devr1n21         +++ /tmp/chef-rendered-template20130926-12321-5x5jj6	2013-09-26 03:35:44.752999228 -0500[0m[37m
+devr1n21         @@ -0,0 +1,9 @@[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# This file autogenerated by Chef[0m[37m
+devr1n21         +# Do not edit, changes will be overwritten[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +dhcp-option=26,1454[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +server=8.8.8.8[0m[37m
+devr1n21         +server=209.244.0.3[0m
+devr1n21 [0m
+devr1n21   * template[/etc/neutron/dhcp_agent.ini] action create[0m
+devr1n21 [32m
+devr1n21     - update template[/etc/neutron/dhcp_agent.ini] from 9db814 to b9ca6b[0m[37m
+devr1n21         --- /etc/neutron/dhcp_agent.ini	2013-09-26 03:35:44.721999229 -0500[0m[37m
+devr1n21         +++ /tmp/chef-rendered-template20130926-12321-1isb5tr	2013-09-26 03:35:44.951999230 -0500[0m[37m
+devr1n21         @@ -1,47 +1,44 @@[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# This file autogenerated by Chef[0m[37m
+devr1n21         +# Do not edit, changes will be overwritten[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[0m[37m
+devr1n21          [DEFAULT][0m[37m
+devr1n21         -auth_url = http://localhost:35357/v2.0/[0m[37m
+devr1n21         -admin_username = neutron[0m[37m
+devr1n21         -admin_password = servicepass[0m[37m
+devr1n21         -admin_tenant_name = service[0m[37m
+devr1n21         -interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver[0m[37m
+devr1n21          # Show debugging output in log (sets DEBUG log level output)[0m[37m
+devr1n21         -# debug = False[0m[37m
+devr1n21         +debug = False[0m[37m
+devr1n21          [0m[37m
+devr1n21          # The DHCP agent will resync its state with Neutron to recover from any[0m[37m
+devr1n21          # transient notification or rpc errors. The interval is number of[0m
+devr1n21 [37m
+devr1n21          # seconds between attempts.[0m[37m
+devr1n21         -# resync_interval = 5[0m[37m
+devr1n21         +resync_interval = 5[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21         -# The DHCP agent requires an interface driver be set. Choose the one that best[0m
+devr1n21 [37m
+devr1n21         +# The DHCP requires that an inteface driver be set.  Choose the one that best[0m
+devr1n21 [37m
+devr1n21          # matches your plugin.[0m
+devr1n21 [37m
+devr1n21         -# interface_driver =[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21         -# Example of interface_driver option for OVS based plugins(OVS, Ryu, NEC, NVP,[0m
+devr1n21 [37m
+devr1n21         -# BigSwitch/Floodlight)[0m
+devr1n21 [37m
+devr1n21         +# OVS based plugins (OVS, Ryu, NEC, NVP, BigSwitch/Floodlight)[0m
+devr1n21 [37m
+devr1n21          # interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver[0m[37m
+devr1n21         +# LinuxBridge[0m[37m
+devr1n21         +#interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver[0m[37m
+devr1n21         +interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver[0m[37m
+devr1n21          [0m[37m
+devr1n21         -# Use veth for an OVS interface or not.[0m[37m
+devr1n21         -# Support kernels with limited namespace support[0m[37m
+devr1n21         -# (e.g. RHEL 6.5) so long as ovs_use_veth is set to True.[0m[37m
+devr1n21         -# ovs_use_veth = False[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Example of interface_driver option for LinuxBridge[0m[37m
+devr1n21         -# interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver[0m[37m
+devr1n21         +# OVS based plugins(Ryu, NEC, NVP, BigSwitch/Floodlight) that use OVS[0m[37m
+devr1n21         +# as OpenFlow switch and check port status[0m[37m
+devr1n21         +ovs_use_veth = True[0m[37m
+devr1n21          [0m[37m
+devr1n21          # The agent can use other DHCP drivers.  Dnsmasq is the simplest and requires[0m[37m
+devr1n21          # no additional setup of the DHCP server.[0m[37m
+devr1n21         -# dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq[0m[37m
+devr1n21         +dhcp_driver = neutron.agent.linux.dhcp.Dnsmasq[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Allow overlapping IP (Must have kernel build with CONFIG_NET_NS=y and[0m[37m
+devr1n21          # iproute2 package that supports namespaces).[0m[37m
+devr1n21         -# use_namespaces = True[0m[37m
+devr1n21         +use_namespaces = False[0m[37m
+devr1n21          [0m[37m
+devr1n21          # The DHCP server can assist with providing metadata support on isolated[0m[37m
+devr1n21          # networks. Setting this value to True will cause the DHCP server to append[0m[37m
+devr1n21          # specific host routes to the DHCP request.  The metadata service will only[0m[37m
+devr1n21          # be activated when the subnet gateway_ip is None.  The guest instance must[0m[37m
+devr1n21          # be configured to request host routes via DHCP (Option 121).[0m[37m
+devr1n21         -# enable_isolated_metadata = False[0m[37m
+devr1n21         +enable_isolated_metadata = False[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Allows for serving metadata requests coming from a dedicated metadata[0m[37m
+devr1n21          # access network whose cidr is 169.254.169.254/16 (or larger prefix), and[0m[37m
+devr1n21         @@ -49,26 +46,13 @@[0m[37m
+devr1n21          # request. In this case DHCP Option 121 will not be injected in VMs, as[0m[37m
+devr1n21          # they will be able to reach 169.254.169.254 through a router.[0m[37m
+devr1n21          # This option requires enable_isolated_metadata = True[0m
+devr1n21 [37m
+devr1n21         -# enable_metadata_network = False[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Number of threads to use during sync process. Should not exceed connection[0m[37m
+devr1n21         -# pool size configured on server.[0m
+devr1n21 [37m
+devr1n21         -# num_sync_threads = 4[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Location to store DHCP server config files[0m
+devr1n21 [37m
+devr1n21         -# dhcp_confs = $state_path/dhcp[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Domain to use for building the hostnames[0m
+devr1n21 [37m
+devr1n21         -# dhcp_domain = openstacklocal[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Override the default dnsmasq settings with this file[0m[37m
+devr1n21         -# dnsmasq_config_file =[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Use another DNS server before any in /etc/resolv.conf.[0m[37m
+devr1n21         -# dnsmasq_dns_server =[0m[37m
+devr1n21         +enable_metadata_network = False[0m[37m
+devr1n21          [0m[37m
+devr1n21         -# Location to DHCP lease relay UNIX domain socket[0m[37m
+devr1n21         -# dhcp_lease_relay_socket = $state_path/dhcp/lease_relay[0m[37m
+devr1n21         +# Domain to use for building the host names of instances.[0m[37m
+devr1n21         +# If not set, it will default to "openstacklocal"[0m[37m
+devr1n21         +dhcp_domain = openstacklocal[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# Pass a config file to dnsmasq so we can override settings[0m[37m
+devr1n21         +# like the mtu passed to the virtual machine[0m[37m
+devr1n21         +dnsmasq_config_file = /etc/neutron/dnsmasq.conf[0m[37m
+devr1n21          [0m[37m
+devr1n21         -# Location of Metadata Proxy UNIX domain socket[0m[37m
+devr1n21         -# metadata_proxy_socket = $state_path/metadata_proxy[0m
+devr1n21 [0m
+devr1n21   * service[neutron-dhcp-agent] action restart[0m
+devr1n21 [32m
+devr1n21     - restart service service[neutron-dhcp-agent][0m
+devr1n21 [0m
+devr1n21 Recipe: openstack-network-havana::metadata_agent[0m
+devr1n21   * template[/etc/neutron/metadata_agent.ini] action create[0m
+devr1n21 [32m
+devr1n21     - update template[/etc/neutron/metadata_agent.ini] from 8dd7a7 to 5d9940[0m[37m
+devr1n21         --- /etc/neutron/metadata_agent.ini	2013-09-03 00:30:30.000000000 -0500[0m[37m
+devr1n21         +++ /tmp/chef-rendered-template20130926-12321-3rs1wd	2013-09-26 03:35:45.230999228 -0500[0m[37m
+devr1n21         @@ -1,28 +1,29 @@[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# This file autogenerated by Chef[0m[37m
+devr1n21         +# Do not edit, changes will be overwritten[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[0m[37m
+devr1n21          [DEFAULT][0m[37m
+devr1n21          # Show debugging output in log (sets DEBUG log level output)[0m[37m
+devr1n21         -# debug = True[0m[37m
+devr1n21         +debug = False[0m[37m
+devr1n21          [0m[37m
+devr1n21          # The Neutron user information for accessing the Neutron API.[0m[37m
+devr1n21         -auth_url = http://localhost:5000/v2.0[0m[37m
+devr1n21         +auth_url = http://172.16.1.21:5000/v2.0[0m[37m
+devr1n21          auth_region = RegionOne[0m[37m
+devr1n21         -admin_tenant_name = %SERVICE_TENANT_NAME%[0m[37m
+devr1n21         -admin_user = %SERVICE_USER%[0m[37m
+devr1n21         -admin_password = %SERVICE_PASSWORD%[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Network service endpoint type to pull from the keystone catalog[0m[37m
+devr1n21         -# endpoint_type = adminURL[0m[37m
+devr1n21         +admin_tenant_name = service[0m[37m
+devr1n21         +admin_user = neutron[0m
+devr1n21 [37m
+devr1n21         +admin_password = openstack-network[0m[37m
+devr1n21          [0m[37m
+devr1n21          # IP address used by Nova metadata server[0m
+devr1n21 [37m
+devr1n21         -# nova_metadata_ip = 127.0.0.1[0m[37m
+devr1n21         +# Default: nova_metadata_ip = 127.0.0.1[0m[37m
+devr1n21         +nova_metadata_ip = 172.16.1.21[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # TCP Port used by Nova metadata server[0m
+devr1n21 [37m
+devr1n21         -# nova_metadata_port = 8775[0m
+devr1n21 [37m
+devr1n21         +# Default: nova_metadata_port = 8775[0m
+devr1n21 [37m
+devr1n21         +nova_metadata_port = 8775[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # When proxying metadata requests, Neutron signs the Instance-ID header with a[0m
+devr1n21 [37m
+devr1n21          # shared secret to prevent spoofing.  You may select any string for a secret,[0m
+devr1n21 [37m
+devr1n21          # but it must match here and in the configuration used by the Nova Metadata[0m
+devr1n21 [37m
+devr1n21          # Server. NOTE: Nova uses a different key: neutron_metadata_proxy_shared_secret[0m
+devr1n21 [37m
+devr1n21         -# metadata_proxy_shared_secret =[0m
+devr1n21 [37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Location of Metadata Proxy UNIX domain socket[0m
+devr1n21 [37m
+devr1n21         -# metadata_proxy_socket = $state_path/metadata_proxy[0m[37m
+devr1n21         +metadata_proxy_shared_secret = neutron_metadata_secret[0m
+devr1n21 [0m
+devr1n21   * service[neutron-metadata-agent] action restart[0m
+devr1n21 [32m
+devr1n21     - restart service service[neutron-metadata-agent][0m
+devr1n21 [0m
+devr1n21   * service[neutron-metadata-agent] action enable[0m
+devr1n21 [32m
+devr1n21     - enable service service[neutron-metadata-agent][0m
+devr1n21 [0m
+devr1n21 Recipe: openstack-network-havana::openvswitch[0m
+devr1n21   * package[openvswitch] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * service[neutron-openvswitch-switch] action enable[0m
+devr1n21  (up to date)[0m
+devr1n21   * service[neutron-openvswitch-switch] action start[0m
+devr1n21 [32m
+devr1n21     - start service service[neutron-openvswitch-switch][0m
+devr1n21 [0m
+devr1n21   * package[openstack-neutron-openvswitch] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * service[neutron-plugin-openvswitch-agent] action enable[0m
+devr1n21 [32m
+devr1n21     - enable service service[neutron-plugin-openvswitch-agent][0m
+devr1n21 
+devr1n21 [0m
+devr1n21   * execute[neutron-node-setup --plugin openvswitch] action run[0m
+devr1n21 [32m
+devr1n21     - execute neutron-node-setup --plugin openvswitch[0m
+devr1n21 [0m
+devr1n21   * execute[create internal network bridge] action run[0m
+devr1n21 [32m
+devr1n21     - execute ovs-vsctl add-br br-int[0m
+devr1n21 [0m
+devr1n21   * execute[create tunnel network bridge] action run[0m
+devr1n21 [32m
+devr1n21     - execute ovs-vsctl add-br br-tun[0m
+devr1n21 [0m
+devr1n21 Recipe: openstack-network-havana::l3_agent[0m
+devr1n21   * package[openstack-neutron] action install[0m
+devr1n21  (up to date)[0m
+devr1n21   * service[neutron-l3-agent] action enable[0m
+devr1n21 [32m
+devr1n21     - enable service service[neutron-l3-agent][0m
+devr1n21 [0m
+devr1n21   * execute[neutron-l3-setup --plugin openvswitch] action run[0m
+devr1n21 [32m
+devr1n21     - execute neutron-l3-setup --plugin openvswitch[0m
+devr1n21 [0m
+devr1n21   * template[/etc/neutron/l3_agent.ini] action create[0m
+devr1n21 [32m
+devr1n21     - update template[/etc/neutron/l3_agent.ini] from bcc8fc to 04a461[0m[37m
+devr1n21         --- /etc/neutron/l3_agent.ini	2013-09-26 03:35:46.359999228 -0500[0m[37m
+devr1n21         +++ /tmp/chef-rendered-template20130926-12321-uih3cm	2013-09-26 03:35:46.395999229 -0500[0m[37m
+devr1n21         @@ -1,70 +1,55 @@[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +# This file autogenerated by Chef[0m[37m
+devr1n21         +# Do not edit, changes will be overwritten[0m[37m
+devr1n21         +[0m[37m
+devr1n21         +[0m[37m
+devr1n21          [DEFAULT][0m
+devr1n21 [37m
+devr1n21         -auth_url = http://localhost:35357/v2.0/[0m[37m
+devr1n21         -admin_user = neutron[0m[37m
+devr1n21         -admin_password = servicepass[0m[37m
+devr1n21         -admin_tenant_name = service[0m
+devr1n21 [37m
+devr1n21         -interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver[0m[37m
+devr1n21          # Show debugging output in log (sets DEBUG log level output)[0m
+devr1n21 [37m
+devr1n21         -# debug = False[0m[37m
+devr1n21         +debug = False[0m
+devr1n21 [37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21         -# L3 requires that an interface driver be set. Choose the one that best[0m[37m
+devr1n21         +# L3 requires that an interface driver be set.  Choose the one that best[0m[37m
+devr1n21          # matches your plugin.[0m
+devr1n21 [37m
+devr1n21         -# interface_driver =[0m[37m
+devr1n21          [0m[37m
+devr1n21         -# Example of interface_driver option for OVS based plugins (OVS, Ryu, NEC)[0m
+devr1n21 [37m
+devr1n21         -# that supports L3 agent[0m[37m
+devr1n21         +# OVS based plugins (OVS, Ryu, NEC, NVP, BigSwitch/Floodlight)[0m
+devr1n21 [37m
+devr1n21          # interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver[0m[37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Use veth for an OVS interface or not.[0m[37m
+devr1n21         -# Support kernels with limited namespace support[0m
+devr1n21 [37m
+devr1n21         -# (e.g. RHEL 6.5) so long as ovs_use_veth is set to True.[0m[37m
+devr1n21         -# ovs_use_veth = False[0m[37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21         -# Example of interface_driver option for LinuxBridge[0m[37m
+devr1n21         +# LinuxBridge[0m
+devr1n21 [37m
+devr1n21          # interface_driver = neutron.agent.linux.interface.BridgeInterfaceDriver[0m[37m
+devr1n21         +interface_driver = neutron.agent.linux.interface.OVSInterfaceDriver[0m
+devr1n21 [37m
+devr1n21          [0m[37m
+devr1n21          # Allow overlapping IP (Must have kernel build with CONFIG_NET_NS=y and[0m
+devr1n21 [37m
+devr1n21          # iproute2 package that supports namespaces).[0m[37m
+devr1n21         -# use_namespaces = True[0m
+devr1n21 [37m
+devr1n21         +use_namespaces = False[0m[37m
+devr1n21          [0m
+devr1n21 [37m
+devr1n21          # If use_namespaces is set as False then the agent can only configure one router.[0m[37m
+devr1n21         -[0m
+devr1n21 [37m
+devr1n21          # This is done by setting the specific router_id.[0m[37m
+devr1n21         -# router_id =[0m
+devr1n21 [37m
+devr1n21         +# Default: router_id =[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Each L3 agent can be associated with at most one external network.  This[0m[37m
+devr1n21          # value should be set to the UUID of that external network.  If empty,[0m[37m
+devr1n21          # the agent will enforce that only a single external networks exists and[0m[37m
+devr1n21          # use that external network id[0m[37m
+devr1n21         -# gateway_external_network_id =[0m[37m
+devr1n21         +# Default: gateway_external_network_id =[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Indicates that this L3 agent should also handle routers that do not have[0m[37m
+devr1n21          # an external network gateway configured.  This option should be True only[0m[37m
+devr1n21          # for a single agent in a Neutron deployment, and may be False for all agents[0m[37m
+devr1n21          # if all routers must have an external network gateway[0m[37m
+devr1n21         -# handle_internal_only_routers = True[0m[37m
+devr1n21         +handle_internal_only_routers = True[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Name of bridge used for external network traffic. This should be set to[0m[37m
+devr1n21          # empty value for the linux bridge[0m[37m
+devr1n21         -# external_network_bridge = br-ex[0m[37m
+devr1n21         +external_network_bridge = br-ex[0m[37m
+devr1n21          [0m[37m
+devr1n21          # TCP Port used by Neutron metadata server[0m[37m
+devr1n21         -# metadata_port = 9697[0m[37m
+devr1n21         +metadata_port = 9697[0m[37m
+devr1n21          [0m[37m
+devr1n21          # Send this many gratuitous ARPs for HA setup. Set it below or equal to 0[0m[37m
+devr1n21          # to disable this feature.[0m[37m
+devr1n21         -# send_arp_for_ha = 3[0m[37m
+devr1n21         +send_arp_for_ha = 3[0m[37m
+devr1n21          [0m[37m
+devr1n21          # seconds between re-sync routers' data if needed[0m[37m
+devr1n21         -# periodic_interval = 40[0m[37m
+devr1n21         +periodic_interval = 40[0m[37m
+devr1n21          [0m[37m
+devr1n21          # seconds to start to sync routers' data after[0m[37m
+devr1n21          # starting agent[0m[37m
+devr1n21         -# periodic_fuzzy_delay = 5[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# enable_metadata_proxy, which is true by default, can be set to False[0m[37m
+devr1n21         -# if the Nova metadata server is not available[0m[37m
+devr1n21         -# enable_metadata_proxy = True[0m[37m
+devr1n21         -[0m[37m
+devr1n21         -# Location of Metadata Proxy UNIX domain socket[0m[37m
+devr1n21         -# metadata_proxy_socket = $state_path/metadata_proxy[0m[37m
+devr1n21         +periodic_fuzzy_delay = 5[0m
+devr1n21 
+devr1n21 [0m
+devr1n21   * service[neutron-l3-agent] action restart[0m
+devr1n21 [32m
+devr1n21     - restart service service[neutron-l3-agent][0m
+devr1n21 [0m
+devr1n21   * execute[create external network bridge] action run[0m
+devr1n21 [32m
+devr1n21     - execute ovs-vsctl add-br br-ex && ovs-vsctl add-port br-ex eth5[0m
+devr1n21 [0m
+devr1n21 Recipe: openstack-network::setup[0m
+devr1n21   * bash[create quantum gre network] action run[0m
+devr1n21 [0m
+devr1n21 ================================================================================[0m
+devr1n21 [31mError executing action `run` on resource 'bash[create quantum gre network]'[0m
+devr1n21 ================================================================================[0m
+devr1n21 
+devr1n21 [0m
+devr1n21 Mixlib::ShellOut::ShellCommandFailed[0m
+devr1n21 ------------------------------------[0m
+devr1n21 Expected process to exit with [0], but received '2'
+devr1n21 ---- Begin output of "bash"  "/tmp/chef-script20130926-12321-1c0bj08" ----
+devr1n21 STDOUT: 
+devr1n21 STDERR: which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 usage: quantum router-interface-add [-h] [--request-format {json,xml}]
+devr1n21                                     router-id subnet-id
+devr1n21 quantum router-interface-add: error: too few arguments
+devr1n21 ---- End output of "bash"  "/tmp/chef-script20130926-12321-1c0bj08" ----
+devr1n21 Ran "bash"  "/tmp/chef-script20130926-12321-1c0bj08" returned 2[0m
+devr1n21 
+devr1n21 [0m
+devr1n21 Resource Declaration:[0m
+devr1n21 ---------------------[0m
+devr1n21 # In /var/chef/cache/cookbooks/openstack-network/recipes/setup.rb
+devr1n21 
+devr1n21  15:   bash "create quantum gre network" do
+devr1n21  16:     code <<-EOH
+devr1n21  17:     source /root/keystonerc
+devr1n21  18:     if ! quantum net-show net1; then
+devr1n21  19:       net1=$(quantum net-create net1 | awk '/ id /{print $4}')
+devr1n21  20:     fi
+devr1n21  21:     if ! quantum subnet-show subnet1;  then
+devr1n21  22:       subnet1=$(quantum subnet-create --name=subnet1 net1 #{cidr} | awk '/ id /{print $4}')
+devr1n21  23:     fi
+devr1n21  24:     if ! quantum router-show router1; then
+devr1n21  25:       router1=$(quantum router-create router1 | awk '/ id /{print $4}')
+devr1n21  26:       quantum router-interface-add $router1 $subnet1
+devr1n21  27:     fi
+devr1n21  28:     EOH
+devr1n21  29:   end
+devr1n21  30: elsif network_type == 'vlan'
+devr1n21 [0m
+devr1n21 
+devr1n21 [0m
+devr1n21 Compiled Resource:[0m
+devr1n21 ------------------[0m
+devr1n21 # Declared in /var/chef/cache/cookbooks/openstack-network/recipes/setup.rb:15:in `from_file'
+devr1n21 
+devr1n21 bash("create quantum gre network") do
+devr1n21   action "run"
+devr1n21   retries 0
+devr1n21   retry_delay 2
+devr1n21   command "\"bash\"  \"/tmp/chef-script20130926-12321-1c0bj08\""
+devr1n21   backup 5
+devr1n21   returns 0
+devr1n21   code "    source /root/keys
+devr1n21 tonerc\n    if ! quantum net-show net1; then\n      net1=$(quantum net-create net1 | awk '/ id /{print $4}')\n    fi\n    if ! quantum subnet-show subnet1;  then\n      subnet1=$(quantum subnet-create --name=subnet1 net1 192.168.1.0/24 | awk '/ id /{print $4}')\n    fi\n    if ! quantum router-show router1; then\n      router1=$(quantum router-create router1 | awk '/ id /{print $4}')\n      quantum router-interface-add $router1 $subnet1\n    fi\n"
+devr1n21   interpreter "bash"
+devr1n21   cookbook_name "openstack-network"
+devr1n21   recipe_name "setup"
+devr1n21 end
+devr1n21 [0m
+devr1n21 
+devr1n21 [0m
+devr1n21 Recipe: openstack-network-havana::openvswitch[0m
+devr1n21   * service[neutron-plugin-openvswitch-agent] action restart[0m
+devr1n21 [32m
+devr1n21     - restart service service[neutron-plugin-openvswitch-agent][0m
+devr1n21 [0m
+devr1n21 Recipe: openstack-network-havana::dhcp_agent[0m
+devr1n21   * service[neutron-dhcp-agent] action restart[0m
+devr1n21 [32m
+devr1n21     - restart service service[neutron-dhcp-agent][0m
+devr1n21 [0m
+devr1n21 [2013-09-26T03:35:48-05:00] ERROR: Running exception handlers
+devr1n21 [2013-09-26T03:35:49-05:00] FATAL: Saving node information to /var/chef/cache/failed-run-data.json
+devr1n21 [2013-09-26T03:35:49-05:00] ERROR: Exception handlers complete
+devr1n21 Chef Client failed. 63 resources updated[0m
+devr1n21 [2013-09-26T03:35:49-05:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+devr1n21 [2013-09-26T03:35:49-05:00] FATAL: Mixlib::ShellOut::ShellCommandFailed: bash[create quantum gre network] (openstack-network::setup line 15) had an error: Mixlib::ShellOut::ShellCommandFailed: Expected process to exit with [0], but received '2'
+devr1n21 ---- Begin output of "bash"  "/tmp/chef-script20130926-12321-1c0bj08" ----
+devr1n21 STDOUT: 
+devr1n21 STDERR: which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 Could not find Service or Region in Service Catalog.
+devr1n21 which: no gedit in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 which: no kate in (/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/opt/chef/embedded/bin:/opt/chef/embedded/bin)
+devr1n21 usage: quantum router-interface-add [-h] [--request-format {json,xml}]
+devr1n21                                     router-id subnet-id
+devr1n21 quantum router-interface-add: error: too few arguments
+devr1n21 ---- End output of "bash"  "/tmp/chef-script20130926-12321-1c0bj08" ----
+devr1n21 Ran "bash"  "/tmp/chef-script20130926-12321-1c0bj08" returned 2

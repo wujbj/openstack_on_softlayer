@@ -1,0 +1,15 @@
+Author: Salman Baset
+
+Added support for creating encrypted passwords in databags
+
+Run script ./prep_bag_dev.sg to create data bag for OpenStack DB related passwords. The passwords are defined in dev/passwords.json file
+
+If running in production, do not define passwords in that file. Instead, generate them automatically. E.g.,
+
+def secure_password
+  pw = String.new
+  while pw.length < 20
+    pw << ::OpenSSL::Random.random_bytes(1).gsub(/\W/, '')
+  end
+  pw
+end

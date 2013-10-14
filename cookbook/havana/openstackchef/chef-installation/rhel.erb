@@ -1,0 +1,78 @@
+bash -c '
+
+## chef client rpm package name
+chef_client_rpm="chef-11.4.0-1.el6.x86_64.rpm"
+
+## chef client rpm package location
+chef_client_url="http://172.16.1.200:8080/$chef_client_rpm"
+
+<%= "export http_proxy=\"#{knife_config[:bootstrap_proxy]}\"" if knife_config[:bootstrap_proxy] -%>
+
+exists() {
+  if command -v $1 &>/dev/null
+  then
+    return 0
+  else
+    return 1
+  fi
+}
+
+add_editor_env() {
+  if ! grep -q -w EDITOR /root/.bashrc &>/dev/null
+  then
+    echo "export EDITOR=vim" >> /root/.bashrc
+  fi
+}
+
+add_editor_env
+
+version_string="-v <%= chef_version %>"
+
+if ! exists /usr/bin/chef-client; then
+  echo "#########################################################"
+  echo "#	Install Chef Client				#"
+  echo "#########################################################"
+  if exists wget; then
+    cd ~ && wget -O $chef_client_rpm <%= "--proxy=on " if knife_config[:bootstrap_proxy] %> $chef_client_url && rpm -ihv $chef_client_rpm 
+  elif exists curl; then
+    cd ~ && curl -o $chef_client_rpm <%= "--proxy \"#{knife_config[:bootstrap_proxy]}\" " if knife_config[:bootstrap_proxy] %> $chef_client_url && rpm -ihv $chef_client_rpm 
+  else
+    echo "Neither wget nor curl found. Please install one and try again." >&2
+    exit 1
+  fi
+fi
+
+mkdir -p /etc/chef
+
+awk NF > /etc/chef/validation.pem <<'EOP'
+<%= validation_key %>
+EOP
+chmod 0600 /etc/chef/validation.pem
+
+<% if @chef_config[:encrypted_data_bag_secret] -%>
+awk NF > /etc/chef/encrypted_data_bag_secret <<'EOP'
+<%= encrypted_data_bag_secret %>
+EOP
+chmod 0600 /etc/chef/encrypted_data_bag_secret
+<% end -%>
+
+<%# Generate Ohai Hints -%>
+<% unless @chef_config[:knife][:hints].nil? || @chef_config[:knife][:hints].empty? -%>
+mkdir -p /etc/chef/ohai/hints
+
+<% @chef_config[:knife][:hints].each do |name, hash| -%>
+cat > /etc/chef/ohai/hints/<%= name %>.json <<'EOP'
+<%= hash.to_json %>
+EOP
+<% end -%>
+<% end -%>
+
+cat > /etc/chef/client.rb <<'EOP'
+<%= config_content %>
+EOP
+
+cat > /etc/chef/first-boot.json <<'EOP'
+<%= first_boot.to_json %>
+EOP
+
+<%= start_chef %>'

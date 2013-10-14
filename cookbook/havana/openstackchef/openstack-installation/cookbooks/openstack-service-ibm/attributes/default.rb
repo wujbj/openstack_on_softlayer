@@ -1,0 +1,5 @@
+include_attribute "openstack-block-storage"
+include_attribute "openstack-compute"
+include_attribute "openstack-identity"
+include_attribute "openstack-image"
+include_attribute "openstack-network"

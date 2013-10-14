@@ -1,0 +1,143 @@
+<!--
+        VIM :set ts=2 sw=2 sts=2 et
+        Please don't edit this file, just make a copy of yours, and edit your copy.
+        And, don't check in your copy to git repo, thanks.
+-->
+<clusters>
+<cluster name="cluster_name">
+    <environment path="/root/openstackchef/openstack-installation" 
+        env_name="grizzly" username="root" ssh_key="/root/.ssh/id_rsa">
+        <openstack>
+          <devmode>true</devmode>
+          <enable_iptables>false</enable_iptables>
+        </openstack>
+
+        <yum-packages>
+          <sce_repo>http://172.16.0.1:8080/sce/$releasever/$basearch</sce_repo>
+          <rhel_repo>http://172.16.0.1:8080/redhat/rhel/$releasever/$basearch</rhel_repo>
+          <epel_repo>http://172.16.0.1:8080/redhat/epel/$releasever/$basearch</epel_repo>
+          <openstack_repo>http://172.16.0.1:8080/openstack/$releasever</openstack_repo>
+          <middleware_repo>http://172.16.0.1:8080/addition/$releasever</middleware_repo>
+        </yum-packages>
+
+        <ops-messaging>
+          <mqtype>qpid</mqtype>
+	        <mqhost>172.16.1.237</mqhost>
+        </ops-messaging>
+
+        <ops-database>
+          <dbtype>mysql</dbtype>
+          <dbhost>172.16.1.220</dbhost>
+          <dbport>3306</dbport>
+          <db_bind_if>eth0</db_bind_if>
+        </ops-database>
+
+        <identity>
+          <identity_bind_if>eth0</identity_bind_if>
+          <identity_host>172.16.1.221</identity_host>
+        </identity>
+
+        <image>
+          <image_bind_if>eth0</image_bind_if>
+          <image_host>172.16.1.227</image_host>
+          <image_upload>false</image_upload>
+          <image_precise_url>http://172.16.0.1:8080/images/precise-server-cloudimg-amd64-disk1.img</image_precise_url>
+          <image_cirros_url>http://172.16.0.1:8080/images/cirros-0.3.0-x86_64-uec.tar.gz</image_cirros_url>
+        </image>
+
+        <compute>
+          <compute_bind_if>eth0</compute_bind_if>
+          <compute_api_host>172.16.1.229</compute_api_host>
+          <ec2_api_host>172.16.1.229</ec2_api_host>
+          <vnc_bind_if>eth0</vnc_bind_if>
+          <libvirt_bind_if>eth0</libvirt_bind_if>
+        </compute>
+
+	      <vnc>
+          <xvpvnc_host>9.47.240.192</xvpvnc_host>
+          <novnc_host>9.47.240.192</novnc_host>
+        </vnc>
+
+        <volume>
+          <volume_bind_if>eth0</volume_bind_if>
+          <volume_host>172.16.1.233</volume_host>
+        </volume>
+
+        <network-api>
+          <network_api_bind_if>eth0</network_api_bind_if>
+          <network_api_host>172.16.1.235</network_api_host>
+        </network-api>
+
+        <network>
+          <networktype>quantum</networktype>
+          <dns1>172.16.0.1</dns1>
+          <bridge>br-vmnet</bridge>
+          <bridgedev>eth1</bridgedev>
+          <bridge_mapping>physnet1:br-eth1</bridge_mapping>
+          <vmnet>192.168.1.0/24</vmnet>
+          <vmnetnum>1</vmnetnum>
+          <vmnetsize>256</vmnetsize>
+          <firewall_driver>nova.virt.firewall.NoopFirewallDriver</firewall_driver>
+          <network_manager>nova.network.manager.FlatDHCPManager</network_manager>
+          <vlan vlan_end="550" vlan_start="520" vlan_interface="vlan1" />
+
+          <quantum>
+            <ovs_node_if>eth0</ovs_node_if>
+            <ovs_phy_if>eth1</ovs_phy_if>
+            <tenant_network_type>gre</tenant_network_type>
+            <enable_tunneling>true</enable_tunneling>
+            <tunnel_id_ranges>1:1000</tunnel_id_ranges>
+            <network_vlan_ranges>520:550</network_vlan_ranges>
+            <floating_if>eth5</floating_if>
+          </quantum>
+          <nova-network>
+            <!-- nova network configuration -->
+          </nova-network>
+        </network>
+
+        <gpfs>
+            <gpfs_cluster_name>gpfs_01</gpfs_cluster_name>
+            <gpfs_repo_url>http://172.16.0.1:8080/gpfs-3.5.0-7/</gpfs_repo_url>
+            <gpfs_upgrade_rpms_url>http://172.16.0.1:8080/gpfs-3.5.0-10/</gpfs_upgrade_rpms_url>
+        </gpfs>
+    </environment>
+    <nodes>
+        <node>
+            <hostname>dbnode1</hostname>
+            <role>yum,os-ops-database</role>
+        </node>
+        <node>
+            <hostname>keystone1</hostname>
+            <role>yum,os-identity,os-dashboard</role>
+        </node>
+        <node>
+            <hostname>message1</hostname>
+            <role>yum,os-ops-messaging</role>
+        </node>
+	      <node>
+            <hostname>glance1</hostname>
+            <role>yum,os-image</role>
+        </node>
+	      <node>
+            <hostname>quantum1</hostname>
+            <role>yum,os-network-api,os-network-create,os-network-dhcp-agent,os-network-l3-agent,os-network-metadata-agent,os-network-plugin-agent</role>
+        </node>
+	      <node>
+            <hostname>novaapi1</hostname>
+            <role>yum,os-compute-api,os-compute-vncproxy</role>
+        </node>
+	      <node>
+            <hostname>novaother1</hostname>
+            <role>yum,os-compute-scheduler,os-compute-conductor</role>
+        </node>
+	      <node>
+            <hostname>cinder1</hostname>
+            <role>yum,os-block-storage-api,os-block-storage-scheduler,os-block-storage-volume</role>
+        </node>
+        <node>
+            <hostname>devr1n25</hostname>
+            <role>yum,os-compute-client,os-network-plugin-agent</role>
+        </node>
+    </nodes>
+</cluster>
+</clusters>

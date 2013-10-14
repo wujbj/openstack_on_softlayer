@@ -1,0 +1,10 @@
+KEYSTONEIP="r2n19" #TODO read from nodelist.xml
+GLANCEIP="r2n19" #TODO read from nodelist.xml
+NOVACONTROLLERIP="r2n19"
+COMPUTEIP="r2n20"
+QPIDIP="10.20.2.19"
+INFO="[INFO] "
+WARNING="[WARNING] "
+ERROR="[ERROR] "
+SUCCESS="[SUCCESS] "
+

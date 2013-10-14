@@ -1,0 +1,2 @@
+-A FWR -p tcp -m multiport --dports <%= node['openstack']['db']['db2_primary_port'] %> -j ACCEPT -m comment --comment "db2-ha"
+

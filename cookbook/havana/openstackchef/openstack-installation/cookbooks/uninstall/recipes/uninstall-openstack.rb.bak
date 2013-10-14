@@ -1,0 +1,35 @@
+#
+# Cookbook Name:: uninstall
+# Recipe:: uninstall-openstack
+# Author: Bao Hua Dai (bhdai@cn.ibm.com)
+# Function: Remove all additional OpenStack packages
+#
+
+# Remove all the additional openstack  packages
+#
+execute "yum_remove_all_additional_openstack_pkg" do
+ command "yum list | grep openstack |grep -v grep| while read name ver inst; do sy=`echo $inst | awk '{printf(\"%s\",substr($0,1,1))}'`; if [ -z $sy ] ; then continue; fi; if [ $sy == \"@\" ] ; then yum remove $name -y; fi ; done"
+ action :run
+ ignore_failure true
+end
+bash "remove_all_openstack_pkges" do
+  code <<-REMOVEPKGS
+    grep "\[" /etc/yum.repos.d/*.repo | while read name
+                                        do
+                                          awk -F ':' '{if(substr($2,1,1) == "[") printf("%s\n",substr($2,2,length($2)-2))}'  | while read reponame
+                                                        do      
+                                                          echo $reponame
+                                                          yum list installed | grep $reponame | grep @ | grep -v grep | while read p1 p2 p3
+                                                                              do      
+                                                                                  if [ `echo $p3 | awk '{printf("%s",substr($0,1,1))}'` == "@" ] ; then
+                                                                                      echo $p1
+                                                                                      sleep 1 
+                                                                                      yum remove $p1 -y
+                                                                                  fi      
+                                                                              done    
+                                                         sleep 1 
+                                                      done    
+                                         echo "#################################"
+                                       done
+	REMOVEPKGS
+end

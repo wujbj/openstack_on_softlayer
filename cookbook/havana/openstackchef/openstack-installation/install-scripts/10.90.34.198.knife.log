@@ -1,0 +1,822 @@
+Bootstrapping Chef on 10.90.34.198
+10.90.34.198 Starting Chef Client, version 11.4.0[0m
+10.90.34.198 resolving cookbooks for run list: ["yum::rhel", "yum::epel", "yum::openstack", "yum::addition", "iptables", "openstack-common", "openstack-ops-database::server", "openstack-ops-database::openstack-db", "openstack-ops-messaging::server", "openstack-identity::server", "openstack-identity::registration", "openstack-common::rcfile", "openstack-image::registry", "openstack-image::identity_registration", "openstack-image::api", "openstack-block-storage::api", "openstack-block-storage::identity_registration", "openstack-block-storage::scheduler", "openstack-compute::vncproxy", "openstack-dashboard::server", "openstack-compute::network", "openstack-compute-havana::api-ec2", "openstack-compute-havana::nova-setup", "openstack-compute-havana::identity_registration", "openstack-compute-havana::api-os-compute", "openstack-compute-havana::api-metadata", "openstack-compute-havana::scheduler", "openstack-compute-havana::conductor", "openstack-compute-havana::compute"][0m
+10.90.34.198 Synchronizing Cookbooks:[0m
+10.90.34.198   - postgresql[0m
+10.90.34.198   - mysql[0m
+10.90.34.198   - openstack-common[0m
+10.90.34.198   - openstack-identity[0m
+10.90.34.198   - openstack-network-havana[0m
+10.90.34.198   - python[0m
+10.90.34.198   - yum[0m
+10.90.34.198   - sysctl[0m
+10.90.34.198   - selinux[0m
+10.90.34.198   - openstack-image[0m
+10.90.34.198   - openstack-compute-havana[0m
+10.90.34.198   - iptables[0m
+10.90.34.198   - nova[0m
+10.90.34.198   - osops-utils[0m
+10.90.34.198   - keystone[0m
+10.90.34.198   - openstack-ops-database[0m
+10.90.34.198   - openstack-ops-messaging[0m
+10.90.34.198   - quantum[0m
+10.90.34.198   - openstack-patch[0m
+10.90.34.198   - glance[0m
+10.90.34.198   - cinder[0m
+10.90.34.198   - databag[0m
+10.90.34.198   - apache2[0m
+10.90.34.198   - openstack-dashboard[0m
+10.90.34.198   - build-essential[0m
+10.90.34.198   - openssl[0m
+10.90.34.198   - apt[0m
+10.90.34.198   - openstack-network[0m
+10.90.34.198   - openstack-compute[0m
+10.90.34.198   - openstack-block-storage[0m
+10.90.34.198   - keepalived[0m
+10.90.34.198   - qpid[0m
+10.90.34.198   - erlang[0m
+10.90.34.198   - rabbitmq[0m
+10.90.34.198   - db2[0m
+10.90.34.198   - database[0m
+10.90.34.198 Compiling Cookbooks...[0m
+10.90.34.198 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant YumKey
+10.90.34.198 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant YumRepository
+10.90.34.198 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant YumKey
+10.90.34.198 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant YumRepository
+10.90.34.198 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant OpenstackIdentityRegister
+10.90.34.198 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant OpenstackIdentityRegister
+10.90.34.198 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant OpenstackImageImage
+10.90.34.198 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant OpenstackImageImage
+10.90.34.198 [2013-10-13T22:30:13-05:00] WARN: Cloning resource attributes for directory[/var/lib/mysql] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:13-05:00] WARN: Previous directory[/var/lib/mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:109:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:13-05:00] WARN: Current  directory[/var/lib/mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:109:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:13-05:00] WARN: Cloning resource attributes for service[mysql] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:13-05:00] WARN: Previous service[mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:155:in `from_file'
+10.90.34.198 [2013-10-13T22:30:13-05:00] WARN: Current  service[mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:219:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-identity/recipes/server.rb:39:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:49:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[python-keystone] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[python-keystone]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:31:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[python-keystone]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:35:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[curl] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[curl]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:43:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[curl]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:39:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[openstack-glance] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[openstack-glance]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[openstack-glance]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[cronie] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[cronie]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[cronie]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[python-glanceclient] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[python-glanceclient]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[python-glanceclient]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for directory[/etc/glance] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous directory[/etc/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:84:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  directory[/etc/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:56:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for directory[/var/cache/glance] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous directory[/var/cache/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:60:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  directory[/var/cache/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:62:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:49:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/api.rb:41:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/api.rb:41:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/scheduler.rb:37:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[python-memcached] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[python-memcached]: /var/chef/cache/cookbooks/openstack-identity/recipes/server.rb:45:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[python-memcached]: /var/chef/cache/cookbooks/openstack-compute/recipes/nova-common.rb:46:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[perl] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[perl]: /var/chef/cache/cookbooks/iptables/recipes/default.rb:21:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[perl]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:51:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for service[apache2] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous service[apache2]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:24:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  service[apache2]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:221:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for file[/etc/httpd/conf.d/ssl.conf] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous file[/etc/httpd/conf.d/ssl.conf]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:84:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  file[/etc/httpd/conf.d/ssl.conf]: /var/chef/cache/cookbooks/apache2/recipes/mod_ssl.rb:31:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for template[/etc/httpd/ports.conf] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous template[/etc/httpd/ports.conf]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:195:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  template[/etc/httpd/ports.conf]: /var/chef/cache/cookbooks/apache2/recipes/mod_ssl.rb:37:in `from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/scheduler.rb:37:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-dashboard/recipes/server.rb:69:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Cloning resource attributes for package[python-memcached] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Previous package[python-memcached]: /var/chef/cache/cookbooks/openstack-compute/recipes/nova-common.rb:46:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:14-05:00] WARN: Current  package[python-memcached]: /var/chef/cache/cookbooks/openstack-dashboard/recipes/server.rb:77:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Cloning resource attributes for package[iptables] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Previous package[iptables]: /var/chef/cache/cookbooks/iptables/recipes/default.rb:20:in `from_file'
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Current  package[iptables]: /var/chef/cache/cookbooks/openstack-compute/recipes/network.rb:32:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Cloning resource attributes for package[openstack-nova-common] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Previous package[openstack-nova-common]: /var/chef/cache/cookbooks/openstack-compute/recipes/nova-common.rb:37:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Current  package[openstack-nova-common]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/nova-common.rb:37:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Cloning resource attributes for package[python-memcached] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Previous package[python-memcached]: /var/chef/cache/cookbooks/openstack-dashboard/recipes/server.rb:77:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Current  package[python-memcached]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/nova-common.rb:46:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Cloning resource attributes for directory[/etc/nova] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Previous directory[/etc/nova]: /var/chef/cache/cookbooks/openstack-compute/recipes/nova-common.rb:51:in `from_file'
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Current  directory[/etc/nova]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/nova-common.rb:51:in `from_file'
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Cloning resource attributes for directory[/etc/nova/rootwrap.d] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Previous directory[/etc/nova/rootwrap.d]: /var/chef/cache/cookbooks/openstack-compute/recipes/nova-common.rb:59:in `from_file'
+10.90.34.198 [2013-10-13T22:30:15-05:00] WARN: Current  directory[/etc/nova/rootwrap.d]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/nova-common.rb:59:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for template[/etc/nova/nova.conf] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous template[/etc/nova/nova.conf]: /var/chef/cache/cookbooks/openstack-compute/recipes/nova-common.rb:126:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  template[/etc/nova/nova.conf]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/nova-common.rb:126:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for template[/root/openrc] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous template[/root/openrc]: /var/chef/cache/cookbooks/openstack-compute/recipes/nova-common.rb:192:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  template[/root/openrc]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/nova-common.rb:192:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for execute[enable nova login] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous execute[enable nova login]: /var/chef/cache/cookbooks/openstack-compute/recipes/nova-common.rb:208:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  execute[enable nova login]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/nova-common.rb:208:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for package[python-keystone] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous package[python-keystone]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:35:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  package[python-keystone]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-ec2.rb:36:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for openstack-identity_register[Register Service Tenant] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous openstack-identity_register[Register Service Tenant]: /var/chef/cache/cookbooks/openstack-image/recipes/identity_registration.rb:67:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  openstack-identity_register[Register Service Tenant]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/identity_registration.rb:39:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for directory[/var/lock/nova] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous directory[/var/lock/nova]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-ec2.rb:28:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  directory[/var/lock/nova]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-os-compute.rb:28:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for package[python-keystone] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous package[python-keystone]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-ec2.rb:36:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  package[python-keystone]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-os-compute.rb:40:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for package[openstack-nova-api] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous package[openstack-nova-api]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-ec2.rb:41:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  package[openstack-nova-api]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-os-compute.rb:45:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for template[/etc/nova/api-paste.ini] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous template[/etc/nova/api-paste.ini]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-ec2.rb:72:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  template[/etc/nova/api-paste.ini]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-os-compute.rb:76:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for directory[/var/lock/nova] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous directory[/var/lock/nova]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-os-compute.rb:28:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  directory[/var/lock/nova]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-metadata.rb:31:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for package[python-keystone] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous package[python-keystone]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-os-compute.rb:40:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  package[python-keystone]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-metadata.rb:39:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for package[openstack-nova-api] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous package[openstack-nova-api]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-os-compute.rb:45:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  package[openstack-nova-api]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-metadata.rb:44:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for template[/etc/nova/api-paste.ini] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous template[/etc/nova/api-paste.ini]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-os-compute.rb:76:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  template[/etc/nova/api-paste.ini]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-metadata.rb:75:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for directory[/var/lock/nova] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous directory[/var/lock/nova]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/api-metadata.rb:31:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  directory[/var/lock/nova]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/scheduler.rb:25:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for package[iptables] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous package[iptables]: /var/chef/cache/cookbooks/openstack-compute/recipes/network.rb:32:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  package[iptables]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/network.rb:32:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for package[openstack-nova-network] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous package[openstack-nova-network]: /var/chef/cache/cookbooks/openstack-compute/recipes/network.rb:32:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  package[openstack-nova-network]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/network.rb:32:in `block in from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Cloning resource attributes for service[nova-network] from prior resource (CHEF-3694)
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Previous service[nova-network]: /var/chef/cache/cookbooks/openstack-compute/recipes/network.rb:39:in `from_file'
+10.90.34.198 [2013-10-13T22:30:16-05:00] WARN: Current  service[nova-network]: /var/chef/cache/cookbooks/openstack-compute-havana/recipes/network.rb:39:in `from_file'
+10.90.34.198 Converging 304 resources[0m
+10.90.34.198 Recipe: yum::rhel[0m
+10.90.34.198   * yum_repository[rhel] action add[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: yum::epel[0m
+10.90.34.198   * yum_key[] action add[0m (up to date)[0m
+10.90.34.198   * yum_repository[epel] action add[0m (up to date)[0m
+10.90.34.198 Recipe: yum::openstack[0m
+10.90.34.198   * yum_repository[openstack] action add[0m (up to date)[0m
+10.90.34.198 Recipe: yum::addition[0m
+10.90.34.198   * yum_repository[addition] action add[0m (up to date)[0m
+10.90.34.198 Recipe: iptables::default[0m
+10.90.34.198   * package[iptables] action install[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * package[perl] action install[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[rebuild-iptables] action nothing[0m (up to date)[0m
+10.90.34.198   * directory[/etc/iptables.d] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * cookbook_file[/usr/sbin/rebuild-iptables] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/iptables.d/all_established] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/iptables.d/all_icmp] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/iptables.d/all_ssh] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: mysql::client[0m
+10.90.34.198   * package[mysql] action install[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * package[mysql-devel] action install[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: mysql::server[0m
+10.90.34.198   * package[mysql-server] action install[0m (up to date)[0m
+10.90.34.198   * directory[/var/run/mysqld] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/var/log/mysql] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/etc] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/etc/mysql/conf.d] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/var/lib/mysql] action create[0m (up to date)[0m
+10.90.34.198   * directory[/var/lib/mysql] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[mysql-install-db] action run[0m (skipped due to not_if)[0m
+10.90.34.198   * service[mysql] action enable[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[assign-root-password] action run[0m
+10.90.34.198  (skipped due to only_if)[0m
+10.90.34.198   * template[/etc/mysql_grants.sql] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[mysql-install-privileges] action nothing[0m (up to date)[0m
+10.90.34.198   * template[/etc/my.cnf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * service[mysql] action start[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: openstack-ops-database::mysql-server[0m
+10.90.34.198   * execute[update mysql.user] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -u root -ppassword -e "UPDATE mysql.user SET host='10.90.34.198' WHERE host='127.0.0.1'"[0m
+10.90.34.198 [0m
+10.90.34.198 Recipe: openstack-ops-database::openstack-db[0m
+10.90.34.198   * execute[create database(nova) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS nova"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[grant user(nova) to database(nova) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON nova.* TO 'nova'@'%' IDENTIFIED BY 'nova'"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[create database(horizon) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS horizon"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[grant user(horizon) to database(horizon) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON horizon.* TO 'horizon'@'%' IDENTIFIED BY 'horizon'"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[create database(keystone) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS keystone"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[grant user(keystone) to database(keystone) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON keystone.* TO 'keystone'@'%' IDENTIFIED BY 'keystone'"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[create database(glance) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS glance"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[grant user(glance) to database(glance) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON glance.* TO 'glance'@'%' IDENTIFIED BY 'glance'"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[create database(ceilometer) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS ceilometer"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[grant user(ceilometer) to database(ceilometer) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON ceilometer.* TO 'ceilometer'@'%' IDENTIFIED BY 'ceilometer'"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[create database(network) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS network"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[grant user(network) to database(network) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON network.* TO 'network'@'%' IDENTIFIED BY 'quantum'"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[create database(cinder) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "CREATE DATABASE IF NOT EXISTS cinder"[0m
+10.90.34.198 [0m
+10.90.34.198   * execute[grant user(cinder) to database(cinder) on 10.90.34.198] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute mysql -P 3306 -u root -ppassword -e "GRANT ALL ON cinder.* TO 'cinder'@'%' IDENTIFIED BY 'cinder'"[0m
+10.90.34.198 [0m
+10.90.34.198 Recipe: qpid::single[0m
+10.90.34.198   * qpid_setup[setup qpid] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: <Dynamically Defined Resource>[0m
+10.90.34.198   * package[qpid-cpp-server] action install[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * package[qpid-tools] action install[0m (up to date)[0m
+10.90.34.198   * service[qpidd] action nothing[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/qpidd.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: openstack-identity::server[0m
+10.90.34.198   * package[MySQL-python] action install[0m (up to date)[0m
+10.90.34.198   * package[python-memcached] action install[0m (up to date)[0m
+10.90.34.198   * package[openstack-keystone] action upgrade[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[Keystone: sleep] action nothing[0m (up to date)[0m
+10.90.34.198   * service[keystone] action enable[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/etc/keystone] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/etc/keystone/ssl] action create[0m (skipped due to only_if)[0m
+10.90.34.198   * file[/var/lib/keystone/keystone.db] action delete[0m (up to date)[0m
+10.90.34.198   * execute[keystone-manage pki_setup] action run[0m (skipped due to only_if)[0m
+10.90.34.198   * template[/etc/keystone/keystone.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/keystone/default_catalog.templates] action create[0m (skipped due to only_if)[0m
+10.90.34.198   * execute[keystone-manage db_sync] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute keystone-manage db_sync[0m
+10.90.34.198 [0m
+10.90.34.198 Recipe: openstack-identity::registration[0m
+10.90.34.198   * bash[bootstrap-keystone-admin] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute "bash"  "/tmp/chef-script20131013-32311-107hsq6"[0m
+10.90.34.198 [0m
+10.90.34.198   * openstack-identity_register[Register 'admin' Tenant] action create_tenant[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register 'service' Tenant] action create_tenant[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register 'admin' Role] action create_role[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register 'Member' Role] action create_role[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register 'KeystoneAdmin' Role] action create_role[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register 'KeystoneServiceAdmin' Role] action create_role[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register 'admin' User] action create_user[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Grant 'admin' Role to 'admin' User in 'admin' Tenant] action grant_role[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Grant 'KeystoneAdmin' Role to 'admin' User in 'admin' Tenant] action grant_role[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Grant 'KeystoneServiceAdmin' Role to 'admin' User in 'admin' Tenant] action grant_role[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register 'monitoring' User] action create_user[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Grant 'Member' Role to 'monitoring' User in 'admin' Tenant] action grant_role[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register Identity Service] action create_service[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register Identity Endpoint] action create_endpoint[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Create EC2 credentials for 'admin' user] action create_ec2_credentials[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Create EC2 credentials for 'monitoring' user] action create_ec2_credentials[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: openstack-common::rcfile[0m
+10.90.34.198   * template[/root/keystonerc] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: openstack-image::registry[0m
+10.90.34.198   * package[python-keystone] action install[0m (up to date)[0m
+10.90.34.198   * package[curl] action install[0m (up to date)[0m
+10.90.34.198   * package[MySQL-python] action install[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * package[openstack-glance] action upgrade[0m (up to date)[0m
+10.90.34.198   * package[cronie] action upgrade[0m (up to date)[0m
+10.90.34.198   * package[python-glanceclient] action upgrade[0m (up to date)[0m
+10.90.34.198   * directory[/var/cache/glance] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * service[image-registry] action enable[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[glance-manage version_control 0] action run[0m (skipped due to only_if)[0m
+10.90.34.198   * file[/var/lib/glance/glance.sqlite] action delete[0m (up to date)[0m
+10.90.34.198   * directory[/etc/glance] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/glance/glance-registry.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[glance-manage db_sync] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute glance-manage db_sync[0m
+10.90.34.198 [0m
+10.90.34.198   * template[/etc/glance/glance-registry-paste.ini] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: openstack-image::identity_registration[0m
+10.90.34.198   * openstack-identity_register[Register Image Service] action create_service[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register Image Endpoint] action create_endpoint[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register Service Tenant] action create_tenant[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register glance User] action create_user[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Grant 'admin' Role to glance User for service Tenant] action grant_role[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: openstack-image::api[0m
+10.90.34.198   * package[python-keystone] action install[0m (up to date)[0m
+10.90.34.198   * package[curl] action install[0m (up to date)[0m
+10.90.34.198   * package[openstack-glance] action upgrade[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * package[cronie] action upgrade[0m (up to date)[0m
+10.90.34.198   * package[python-glanceclient] action upgrade[0m (up to date)[0m
+10.90.34.198   * service[image-api] action enable[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/etc/glance] action create[0m (up to date)[0m
+10.90.34.198   * directory[/var/cache/glance] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/glance/policy.json] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/glance/glance-api.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/glance/glance-api-paste.ini] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/glance/glance-cache.conf] action create[0m (up to date)[0m
+10.90.34.198   * template[/etc/glance/glance-cache-paste.ini] action create[0m (up to date)[0m
+10.90.34.198   * template[/etc/glance/glance-scrubber.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * cron[glance-cache-pruner] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * cron[glance-cache-cleaner] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/glance/glance-scrubber-paste.ini] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-image_image[Image setup for cirros] action upload[0mhttp://10.66.222.226:8080/images/cirros-0.3.0-x86_64-uec.tar.gz
+10.90.34.198 [0m
+10.90.34.198 Recipe: <Dynamically Defined Resource>[0m
+10.90.34.198   * bash[Uploading AMI image cirros] action run[0m
+10.90.34.198  (skipped due to not_if)[0m
+10.90.34.198 Recipe: openstack-image::api[0m
+10.90.34.198   * openstack-image_image[Image setup for precise] action upload[0m
+10.90.34.198 
+10.90.34.198 [0m
+10.90.34.198 Recipe: <Dynamically Defined Resource>[0m
+10.90.34.198   * execute[Uploading QCOW2 image precise] action run[0m
+10.90.34.198  (skipped due to not_if)[0m
+10.90.34.198 Recipe: openstack-block-storage::cinder-common[0m
+10.90.34.198   * package[openstack-cinder] action upgrade[0m (up to date)[0m
+10.90.34.198   * directory[/etc/cinder] action create[0m (up to date)[0m
+10.90.34.198   * directory[/var/lock/cinder] action create[0m (up to date)[0m
+10.90.34.198   * template[/etc/cinder/cinder.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: openstack-block-storage::api[0m
+10.90.34.198   * package[python-cinderclient] action upgrade[0m (up to date)[0m
+10.90.34.198   * package[MySQL-python] action upgrade[0m (up to date)[0m
+10.90.34.198   * directory[/var/cache/cinder] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * service[cinder-api] action enable[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * service[cinder-api] action start[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[cinder-manage db sync] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute cinder-manage db sync[0m
+10.90.34.198 [0m
+10.90.34.198   * template[/etc/cinder/api-paste.ini] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/cinder/policy.json] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: openstack-block-storage::identity_registration[0m
+10.90.34.198   * openstack-identity_register[Register Cinder Volume Service] action create_service[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register Cinder Volume Endpoint] action create_endpoint[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Register Cinder Service User] action create_user[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * openstack-identity_register[Grant service Role to Cinder Service User for Cinder Service Tenant] action grant_role[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: openstack-block-storage::scheduler[0m
+10.90.34.198   * package[MySQL-python] action upgrade[0m (up to date)[0m
+10.90.34.198   * service[cinder-scheduler] action enable[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * service[cinder-scheduler] action start[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: openstack-compute::nova-common[0m
+10.90.34.198   * package[openstack-nova-common] action upgrade[0m (up to date)[0m
+10.90.34.198   * package[python-memcached] action install[0m (up to date)[0m
+10.90.34.198   * directory[/etc/nova] action create[0m (up to date)[0m
+10.90.34.198   * directory[/etc/nova/rootwrap.d] action create[0m (up to date)[0m
+10.90.34.198   * template[/etc/nova/nova.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/nova/rootwrap.conf] action create[0m (up to date)[0m
+10.90.34.198   * template[/etc/nova/rootwrap.d/api-metadata.filters] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/nova/rootwrap.d/compute.filters] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/nova/rootwrap.d/network.filters] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/root/openrc] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[enable nova login] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute usermod -s /bin/sh nova[0m
+10.90.34.198 [0m
+10.90.34.198 Recipe: openstack-compute::vncproxy[0m
+10.90.34.198   * package[openstack-nova-novncproxy] action upgrade[0m (up to date)[0m
+10.90.34.198   * package[openstack-nova-console] action upgrade[0m (up to date)[0m
+10.90.34.198   * service[openstack-nova-novncproxy] action enable[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * service[nova-consoleauth] action enable[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * service[nova-consoleauth] action start[0m
+10.90.34.198 [32m
+10.90.34.198     - start service service[nova-consoleauth][0m
+10.90.34.198 [0m
+10.90.34.198 Recipe: openstack-dashboard::server[0m
+10.90.34.198   * execute[set-selinux-permissive] action run[0m
+10.90.34.198  (skipped due to only_if)[0m
+10.90.34.198 Recipe: apache2::default[0m
+10.90.34.198   * package[apache2] action install[0m (up to date)[0m
+10.90.34.198   * service[apache2] action enable[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/var/log/httpd] action create[0m (up to date)[0m
+10.90.34.198   * package[perl] action install[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * cookbook_file[/usr/local/bin/apache2_module_conf_generate.pl] action create[0m (up to date)[0m
+10.90.34.198   * directory[/etc/httpd/sites-available] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/etc/httpd/sites-enabled] action create[0m (up to date)[0m
+10.90.34.198   * directory[/etc/httpd/mods-available] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/etc/httpd/mods-enabled] action create[0m (up to date)[0m
+10.90.34.198   * execute[generate-module-list] action nothing[0m (up to date)[0m
+10.90.34.198   * template[/usr/sbin/a2ensite] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/usr/sbin/a2dissite] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/usr/sbin/a2enmod] action create[0m (up to date)[0m
+10.90.34.198   * template[/usr/sbin/a2dismod] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * file[/etc/httpd/conf.d/proxy_ajp.conf] action delete[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/conf.d/auth_pam.conf] action delete[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/conf.d/authz_ldap.conf] action delete[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/conf.d/webalizer.conf] action delete[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/conf.d/ssl.conf] action delete[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/conf.d/welcome.conf] action delete[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/conf.d/README] action delete[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: apache2::mod_deflate[0m
+10.90.34.198   * template[/etc/httpd/mods-available/deflate.conf] action create[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/mods-available/deflate.load] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[a2enmod deflate] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::default[0m
+10.90.34.198   * directory[/etc/httpd/ssl] action create[0m (up to date)[0m
+10.90.34.198   * directory[/etc/httpd/conf.d] action create[0m (up to date)[0m
+10.90.34.198   * directory[/var/cache/httpd] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/sysconfig/httpd] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[apache2.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[apache2-conf-security] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[apache2-conf-charset] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/httpd/ports.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/httpd/sites-available/default] action create[0m (up to date)[0m
+10.90.34.198 Recipe: apache2::mod_status[0m
+10.90.34.198   * template[/etc/httpd/mods-available/status.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * file[/etc/httpd/mods-available/status.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod status] action run[0m
+10.90.34.198  (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_alias[0m
+10.90.34.198   * template[/etc/httpd/mods-available/alias.conf] action create[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/mods-available/alias.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod alias] action run[0m
+10.90.34.198  (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_auth_basic[0m
+10.90.34.198   * file[/etc/httpd/mods-available/auth_basic.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod auth_basic] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_authn_file[0m
+10.90.34.198   * file[/etc/httpd/mods-available/authn_file.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod authn_file] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_authz_default[0m
+10.90.34.198   * file[/etc/httpd/mods-available/authz_default.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod authz_default] action run[0m
+10.90.34.198  (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_authz_groupfile[0m
+10.90.34.198   * file[/etc/httpd/mods-available/authz_groupfile.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod authz_groupfile] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_authz_host[0m
+10.90.34.198   * file[/etc/httpd/mods-available/authz_host.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod authz_host] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_authz_user[0m
+10.90.34.198   * file[/etc/httpd/mods-available/authz_user.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod authz_user] action run[0m
+10.90.34.198  (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_autoindex[0m
+10.90.34.198   * template[/etc/httpd/mods-available/autoindex.conf] action create[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/mods-available/autoindex.load] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[a2enmod autoindex] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_dir[0m
+10.90.34.198   * template[/etc/httpd/mods-available/dir.conf] action create[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/mods-available/dir.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod dir] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_env[0m
+10.90.34.198   * file[/etc/httpd/mods-available/env.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod env] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_mime[0m
+10.90.34.198   * template[/etc/httpd/mods-available/mime.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * file[/etc/httpd/mods-available/mime.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod mime] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_negotiation[0m
+10.90.34.198   * template[/etc/httpd/mods-available/negotiation.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * file[/etc/httpd/mods-available/negotiation.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod negotiation] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_setenvif[0m
+10.90.34.198   * template[/etc/httpd/mods-available/setenvif.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * file[/etc/httpd/mods-available/setenvif.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod setenvif] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_log_config[0m
+10.90.34.198   * file[/etc/httpd/mods-available/log_config.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod log_config] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_logio[0m
+10.90.34.198   * file[/etc/httpd/mods-available/logio.load] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[a2enmod logio] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::default[0m
+10.90.34.198   * execute[a2dissite default] action run[0m (skipped due to only_if)[0m
+10.90.34.198   * service[apache2] action start[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198 Recipe: apache2::mod_wsgi[0m
+10.90.34.198   * package[mod_wsgi] action install[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/conf.d/wsgi.conf] action delete[0m (up to date)[0m
+10.90.34.198   * file[/etc/httpd/mods-available/wsgi.load] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[a2enmod wsgi] action run[0m
+10.90.34.198  (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_rewrite[0m
+10.90.34.198   * file[/etc/httpd/mods-available/rewrite.load] action create[0m (up to date)[0m
+10.90.34.198   * execute[a2enmod rewrite] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: apache2::mod_ssl[0m
+10.90.34.198   * package[mod_ssl] action install[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * file[/etc/httpd/conf.d/ssl.conf] action delete[0m (up to date)[0m
+10.90.34.198   * template[/etc/httpd/ports.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/httpd/mods-available/ssl.conf] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * file[/etc/httpd/mods-available/ssl.load] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[a2enmod ssl] action run[0m (skipped due to not_if)[0m
+10.90.34.198 Recipe: openstack-dashboard::server[0m
+10.90.34.198   * execute[set-selinux-enforcing] action run[0m
+10.90.34.198  (skipped due to only_if)[0m
+10.90.34.198   * package[openstack-dashboard] action upgrade[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * package[MySQL-python] action upgrade[0m (up to date)[0m
+10.90.34.198   * package[python-memcached] action install[0m (up to date)[0m
+10.90.34.198   * template[/etc/openstack-dashboard/local_settings] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[openstack-dashboard syncdb] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute python manage.py syncdb --noinput[0m
+10.90.34.198 [0m
+10.90.34.198   * cookbook_file[/etc/pki/tls/certs/horizon.pem] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * cookbook_file[/etc/pki/tls/private/horizon.key] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/usr/share/openstack-dashboard/openstack_dashboard/.blackhole] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * template[/etc/httpd/conf.d/openstack-dashboard] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * file[/etc/httpd/conf.d/openstack-dashboard.conf] action delete[0m (up to date)[0m
+10.90.34.198   * package[openstack-dashboard-ubuntu-theme] action purge[0m (skipped due to only_if)[0m
+10.90.34.198   * execute[a2ensite openstack-dashboard] action run[0m (skipped due to only_if)[0m
+10.90.34.198   * execute[restore-selinux-context] action nothing[0m
+10.90.34.198  (skipped due to only_if)[0m
+10.90.34.198 Recipe: openstack-compute::network[0m
+10.90.34.198   * package[iptables] action upgrade[0m (up to date)[0m
+10.90.34.198   * package[openstack-nova-network] action upgrade[0m
+10.90.34.198 [32m
+10.90.34.198     - upgrade package openstack-nova-network from uninstalled to 2013.2-201309030032.ibm.34[0m
+10.90.34.198 [0m
+10.90.34.198   * service[nova-network] action enable[0m
+10.90.34.198 [32m
+10.90.34.198     - enable service service[nova-network][0m
+10.90.34.198 [0m
+10.90.34.198 Recipe: openstack-compute-havana::nova-common[0m
+10.90.34.198   * package[openstack-nova-common] action upgrade[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * package[python-memcached] action install[0m (up to date)[0m
+10.90.34.198   * directory[/etc/nova] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * directory[/etc/nova/rootwrap.d] action create[0m (up to date)[0m
+10.90.34.198   * template[/etc/nova/nova.conf] action create[0m
+10.90.34.198 [32m
+10.90.34.198     - update template[/etc/nova/nova.conf] from 877799 to e41d5e[0m[37m
+10.90.34.198         --- /etc/nova/nova.conf	2013-10-13 22:27:24.717581803 -0500[0m[37m
+10.90.34.198         +++ /tmp/chef-rendered-template20131013-32311-vumq2y	2013-10-13 22:30:38.483591618 -0500[0m[37m
+10.90.34.198         @@ -86,7 +86,6 @@[0m[37m
+10.90.34.198          # Write a checksum for files in _base to disk (default: false)[0m[37m
+10.90.34.198          checksum_base_images=false[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198         -[0m[37m
+10.90.34.198          enabled_apis=osapi_compute,metadata[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198          ##### VNCPROXY #####[0m
+10.90.34.198 [0m
+10.90.34.198   * template[/root/openrc] action create[0m
+10.90.34.198  (up to date)[0m
+10.90.34.198   * execute[enable nova login] action run[0m
+10.90.34.198 [32m
+10.90.34.198     - execute usermod -s /bin/sh nova[0m
+10.90.34.198 [0m
+10.90.34.198 Recipe: openstack-compute-havana::api-ec2[0m
+10.90.34.198   * directory[/var/lock/nova] action create[0m[32m
+10.90.34.198     - create new directory /var/lock/nova[0m
+10.90.34.198 [32m
+10.90.34.198     - change mode from '' to '0700'[0m[32m
+10.90.34.198     - change owner from '' to 'nova'[0m[32m
+10.90.34.198     - change group from '' to 'nova'[0m
+10.90.34.198 [0m
+10.90.34.198   * package[python-keystone] action upgrade[0m (up to date)[0m
+10.90.34.198   * package[openstack-nova-api] action upgrade[0m
+10.90.34.198 [32m
+10.90.34.198     - upgrade package openstack-nova-api from uninstalled to 2013.2-201309030032.ibm.34[0m
+10.90.34.198 [0m
+10.90.34.198   * service[nova-api-ec2] action enable[0m
+10.90.34.198 [32m
+10.90.34.198     - enable service service[nova-api-ec2][0m
+10.90.34.198 [0m
+10.90.34.198   * template[/etc/nova/api-paste.ini] action create[0m
+10.90.34.198 [32m
+10.90.34.198     - update template[/etc/nova/api-paste.ini] from a158a9 to c9df84[0m[37m
+10.90.34.198         --- /etc/nova/api-paste.ini	2013-09-03 00:33:23.000000000 -0500[0m[37m
+10.90.34.198         +++ /tmp/chef-rendered-template20131013-32311-t7dpk5	2013-10-13 22:30:42.555634424 -0500[0m[37m
+10.90.34.198         @@ -1,3 +1,8 @@[0m[37m
+10.90.34.198         +[0m[37m
+10.90.34.198         +# This file autogenerated by Chef[0m[37m
+10.90.34.198         +# Do not edit, changes will be overwritten[0m[37m
+10.90.34.198         +[0m[37m
+10.90.34.198         +[0m[37m
+10.90.34.198          ############[0m[37m
+10.90.34.198          # Metadata #[0m[37m
+10.90.34.198          ############[0m[37m
+10.90.34.198         @@ -8,6 +13,7 @@[0m[37m
+10.90.34.198          [pipeline:meta][0m[37m
+10.90.34.198          pipeline = faultwrap metaapp[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198         +[0m[37m
+10.90.34.198          [app:metaapp][0m[37m
+10.90.34.198          paste.app_factory = nova.api.metadata.handler:MetadataRequestHandler.factory[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198         @@ -61,7 +67,6 @@[0m[37m
+10.90.34.198          /: oscomputeversions[0m[37m
+10.90.34.198          /v1.1: openstack_compute_api_v2[0m[37m
+10.90.34.198          /v2: openstack_compute_api_v2[0m[37m
+10.90.34.198         -/v3: openstack_compute_api_v3[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198          [composite:openstack_compute_api_v2][0m[37m
+10.90.34.198          use = call:nova.api.auth:pipeline_factory[0m[37m
+10.90.34.198         @@ -69,23 +74,20 @@[0m[37m
+10.90.34.198          keystone = faultwrap sizelimit authtoken keystonecontext ratelimit osapi_compute_app_v2[0m[37m
+10.90.34.198          keystone_nolimit = faultwrap sizelimit authtoken keystonecontext osapi_compute_app_v2[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198         -[composite:openstack_compute_api_v3][0m[37m
+10.90.34.198         -use = call:nova.api.auth:pipeline_factory[0m[37m
+10.90.34.198         -noauth = faultwrap sizelimit noauth_v3 ratelimit osapi_compute_app_v3[0m[37m
+10.90.34.198         -keystone = faultwrap sizelimit authtoken keystonecontext ratelimit osapi_compute_app_v3[0m[37m
+10.90.34.198         -keystone_nolimit = faultwrap sizelimit authtoken keystonecontext osapi_compute_app_v3[0m[37m
+10.90.34.198         -[0m[37m
+10.90.34.198          [filter:faultwrap][0m[37m
+10.90.34.198          paste.filter_factory = nova.api.openstack:FaultWrapper.factory[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198          [filter:noauth][0m[37m
+10.90.34.198          paste.filter_factory = nova.api.openstack.auth:NoAuthMiddleware.factory[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198         -[filter:noauth_v3][0m[37m
+10.90.34.198         -paste.filter_factory = nova.api.openstack.auth:NoAuthMiddlewareV3.factory[0m[37m
+10.90.34.198         -[0m[37m
+10.90.34.198          [filter:ratelimit][0m[37m
+10.90.34.198          paste.filter_factory = nova.api.openstack.compute.limits:RateLimitingMiddleware.factory[0m[37m
+10.90.34.198         +limits =[0m[37m
+10.90.34.198         +  ( POST, *, .*, 10, MINUTE );[0m[37m
+10.90.34.198         +  ( POST, */servers, ^/servers, 50, DAY );[0m[37m
+10.90.34.198         +  ( PUT, *, .*, 10, MINUTE );[0m[37m
+10.90.34.198         +  ( GET, *changes-since*, .*changes-since.*, 3, MINUTE );[0m[37m
+10.90.34.198         +  ( DELETE, *, .*, 100, MINUTE )[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198          [filter:sizelimit][0m[37m
+10.90.34.198          paste.filter_factory = nova.api.sizelimit:RequestBodySizeLimiter.factory[0m[37m
+10.90.34.198         @@ -93,9 +95,6 @@[0m[37m
+10.90.34.198          [app:osapi_compute_app_v2][0m[37m
+10.90.34.198          paste.app_factory = nova.api.openstack.compute:APIRouter.factory[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198         -[app:osapi_compute_app_v3][0m[37m
+10.90.34.198         -paste.app_factory = nova.api.openstack.compute:APIRouterV3.factory[0m[37m
+10.90.34.198         -[0m[37m
+10.90.34.198          [pipeline:oscomputeversions][0m[37m
+10.90.34.198          pipeline = faultwrap oscomputeversionapp[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198         @@ -111,9 +110,12 @@[0m[37m
+10.90.34.198          [0m[37m
+10.90.34.198          [filter:authtoken][0m[37m
+10.90.34.198          paste.filter_factory = keystoneclient.middleware.auth_token:filter_factory[0m[37m
+10.90.34.198         -# signing_dir is configurable, but the default behavior of the authtoken[0m[37m
+10.90.34.198         -# middleware should be sufficient.  It will create a temporary directory[0m[37m
+10.90.34.198         -# in the home directory for the user the nova process is running as.[0m[37m
+10.90.34.198         -#signing_dir = /var/lib/nova/keystone-signing[0m[37m
+10.90.34.198         -# Workaround for https://bugs.launchpad.net/nova/+bug/1154809[0m[37m
+10.90.34.198         +auth
+10.90.34.198 _uri = http://10.90.34.198:5000/v2.0[0m[37m
+10.90.34.198         +auth_host = 10.90.34.198[0m[37m
+10.90.34.198         +auth_port = 35357[0m[37m
+10.90.34.198         +auth_protocol = http[0m[37m
+10.90.34.198          auth_version = v2.0[0m[37m
+10.90.34.198         +admin_tenant_name = service[0m[37m
+10.90.34.198         +admin_user = nova[0m[37m
+10.90.34.198         +admin_password = openstack-compute[0m[37m
+10.90.34.198         +signing_dir = /var/cache/nova/api[0m
+10.90.34.198 [0m
+10.90.34.198 Recipe: openstack-compute-havana::nova-setup[0m
+10.90.34.198   * execute[nova-manage db sync] action run[0m

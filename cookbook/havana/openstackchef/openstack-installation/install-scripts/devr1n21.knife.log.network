@@ -1,0 +1,159 @@
+Bootstrapping Chef on devr1n21
+devr1n21 Starting Chef Client, version 11.4.0[0m
+devr1n21 resolving cookbooks for run list: ["yum::rhel", "yum::epel", "yum::openstack", "yum::addition", "iptables", "openstack-common", "openstack-ops-database::server", "openstack-ops-database::openstack-db", "openstack-ops-messaging::server", "openstack-identity::server", "openstack-identity::registration", "openstack-common::rcfile", "openstack-image::registry", "openstack-image::identity_registration", "openstack-image::api", "openstack-block-storage::api", "openstack-block-storage::identity_registration", "openstack-block-storage::scheduler", "openstack-dashboard::server", "nova::network"][0m
+devr1n21 Synchronizing Cookbooks:[0m
+devr1n21   - iptables[0m
+devr1n21   - nova[0m
+devr1n21   - osops-utils[0m
+devr1n21   - selinux[0m
+devr1n21   - keystone[0m
+devr1n21   - openstack-common[0m
+devr1n21   - openstack-ops-database[0m
+devr1n21   - openstack-ops-messaging[0m
+devr1n21   - quantum[0m
+devr1n21   - openstack-patch[0m
+devr1n21   - sysctl[0m
+devr1n21   - glance[0m
+devr1n21   - cinder[0m
+devr1n21   - databag[0m
+devr1n21   - yum[0m
+devr1n21   - apache2[0m
+devr1n21   - openstack-dashboard[0m
+devr1n21   - build-essential[0m
+devr1n21   - python[0m
+devr1n21   - openssl[0m
+devr1n21   - apt[0m
+devr1n21   - postgresql[0m
+devr1n21   - mysql[0m
+devr1n21   - openstack-identity[0m
+devr1n21   - openstack-network[0m
+devr1n21   - openstack-image[0m
+devr1n21   - openstack-compute[0m
+devr1n21   - openstack-block-storage[0m
+devr1n21   - keepalived[0m
+devr1n21   - qpid[0m
+devr1n21   - erlang[0m
+devr1n21   - rabbitmq[0m
+devr1n21   - db2[0m
+devr1n21   - database[0m
+devr1n21 Compiling Cookbooks...[0m
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant YumKey
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant YumRepository
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant YumKey
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant YumRepository
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant OpenstackIdentityRegister
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant OpenstackIdentityRegister
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant OpenstackImageImage
+devr1n21 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant OpenstackImageImage
+devr1n21 [2013-09-26T00:34:56-05:00] WARN: Cloning resource attributes for directory[/var/lib/mysql] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:56-05:00] WARN: Previous directory[/var/lib/mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:109:in `block in from_file'
+devr1n21 [2013-09-26T00:34:56-05:00] WARN: Current  directory[/var/lib/mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:109:in `block in from_file'
+devr1n21 [2013-09-26T00:34:56-05:00] WARN: Cloning resource attributes for service[mysql] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:56-05:00] WARN: Previous service[mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:155:in `from_file'
+devr1n21 [2013-09-26T00:34:56-05:00] WARN: Current  service[mysql]: /var/chef/cache/cookbooks/mysql/recipes/server.rb:219:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-identity/recipes/server.rb:39:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:49:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[python-keystone] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[python-keystone]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:31:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[python-keystone]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:35:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[curl] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[curl]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:43:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[curl]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:39:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[openstack-glance] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[openstack-glance]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[openstack-glance]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[openstack-swift] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[openstack-swift]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[openstack-swift]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[cronie] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[cronie]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[cronie]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[python-glanceclient] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[python-glanceclient]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:55:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[python-glanceclient]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:44:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for directory[/etc/glance] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous directory[/etc/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:84:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  directory[/etc/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:56:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for directory[/var/cache/glance] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous directory[/var/cache/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:60:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  directory[/var/cache/glance]: /var/chef/cache/cookbooks/openstack-image/recipes/api.rb:62:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-image/recipes/registry.rb:49:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/api.rb:41:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/api.rb:41:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/scheduler.rb:37:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[perl] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[perl]: /var/chef/cache/cookbooks/iptables/recipes/default.rb:21:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[perl]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:51:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for service[apache2] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous service[apache2]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:24:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  service[apache2]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:221:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for file[/etc/httpd/conf.d/ssl.conf] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous file[/etc/httpd/conf.d/ssl.conf]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:84:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  file[/etc/httpd/conf.d/ssl.conf]: /var/chef/cache/cookbooks/apache2/recipes/mod_ssl.rb:31:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for template[/etc/httpd/ports.conf] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous template[/etc/httpd/ports.conf]: /var/chef/cache/cookbooks/apache2/recipes/default.rb:195:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  template[/etc/httpd/ports.conf]: /var/chef/cache/cookbooks/apache2/recipes/mod_ssl.rb:37:in `from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[MySQL-python] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[MySQL-python]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/scheduler.rb:37:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[MySQL-python]: /var/chef/cache/cookbooks/openstack-dashboard/recipes/server.rb:69:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[python-memcached] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[python-memcached]: /var/chef/cache/cookbooks/openstack-identity/recipes/server.rb:45:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[python-memcached]: /var/chef/cache/cookbooks/openstack-dashboard/recipes/server.rb:77:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] ERROR: Can't find network management
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Cloning resource attributes for package[python-cinderclient] from prior resource (CHEF-3694)
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Previous package[python-cinderclient]: /var/chef/cache/cookbooks/openstack-block-storage/recipes/api.rb:32:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] WARN: Current  package[python-cinderclient]: /var/chef/cache/cookbooks/nova/recipes/nova-common.rb:42:in `block in from_file'
+devr1n21 [2013-09-26T00:34:57-05:00] ERROR: Can't find network nova
+devr1n21 [0m
+devr1n21 ================================================================================[0m
+devr1n21 [31mRecipe Compile Error in /var/chef/cache/cookbooks/nova/recipes/network.rb[0m
+devr1n21 ================================================================================[0m
+devr1n21 
+devr1n21 [0m
+devr1n21 RuntimeError[0m
+devr1n21 ------------[0m
+devr1n21 Can't find network nova[0m
+devr1n21 
+devr1n21 [0m
+devr1n21 Cookbook Trace:[0m
+devr1n21 ---------------[0m
+devr1n21   /var/chef/cache/cookbooks/osops-utils/libraries/ip_location.rb:367:in `get_ip_for_net'
+devr1n21   /var/chef/cache/cookbooks/osops-utils/libraries/ip_location.rb:137:in `get_bind_endpoint'
+devr1n21   /var/chef/cache/cookbooks/osops-utils/libraries/ip_location.rb:209:in `get_access_endpoint'
+devr1n21   /var/chef/cache/cookbooks/nova/recipes/nova-common.rb:63:in `from_file'
+devr1n21   /var/chef/cache/cookbooks/nova/recipes/network.rb:20:in `from_file'[0m
+devr1n21 
+devr1n21 [0m
+devr1n21 Relevant File Content:[0m
+devr1n21 ----------------------[0m
+devr1n21 /var/chef/cache/cookbooks/osops-utils/libraries/ip_location.rb:
+devr1n21 
+devr1n21 360:          node["osops_networks"]["mapping"].has_key?(network)
+devr1n21 361:        network = node["osops_networks"]["mapping"][network]
+devr1n21 362:      end
+devr1n21 363:  
+devr1n21 364:      if not (node.has_key?("osops_networks") and node["osops_networks"].has_key?(network)) then
+devr1n21 365:        error = "Can't find network #{network}"
+devr1n21 366:        Chef::Log.error(error)
+devr1n21 367>>       raise error
+devr1n21 368:      end
+devr1n21 369:  
+devr1n21 370:      net = IPAddr.new(node["osops_networks"][network])
+devr1n21 371:      node["network"]["interfaces"].each do |interface|
+devr1n21 372:        if interface[1].has_key?("addresses") then
+devr1n21 373:          interface[1]["addresses"].each do |k,v|
+devr1n21 374:            if v["family"] == "inet6" or (v["family"] == "inet" and v["prefixlen"] != "32") then
+devr1n21 375:              addr=IPAddr.new(k)
+devr1n21 376:              if net.include?(addr) then
+devr1n21 [0m
+devr1n21 
+devr1n21 [0m
+devr1n21 [2013-09-26T00:34:57-05:00] ERROR: Running exception handlers
+devr1n21 [2013-09-26T00:34:57-05:00] FATAL: Saving node information to /var/chef/cache/failed-run-data.json
+devr1n21 [2013-09-26T00:34:57-05:00] ERROR: Exception handlers complete
+devr1n21 Chef Client failed. 0 resources updated[0m
+devr1n21 [2013-09-26T00:34:57-05:00] FATAL: Stacktrace dumped to /var/chef/cache/chef-stacktrace.out
+devr1n21 [2013-09-26T00:34:57-05:00] FATAL: RuntimeError: Can't find network nova

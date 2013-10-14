@@ -1,0 +1,6 @@
+#node-name:manager-client-quorum
+devr1n21:quorum-manager:
+devr1n27:quorum-manager:
+devr1n29:quorum-manager:
+devr1n30:quorum-client:
+devr1n32::

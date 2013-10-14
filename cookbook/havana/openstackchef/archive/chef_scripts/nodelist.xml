@@ -1,0 +1,100 @@
+<clusters>
+<cluster name="grizzly">
+  <environment chefpath="" chefserver="172.16.0.4" name="cdl-environment">
+       <db type="mysql" />
+       <amqp type="qpid" />
+       <bridge>br0</bridge>
+       <bridgedev>eth2.498</bridgedev>
+       <pubnet>172.16.0.0/16</pubnet>
+       <novanet>172.16.0.0/16</novanet>
+       <mgmtnet>172.16.0.0/16</mgmtnet>
+       <vmnet>192.168.1.0/24</vmnet>
+       <vmnetnum>1</vmnetnum>
+       <vmnetsize>256</vmnetsize>
+       <floating>10.254.254.0/24</floating>
+       <network_manager>nova.network.manager.FlatDHCPManager</network_manager>
+       <firewall_driver>nova.virt.firewall.NoopFirewallDriver</firewall_driver>
+       <vlan_interface>eth1</vlan_interface>
+       <vlans start="520" end="550" />
+
+       <glance image_upload="true" />
+       <quantum floating_if="eth2.521" tenant_network_type="vlan" network_vlan_range="530:550" bridge_mapping_nic="eth2" />
+
+       <gpfs cluster_name="gpfs_01" />
+       <vips keystone-service-api="1.2.3.4" keystone-admin-api="1.2.3.4" nova-api="1.2.3.4" nova-ec2-public="1.2.3.4" glance-api="1.2.3.4" glance-registry="1.2.3.4" cinder-api="1.2.3.4" quantum-api="1.2.3.4" qpid-queue="1.2.3.4" />
+
+  </environment>
+  <nodes>
+    <node>
+       <hostname>r1n16</hostname>
+       <role>base,mysql-master,keystone,qpid,glance,nova-controller,nova-compute,cinder-all</role>
+       <install if="eth0" ip="172.20.1.16" nm="255.255.0.0" />
+       <hwtype>iDataplex</hwtype>
+       <os_updates packages="" reponame="" repopath="" />
+       <bmc ip="172.20.51.16">r1n16-imm</bmc>
+       <install_os>rhels6.3</install_os>
+       <public gw="9.38.12.1" if="eth1" ip="9.38.12.6" nm="255.255.255.0" />
+       <osmgmt if="eth2.145" ip="10.145.0.16" nm="255.255.0.0" />
+       <vmnet if="eth3" model="flat" />
+    </node>
+    <node>
+       <hostname>r1n17</hostname>
+       <role>base,nova-compute</role>
+       <install if="eth0" ip="172.20.1.17" nm="255.255.0.0" />
+       <hwtype>iDataplex</hwtype>
+       <bmc ip="172.20.51.17">r1n17-imm</bmc>
+       <os_updates packages="" reponame="" repopath="path_to_repo" />
+       <install_os>rhels6.3</install_os>
+       <public gw="9.38.12.1" if="eth1" ip="9.38.12.7" nm="255.255.255.0" />
+       <osmgmt if="eth2.145" ip="10.145.0.25" nm="255.255.0.0" />
+       <vmnet if="eth3" model="flat" />
+       <openstack az="az1" />
+       <gpfs faultzone="1" quorum="true"   />
+    </node>
+  </nodes>
+</cluster>
+<cluster name="tao">
+  <environment chefpath="/root/AUSTIN_INSTRUCTIONS/openstack-installation" chefserver="10.145.1.18" name="tao-environment">
+       <bridge>br0</bridge>
+       <bridgedev>eth3</bridgedev>
+       <pubnet>9.38.12.0/16</pubnet>
+       <novanet>172.20.0.0/16</novanet>
+       <mgmtnet>172.20.0.0/16</mgmtnet>
+       <vmnet>192.168.1.0/24</vmnet>
+       <vmnetnum>1</vmnetnum>
+       <vmnetsize>256</vmnetsize>
+       <floating>10.254.254.0/24</floating>
+       <network_manager>nova.network.manager.FlatDHCPManager</network_manager>
+       <firewall_driver>nova.virt.firewall.NoopFirewallDriver</firewall_driver>
+       <public_interface>eth1</public_interface>
+       <vlan_interface>eth3</vlan_interface>
+       <vlans end="3200" start="3200" />
+  </environment>
+  <nodes>
+    <node>
+       <hostname>r1n23</hostname>
+       <role>base,nova-compute</role>
+       <install if="eth0" ip="172.20.1.23" nm="255.255.0.0" />
+       <hwtype>iDataplex</hwtype>
+       <bmc ip="172.20.51.23">r1n23-imm</bmc>
+       <os_updates packages="" reponame="" repopath="path_to_repo" />
+       <install_os>rhels6.3</install_os>
+       <public gw="9.38.12.1" if="eth1" ip="9.38.12.27" nm="255.255.255.0" />
+       <osmgmt if="eth2.145" ip="10.145.0.25" nm="255.255.0.0" />
+       <vmnet if="eth3" model="flat" />
+    </node>
+    <node>
+       <hostname>r1n26</hostname>
+       <role>base,cinder-volume</role>
+       <install if="eth0" ip="172.20.1.26" nm="255.255.0.0" />
+       <hwtype>iDataplex</hwtype>
+       <bmc ip="172.20.51.26">r1n26-imm</bmc>
+       <os_updates packages="" reponame="" repopath="path_to_repo" />
+       <install_os>rhels6.3</install_os>
+       <public gw="9.38.12.1" if="eth1" ip="9.38.12.30" nm="255.255.255.0" />
+       <osmgmt if="eth2.145" ip="10.145.0.26" nm="255.255.0.0" />
+       <vmnet if="eth3" model="flat" />
+    </node>
+  </nodes>
+</cluster>
+</clusters>

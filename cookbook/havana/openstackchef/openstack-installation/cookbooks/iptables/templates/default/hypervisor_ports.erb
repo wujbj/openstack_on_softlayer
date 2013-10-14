@@ -1,0 +1,10 @@
+# ssh 
+-A FWR -p tcp --dport domain -j ACCEPT
+-A FWR -p udp --dport domain -j ACCEPT
+-A FWR -p tcp --dport bootps -j ACCEPT
+-A FWR -p udp --dport bootps -j ACCEPT
+
+#!!! We need to spend some time on specifying a more exact port list for this one--there are
+#!!! quite a few services being used on the hypervisors. For now, just exposing all...
+-A FWR -p tcp --dport 0:65535 -j ACCEPT
+-A FWR -p udp --dport 0:65535 -j ACCEPT

@@ -1,0 +1,2 @@
+
+default["patch-package"] = "patch"

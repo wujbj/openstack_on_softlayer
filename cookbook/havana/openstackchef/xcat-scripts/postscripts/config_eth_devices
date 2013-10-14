@@ -1,0 +1,273 @@
+#!/usr/bin/python
+
+from xml.dom import minidom
+import subprocess
+import pprint
+import os
+import sys
+
+def findHostnameMatch(hostname) :
+  xmldoc = minidom.parse('/xcatpost/scpsetup/nodelist.xml')
+  nodelist = xmldoc.getElementsByTagName('node')
+  for node in nodelist :
+    print("Node hostname read is " + node.getElementsByTagName('hostname')[0].firstChild.nodeValue );
+    if (node.getElementsByTagName('hostname')[0].firstChild.nodeValue == hostname) : 
+      return node
+  return None;
+
+# Returns the text output of a shell command
+def shell_eval(shell_cmd) :
+  shellarray = [shell_cmd];
+  # Stupid Python 2.6 doesn't have check_output method under subprocess module.
+  # return subprocess.check_output(shellarray);
+  obj = subprocess.Popen(shellarray,  stderr=subprocess.PIPE,  stdout=subprocess.PIPE,
+                           close_fds=True, shell=True);
+  result = obj.communicate();
+  return result[0];
+
+def update_host_file(hostname_to_match) :
+   xmldoc = minidom.parse('/xcatpost/scpsetup/nodelist.xml')
+   # Have to first find which cluster this node is part of
+   clusterlist = xmldoc.getElementsByTagName('cluster')
+   for cluster in clusterlist : 
+     nodelist = cluster.getElementsByTagName('node')
+     match_found = False;
+     for node in nodelist :
+       if (node.getElementsByTagName('hostname')[0].firstChild.nodeValue == hostname_to_match) :
+         match_found = True;
+         continue;
+     if match_found == False : 
+       continue; # move to the next cluster
+     # We found a match in this cluster, now process the nodelist to add each <osmgmt> IP 
+     # and hostname pair to the /etc/hosts
+     for node in nodelist :
+       hostname = node.getElementsByTagName('hostname')[0].firstChild.nodeValue
+       osmgmt_ip = None
+       if len(node.getElementsByTagName('osmgmt')) > 0 :
+         osmgmt_ip = node.getElementsByTagName('osmgmt')[0].getAttribute('ip')
+       if osmgmt_ip == None :
+         # use the install IP instead if the node has no osmgmt ip defined
+         osmgmt_ip = node.getElementsByTagName('install')[0].getAttribute('ip')
+
+       grep_check = shell_eval("grep -w " + hostname + " /etc/hosts");
+       if (grep_check.find("hostname") == -1) :
+         os.system("echo '"+ osmgmt_ip + " " + hostname + " ' >> /etc/hosts" );
+       else :
+         os.system("sed -e 's/.* " + hostname + " .*/" + osmgmt_ip + " " + hostname + " /' -i /etc/hosts");
+
+def config_rh_eth_adapter(interface, ip_addr, netmask, gateway, bridge_name, usage) :
+
+  ifcfg_file = "/etc/sysconfig/network-scripts/ifcfg-" + interface;
+  bridge_file = "/etc/sysconfig/network-scripts/ifcfg-" + bridge_name;
+  print ("The ifcfg_file is " + ifcfg_file);
+  if usage == "install" :
+      nameserver_line = shell_eval("grep nameserver /etc/resolv.conf");
+      nameserver = nameserver_line.split(' ')[1];
+
+  if ( interface.find(".") != -1 ) :
+      # Copy the base ifcfg-eth# file into the VLAN'd ifcfg-eth#.###
+      ifcfg_base_file = "/etc/sysconfig/network-scripts/ifcfg-" + interface[0 : (interface.index("."))];
+      os.system("cp -f " + ifcfg_base_file + " " + ifcfg_file);
+      os.system("echo 'VLAN=yes' >> " + ifcfg_file);
+      os.system("sed -e 's/DEVICE=.*/DEVICE=\"" + interface + "\"/' -i " + ifcfg_file);
+
+  os.system ("sed -e \"s/ONBOOT=.*/ONBOOT=yes/\" -i " + ifcfg_file);
+  os.system ("sed -e \"s/NM_CONTROLLED=.*/NM_CONTROLLED=no/\" -i " + ifcfg_file);         
+  os.system ("sed -e 's/BRIDGE=.*//' -i " + ifcfg_file);
+
+  if ( ip_addr == None or ip_addr == "" ) :
+      os.system("sed -e 's/BOOTPROTO=.*/BOOTPROTO=none/' -i " + ifcfg_file);
+      os.system("sed -e 's/IPADDR=.*//' -i " + ifcfg_file);
+      os.system("sed -e 's/NETMASK=.*//' -i " + ifcfg_file);
+      os.system("sed -e 's/GATEWAY=.*//' -i " + ifcfg_file);
+
+  else :
+      os.system("sed -e 's/BOOTPROTO=.*/BOOTPROTO=static/' -i " + ifcfg_file);
+      grep_check = shell_eval("grep IPADDR " + ifcfg_file);
+      if (grep_check.find("IPADDR") == -1) :
+          os.system("echo 'IPADDR=" + ip_addr + "' >>" + ifcfg_file);
+      else :
+          os.system("sed -e 's/IPADDR=.*/IPADDR=" + ip_addr + "/' -i " + ifcfg_file);
+
+      grep_check = shell_eval("grep NETMASK " + ifcfg_file);
+      if (grep_check.find("NETMASK") == -1) :
+          os.system("echo 'NETMASK=" + netmask + "' >>" + ifcfg_file);
+      else :
+          os.system("sed -e 's/NETMASK=.*/NETMASK=" + netmask + "/' -i " + ifcfg_file);
+    
+      if ( gateway == None or gateway == "") :
+          os.system("sed -e 's/GATEWAY=.*//' -i " + ifcfg_file);
+      else :
+          grep_check = shell_eval("grep GATEWAY " + ifcfg_file);
+          if (grep_check.find("GATEWAY") == -1) :
+              os.system("echo 'GATEWAY=" + gateway + "' >>" + ifcfg_file) ;
+          else :
+              os.system("sed -e 's/GATEWAY=.*/GATEWAY=" + gateway + "/' -i " + ifcfg_file);
+
+  os.system("sed -e 's/DNS1=.*//' -i " + ifcfg_file);
+  if usage == "install" :
+      os.system("echo 'DNS1=" + nameserver + "' >>" + ifcfg_file);
+
+  if (bridge_name != None and bridge_name != ""):
+      # clone the ifcfg-*** file into the ifcfg-<bridge_name>, point the ifcfg-*** at the bridge
+      # and then remove IP details (since this bridge will have those)
+      os.system("cp " + ifcfg_file + " " + bridge_file)
+      os.system("echo 'BRIDGE=" + bridge_name + "' >>" + ifcfg_file)
+      os.system("sed -e 's/DEVICE=.*/DEVICE=\"" + bridge_name + "\"/' -i " + bridge_file)
+      os.system("sed -e 's/TYPE=.*/TYPE=\"Bridge\"/' -i " + bridge_file)
+      os.system("echo 'DELAY=0' >>" + bridge_file);  # Needed so VMs can PXE as right when they are powered on
+      os.system("sed -e 's/BOOTPROTO=.*/BOOTPROTO=none/' -i " + ifcfg_file)
+      os.system("sed -e 's/IPADDR=.*//' -i " + ifcfg_file)
+      os.system("sed -e 's/NETMASK=.*//' -i " + ifcfg_file)
+      os.system("sed -e 's/GATEWAY=.*//' -i " + ifcfg_file)
+
+
+def config_debian_eth_adapter(interface, ip_addr, netmask, gateway, usage) :
+  if_file = "/etc/network/interfaces";
+  if usage == "install" : 
+    nameserver_line = shell_eval("grep nameserver /etc/resolv.conf");
+    nameserver = nameserver_line.split(' ')[1];
+    print("nameserver was " + nameserver);
+    # Need to purge existing DHCP setting for the install interface and use nodelist.xml setting
+    os.system("ifdown " + interface);
+    os.system("sed -e \"/" + interface + "/d\" -i " + if_file);
+
+  os.system("echo \"\" >>" + if_file);
+  iface_base_dev = None;
+  if ( interface.find(".") != -1 ) :
+    # Identify base device for vlan'd interface
+    iface_base_dev = interface[0 : (interface.index("."))];
+
+  os.system("# Interface for " + usage); 
+  os.system("echo \"auto " + interface + "\" >>" + if_file);
+
+  if ( ip_addr == None or ip_addr == "" ) :
+    os.system("echo \"iface " + interface + " inet manual\" >>" + if_file);
+    if iface_base_dev != None :
+       os.system("echo \"     vlan_raw_device " + iface_base_dev + "\" >>" + if_file);
+  else :
+    os.system("echo \"iface " + interface + " inet static\" >>" + if_file);
+    if iface_base_dev != None :
+       os.system("echo \"     vlan_raw_device " + iface_base_dev + "\" >>" + if_file);
+    os.system("echo \"     address " + ip_addr + "\" >>" + if_file);
+    os.system("echo \"     netmask " + netmask + "\" >>" + if_file);
+    if usage == "install" :
+      os.system("echo \"     dns-nameservers " + nameserver + "\" >>" + if_file);
+    if ( gateway != None and gateway != "") :
+      # Remove any prior gateway value, can't have 2 default gateways
+      os.system("sed -e \"/gateway/d\" -i " + if_file);
+      grep_line = shell_eval("route | grep -w default");
+      if (grep_line.find("default") != -1) :
+        # Must remove the existing default route 
+        os.system("route del -net default gw " + grep_line.split(" ")[1] + " dev " + grep_line.split(" ")[7]); 
+      os.system("echo \"     gateway " + gateway + "\" >>" + if_file);
+  os.system("ifup " + interface);
+  # if os.path.exists('/etc/avahi/avahi-daemon.conf') :
+    
+
+def config_eth_adapter(interface, ip_addr, netmask, gateway, bridge_name, usage) :
+  if os.path.exists('/etc/redhat-release') :
+    config_rh_eth_adapter(interface, ip_addr, netmask, gateway, bridge_name, usage);
+  if os.path.exists('/etc/debian_version') :
+    # no bridge_name support for now
+    config_debian_eth_adapter(interface, ip_addr, netmask, gateway, usage);
+
+hostname = shell_eval("/bin/hostname").rstrip() ;
+nameserver_test = shell_eval("grep nameserver /etc/resolv.conf");
+print ("prior nameserver = " + nameserver_test.split()[1]);
+print ("Searching for node with hostname " + hostname);
+update_host_file(hostname);
+
+node = findHostnameMatch(hostname);
+if ( node == None ):
+  print "Warning node not found in /xcatpost/scpsetup/nodelist.xml";
+  sys.exit(1);
+
+# Hack for now to set apt-get details working
+if os.path.exists('/etc/debian_version') :
+  os.system("cp /xcatpost/scpsetup/sources.list /etc/apt/sources.list");
+  os.system("apt-get update");
+
+if os.path.exists('/etc/debian_version') :
+  os.system("apt-get install bridge-utils");
+  os.system("apt-get install vlan");
+
+configured_if_list = [];
+# The install xml-element is used to designate the interface used to PXE boot the system & drive chef over
+installlist = node.getElementsByTagName('install');
+if ( installlist != None and len(installlist) > 0 ) : 
+  install_if = installlist[0].getAttribute('if');
+  install_ip = installlist[0].getAttribute('ip');
+  install_nm = installlist[0].getAttribute('nm');
+  install_gw = installlist[0].getAttribute('gw');
+  install_br = installlist[0].getAttribute('br');
+
+  config_eth_adapter(install_if, install_ip, install_nm, install_gw, install_br, "install");  
+  configured_if_list += [install_if];
+
+# The public xml-element is used to designate the interface given the Openstack for nova-networking floating IP
+# access to the outside world
+publiclist = node.getElementsByTagName('public');
+if ( publiclist != None and len(publiclist) > 0 ) : 
+  public_if = publiclist[0].getAttribute('if');
+  public_ip = publiclist[0].getAttribute('ip');
+  public_nm = publiclist[0].getAttribute('nm');
+  public_gw = publiclist[0].getAttribute('gw');
+  public_br = publiclist[0].getAttribute('br');
+
+  print "public if is " + public_if
+  print "configured_if_list is " + ",".join(configured_if_list)
+
+  if not any(public_if in s for s in configured_if_list) :
+    config_eth_adapter(public_if, public_ip, public_nm, public_gw, public_br, "public");  
+    configured_if_list += [public_if];
+
+# The osmgmt xml-element is used to designate the interface given to the Openstack node & cinder communication
+osmgmtlist = node.getElementsByTagName('osmgmt');
+if ( osmgmtlist != None and len(osmgmtlist) > 0 ) : 
+  osmgmt_if = osmgmtlist[0].getAttribute('if');
+  osmgmt_ip = osmgmtlist[0].getAttribute('ip');
+  osmgmt_nm = osmgmtlist[0].getAttribute('nm');
+  osmgmt_gw = osmgmtlist[0].getAttribute('gw');
+  osmgmt_br = osmgmtlist[0].getAttribute('br');
+
+  print "osmgmt if is = " + osmgmt_if
+  print "configured_if_list is " + ",".join(configured_if_list)
+
+  if not any(osmgmt_if in s for s in configured_if_list) :
+    config_eth_adapter(osmgmt_if, osmgmt_ip, osmgmt_nm, osmgmt_gw, osmgmt_br, "osmgmt");  
+    configured_if_list += [osmgmt_if];
+
+# The osext xml-element is used to designate the interface given to OpenvSwitch on the controller-node
+# Note that this interface must be separate from the public interface because this interface will be
+# taken away from the host Linux OS's routing, and solely used for "floating-IP v2" with Quantum
+# This interface should typically NOT have any IP address, just a ethernet interface & optional VLAN.
+osextlist = node.getElementsByTagName('osext');
+if ( osextlist != None and len(osextlist) > 0 ) : 
+  osext_if = osextlist[0].getAttribute('if');
+  osext_ip = osextlist[0].getAttribute('ip');
+  osext_nm = osextlist[0].getAttribute('nm');
+  osext_gw = osextlist[0].getAttribute('gw');
+  if not any(osext_if in s for s in configured_if_list) :
+    config_eth_adapter(osext_if, osext_ip, osext_nm, osext_gw, None, "osext");  
+    configured_if_list += [osext_if];
+
+# The vmnet xml-element is used to designate the interface given to nova-networking on all the compute nodes
+# for the Openstack flat-network bridge to be created on, or to be the trunk adapter for VLANManager, OR for
+# Quantum's bridge interfaces to be created on.  This interface should typically NOT have any IP address,
+# just a ethernet interface & optional VLAN.
+vmnetlist = node.getElementsByTagName('vmnet');
+if ( vmnetlist != None and len(vmnetlist) > 0 ) : 
+  vmnet_if = vmnetlist[0].getAttribute('if');
+  vmnet_ip = vmnetlist[0].getAttribute('ip');
+  vmnet_nm = vmnetlist[0].getAttribute('nm');
+  vmnet_gw = vmnetlist[0].getAttribute('gw');
+  vmnet_br = vmnetlist[0].getAttribute('br');
+  if not any(vmnet_if in s for s in configured_if_list) :
+    config_eth_adapter(vmnet_if, vmnet_ip, vmnet_nm, vmnet_gw, vmnet_br, "vmnet");  
+    configured_if_list += [vmnet_if];
+
+if (len(configured_if_list) > 0 and os.path.exists('/etc/redhat-release')) :
+  os.system("service network restart");
+
+

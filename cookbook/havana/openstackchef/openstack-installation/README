@@ -1,0 +1,76 @@
+# OpenStack installation
+
+Install OpenStack environment automatically by using script.
+
+## TODO Next
+
+Optimize or rewrite exist cookbooks, because most of the exist cookbooks were copied from Internet and did not follow a unified style. 
+
+## About This Directory
+
+* cookbooks
+All cookbooks that OpenStack need
+
+* databag
+For encrypt OpenStack component password
+
+* roles
+All roles that OpenStack need
+
+* install-scripts
+Scripts for OpenStack installation
+
+* uninstall-scripts
+Scripts for OpenStack uninstallation
+
+## Prepare Works
+
+1. Create VMs or use exist physical nodes. 
+
+2. Provide the nodes hostname(or IP Address) and its root use ssh key.
+
+3. Keep the nodes system clock synced with chef server.
+
+## Edit your xml file
+
+There are three template xml file you can use.
+
+* nodelist.xml is for multi controller nodes without HA installation
+
+* nodelist.ha.xml is for multi controller nodes with HA installation
+
+* nodelist.single.xml is for all in one installation
+
+You can make you own copy, do some changes, and then use the scripts to install.
+
+## Install OpenStack Environment
+
+Use the scripts under install-scripts to make the OpenStack installation.
+
+## Uninstall OpenStack environment
+
+Use the scripts under uninstall-scripts to make the OpenStack uninstallation.
+
+## Some Useful Commands
+
+### Remove all chef nodes and clients
+
+knife node list | xargs -i knife client delete -y {}
+knife node list | xargs -i knife node delete -y {}
+
+### Remove all chef cookbooks
+
+knife cookbook list | awk '{print $1}' | xargs -i knife cookbook delete -y {}
+
+
+### Remove all chef roles
+
+knife role list | xargs -i knife role delete -y {}
+
+### Upload all chef cookbooks
+
+knife cookbook upload -o ./cookbooks -a
+
+### Upload all chef roles
+
+knife role from file ./roles/*.rb

@@ -1,0 +1,4 @@
+ipaddresses	<%= @params['ipaddress'] %>
+keeptogether	<%= @params['keeptogether'] %>
+machines	<%= @params['machines'].class == NilClass ? ::File.basename(::File.readlink('/usr/local/zeus/zxtm/global.cfg')) : @params['machines']%>
+slaves

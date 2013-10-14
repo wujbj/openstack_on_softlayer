@@ -1,0 +1,121 @@
+Bootstrapping Chef on devr1n20
+devr1n20 Starting Chef Client, version 11.4.0[0m
+devr1n20 resolving cookbooks for run list: ["yum::rhel", "yum::epel", "yum::openstack", "yum::addition", "iptables", "openstack-common", "openstack-compute::network"][0m
+devr1n20 Synchronizing Cookbooks:[0m
+devr1n20   - iptables[0m
+devr1n20   - nova[0m
+devr1n20   - osops-utils[0m
+devr1n20   - selinux[0m
+devr1n20   - keystone[0m
+devr1n20   - openstack-common[0m
+devr1n20   - openstack-ops-database[0m
+devr1n20   - openstack-ops-messaging[0m
+devr1n20   - quantum[0m
+devr1n20   - openstack-patch[0m
+devr1n20   - sysctl[0m
+devr1n20   - glance[0m
+devr1n20   - cinder[0m
+devr1n20   - databag[0m
+devr1n20   - yum[0m
+devr1n20   - apache2[0m
+devr1n20   - openstack-dashboard[0m
+devr1n20   - build-essential[0m
+devr1n20   - python[0m
+devr1n20   - openssl[0m
+devr1n20   - apt[0m
+devr1n20   - postgresql[0m
+devr1n20   - mysql[0m
+devr1n20   - openstack-identity[0m
+devr1n20   - openstack-network[0m
+devr1n20   - openstack-image[0m
+devr1n20   - openstack-compute[0m
+devr1n20   - openstack-block-storage[0m
+devr1n20   - keepalived[0m
+devr1n20   - qpid[0m
+devr1n20   - erlang[0m
+devr1n20   - rabbitmq[0m
+devr1n20   - db2[0m
+devr1n20   - database[0m
+devr1n20 Compiling Cookbooks...[0m
+devr1n20 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant YumKey
+devr1n20 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/provider/lwrp_base.rb:97: warning: already initialized constant YumRepository
+devr1n20 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant YumKey
+devr1n20 /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/chef-11.4.0/lib/chef/resource/lwrp_base.rb:51: warning: already initialized constant YumRepository
+devr1n20 [2013-10-11T03:40:22-05:00] WARN: Cloning resource attributes for package[iptables] from prior resource (CHEF-3694)
+devr1n20 [2013-10-11T03:40:22-05:00] WARN: Previous package[iptables]: /var/chef/cache/cookbooks/iptables/recipes/default.rb:20:in `from_file'
+devr1n20 [2013-10-11T03:40:22-05:00] WARN: Current  package[iptables]: /var/chef/cache/cookbooks/openstack-compute/recipes/network.rb:32:in `block in from_file'
+devr1n20 Converging 27 resources[0m
+devr1n20 Recipe: yum::rhel[0m
+devr1n20   * yum_repository[rhel] action add[0m
+devr1n20  (up to date)[0m
+devr1n20 Recipe: yum::epel[0m
+devr1n20   * yum_key[] action add[0m (up to date)[0m
+devr1n20   * yum_repository[epel] action add[0m (up to date)[0m
+devr1n20 Recipe: yum::openstack[0m
+devr1n20   * yum_repository[openstack] action add[0m
+devr1n20  (up to date)[0m
+devr1n20 Recipe: yum::addition[0m
+devr1n20   * yum_repository[addition] action add[0m (up to date)[0m
+devr1n20 Recipe: iptables::default[0m
+devr1n20   * package[iptables] action install[0m
+devr1n20  (up to date)[0m
+devr1n20   * package[perl] action install[0m (up to date)[0m
+devr1n20   * execute[rebuild-iptables] action nothing[0m (up to date)[0m
+devr1n20   * directory[/etc/iptables.d] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * cookbook_file[/usr/sbin/rebuild-iptables] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * template[/etc/iptables.d/all_established] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * template[/etc/iptables.d/all_icmp] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * template[/etc/iptables.d/all_ssh] action create[0m
+devr1n20  (up to date)[0m
+devr1n20 Recipe: openstack-compute::nova-common[0m
+devr1n20   * package[openstack-nova-common] action upgrade[0m
+devr1n20  (up to date)[0m
+devr1n20   * package[python-memcached] action install[0m
+devr1n20  (up to date)[0m
+devr1n20   * directory[/etc/nova] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * directory[/etc/nova/rootwrap.d] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * template[/etc/nova/nova.conf] action create[0m
+devr1n20 [32m
+devr1n20     - update template[/etc/nova/nova.conf] from 620945 to 89e45d[0m[37m
+devr1n20         --- /etc/nova/nova.conf	2013-10-11 03:37:38.244790872 -0500[0m[37m
+devr1n20         +++ /tmp/chef-rendered-template20131011-26201-smk6ut	2013-10-11 03:40:24.718790842 -0500[0m[37m
+devr1n20         @@ -86,6 +86,7 @@[0m[37m
+devr1n20          # Write a checksum for files in _base to disk (default: false)[0m[37m
+devr1n20          checksum_base_images=false[0m[37m
+devr1n20          [0m[37m
+devr1n20         +[0m[37m
+devr1n20          enabled_apis=osapi_compute,metadata[0m[37m
+devr1n20          [0m[37m
+devr1n20          ##### VNCPROXY #####[0m
+devr1n20 [0m
+devr1n20   * template[/etc/nova/rootwrap.conf] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * template[/etc/nova/rootwrap.d/api-metadata.filters] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * template[/etc/nova/rootwrap.d/compute.filters] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * template[/etc/nova/rootwrap.d/network.filters] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * template[/root/openrc] action create[0m
+devr1n20  (up to date)[0m
+devr1n20   * execute[enable nova login] action run[0m
+devr1n20 [32m
+devr1n20     - execute usermod -s /bin/sh nova[0m
+devr1n20 [0m
+devr1n20 Recipe: openstack-compute::network[0m
+devr1n20   * package[iptables] action upgrade[0m (up to date)[0m
+devr1n20   * package[openstack-nova-network] action upgrade[0m
+devr1n20  (up to date)[0m
+devr1n20   * service[nova-network] action enable[0m
+devr1n20  (up to date)[0m
+devr1n20   * service[nova-network] action restart[0m
+devr1n20 [32m
+devr1n20     - restart service service[nova-network][0m
+devr1n20 [0m
+devr1n20 Chef Client finished, 3 resources updated[0m

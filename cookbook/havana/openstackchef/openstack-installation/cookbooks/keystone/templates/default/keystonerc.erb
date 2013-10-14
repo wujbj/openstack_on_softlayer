@@ -1,0 +1,5 @@
+export ADMIN_TOKEN=<%= node["keystone"]["admin_token"]%>
+export OS_USERNAME=<%= node["keystone"]["admin_user"]%>
+export OS_TENANT_NAME=<%= node["keystone"]["users"][node["keystone"]["admin_user"]]["default_tenant"]%>
+export OS_PASSWORD=<%= @passwd %>
+export OS_AUTH_URL=<%= node["keystone"]["adminURL"]%>

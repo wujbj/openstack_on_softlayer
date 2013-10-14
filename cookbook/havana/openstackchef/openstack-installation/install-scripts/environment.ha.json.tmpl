@@ -1,0 +1,348 @@
+{
+  "name": "${ENV_NAME}",
+  "description": "",
+  "cookbook_versions": {
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+    "package_component": "grizzly",
+    "floating": "false",
+    "platform_family": "rhel"
+  },
+  "override_attributes": {
+    "network_type": "${NETWORKTYPE}",
+    "iptables": {"enabled": ${ENABLE_IPTABLES}},
+    "openstack": {
+      "developer_mode": ${DEVMODE},
+      "ha": {
+        "service_type": "${HATYPE}"  
+      },
+      "mq": {
+        "service_type": "${MQTYPE}",
+        "vip": "${MQ_VIP}",
+        "vip_if": "${MQ_VIPIF}",
+        "cluster": ${MQ_HA},
+        "cluster_nodes": ${MQ_NODES}
+      },
+      "db": {
+        "service_type": "${DBTYPE}",
+        "vip": "${DB_VIP}",
+        "vip_if": "${DB_VIPIF}",
+        "cluster": ${DB_HA},
+        "db2_primary_host": "${DB2_PRIMARY_HOST}",
+        "db2_primary_port": 10000,
+        "db2_standby_port": 10000,
+        "db2_standby_host": "${DB2_STANDBY_HOST}",
+        "identity": {
+          "db_name": "keystone",
+          "host": "${DB_VIP}",
+          "port": "${DBPORT}",
+          "db_type": "${DBTYPE}",
+          "vip": "${DB_VIP}",
+          "ha": "${DB_HA}"
+        },
+        "image": {
+          "db_name": "glance",
+          "host": "${DB_VIP}",
+          "port": "${DBPORT}",
+          "db_type": "${DBTYPE}",
+          "vip": "${DB_VIP}",
+          "ha": "${DB_HA}"
+        },
+        "volume": {
+          "db_name": "cinder",
+          "host": "${DB_VIP}",
+          "port": "${DBPORT}",
+          "db_type": "${DBTYPE}",
+          "vip": "${DB_VIP}",
+          "ha": "${DB_HA}"
+        },
+        "compute": {
+          "db_name": "nova",
+          "host": "${DB_VIP}",
+          "port": "${DBPORT}",
+          "db_type": "${DBTYPE}",
+          "vip": "${DB_VIP}",
+          "ha": "${DB_HA}"
+        },
+        "network": {
+          "db_name": "network",
+          "host": "${DB_VIP}",
+          "port": "${DBPORT}",
+          "db_type": "${DBTYPE}",
+          "vip": "${DB_VIP}",
+          "ha": "${DB_HA}"
+        },
+        "metering": {
+          "db_name": "ceilometer",
+          "host": "${DB_VIP}",
+          "port": "${DBPORT}",
+          "db_type": "${DBTYPE}",
+          "vip": "${DB_VIP}",
+          "ha": "${DB_HA}"
+        },
+        "dashboard": {
+          "db_name": "horizon",
+          "host": "${DB_VIP}",
+          "port": "${DBPORT}",
+          "db_type": "${DBTYPE}",
+          "vip": "${DB_VIP}",
+          "ha": "${DB_HA}"
+        }
+      },
+      "identity": {
+        "bind_interface": "${IDENTITY_BIND_IF}",
+        "db": {
+          "username": "keystone"
+        }
+      },
+      "image": {
+        "api": {
+          "bind_interface": "${IMAGE_BIND_IF}"
+        },
+        "registry": {
+          "bind_interface": "${IMAGE_BIND_IF}"
+        },
+        "db": {
+          "username": "glance"
+        },
+	      "mq": {
+	        "service_type": "${MQTYPE}",
+          "qpid": {
+            "host": "${MQ_VIP}"
+          }
+        },
+        "image_upload": ${IMAGE_UPLOAD},
+        "upload_images": [ "cirros" ],
+        "upload_image": {
+          "precise": "${IMAGE_PRECISE_URL}",
+          "cirros": "${IMAGE_CIRROS_URL}"
+        }
+      },
+      "block-storage": {
+        "db": {
+          "username": "cinder"
+        },
+	      "mq": {
+          "qpid": {
+            "host": "${MQ_VIP}"
+          }
+        }
+      },
+      "volume": {
+        "bind_interface": "${VOLUME_BIND_IF}",
+        "db": {
+          "username": "cinder"
+        },
+	      "mq": {
+          "qpid": {
+            "host": "${MQ_VIP}"
+          }
+        }
+      },
+      "compute": {
+        "bind_interface": "${COMPUTE_BIND_IF}",
+	      "novnc_proxy": {
+	        "bind_interface": "${VNC_BIND_IF}"
+	      },
+        "xvpvnc_proxy": {
+	        "bind_interface": "${VNC_BIND_IF}"
+        },
+        "libvirt": {
+	        "bind_interface": "${LIBVIRT_BIND_IF}"
+        },
+        "db": {
+          "username": "nova"
+        },
+	      "mq": {
+          "qpid": {
+            "host": "${MQ_VIP}"
+          }
+        }
+      },
+      "network": {
+        "api": {
+          "bind_interface": "${NETWORK_API_BIND_IF}"
+        },
+        "networks": [
+          {
+            "dns1": "${DNS1}",
+            "bridge_dev": "${BRIDGEDEV}",
+            "num_networks": "${VMNETNUM}",
+            "label": "vmnet",
+            "bridge": "${BRIDGE}",
+            "network_size": "${VMNETSIZE}",
+            "ipv4_cidr": "${VMNET}"
+          }
+        ],
+        "use_namespaces": "False",
+        "metadata": {
+          "nova_metadata_ip": "${COMPUTE_VIP}"
+        },
+        "openvswitch": {
+          "tenant_network_type": "${TENANT_NETWORK_TYPE}",
+          "enable_tunneling" : "${ENABLE_TUNNELING}",
+	        "tunnel_id_ranges" : "${TUNNEL_ID_RANGES}",
+          "local_ip_interface": "${OVS_NODE_IF}",
+          "physical_network_interface": "${OVS_PHY_IF}",
+          "bridge_mappings" : "${BRIDGE_MAPPING}",
+          "network_vlan_ranges" : "${NETWORK_VLAN_RANGES}"
+        },
+	      "l3": {
+          "external_network_bridge_interface": "${FLOATING_IF}"
+        },
+        "db": {
+          "username": "network"
+        },
+	      "mq": {
+	        "service_type": "${MQTYPE}",
+          "qpid": {
+            "host": "${MQ_VIP}"
+          }
+        }
+      },
+      "dashboard": {
+        "db": {
+          "username": "horizon"
+        }
+      },
+      "metering": {
+        "db": {
+          "username": "ceilometer"
+        }
+      },
+      "endpoints": {
+        "identity-api": {
+          "host": "${IDENTITY_VIP}",
+          "nodes": ${IDENTITY_NODES},
+          "host_if": "${IDENTITY_VIP_IF}",
+          "cluster": ${IDENTITY_CLUSTER}
+        },
+        "identity-admin": {
+          "host": "${IDENTITY_VIP}",
+          "nodes": ${IDENTITY_NODES},
+          "host_if": "${IDENTITY_VIP_IF}",
+          "cluster": ${IDENTITY_CLUSTER}
+        },
+        "image-api": {
+          "host": "${IMAGE_VIP}",
+          "nodes": ${IMAGE_NODES},
+          "host_if": "${IMAGE_VIP_IF}",
+          "cluster": ${IMAGE_CLUSTER}
+        },
+        "image-registry": {
+          "host": "${IMAGE_VIP}",
+          "nodes": ${IMAGE_NODES},
+          "host_if": "${IMAGE_VIP_IF}",
+          "cluster": ${IMAGE_CLUSTER}
+        },
+        "volume-api": {
+          "host": "${VOLUME_VIP}",
+          "nodes": ${VOLUME_NODES},
+          "host_if": "${VOLUME_VIP_IF}",
+          "cluster": ${VOLUME_CLUSTER}
+        },
+        "compute-api": {
+          "host": "${COMPUTE_VIP}",
+          "nodes": ${COMPUTE_NODES},
+          "host_if": "${COMPUTE_VIP_IF}",
+          "cluster": ${COMPUTE_CLUSTER}
+        },
+        "compute-ec2-api": {
+          "host": "${COMPUTE_VIP}",
+          "nodes": ${COMPUTE_NODES},
+          "host_if": "${COMPUTE_VIP_IF}",
+          "cluster": ${COMPUTE_CLUSTER}
+        },
+        "compute-ec2-admin": {
+          "host": "${COMPUTE_VIP}",
+          "nodes": ${COMPUTE_NODES},
+          "host_if": "${COMPUTE_VIP_IF}",
+          "cluster": ${COMPUTE_CLUSTER}
+        },
+        "compute-xvpvnc": {
+          "host": "${COMPUTE_VIP}",
+          "nodes": ${COMPUTE_NODES},
+          "host_if": "${COMPUTE_VIP_IF}",
+          "cluster": ${COMPUTE_CLUSTER}
+        },
+        "compute-novnc": {
+          "host": "${COMPUTE_VIP}",
+          "nodes": ${COMPUTE_NODES},
+          "host_if": "${COMPUTE_VIP_IF}",
+          "cluster": ${COMPUTE_CLUSTER}
+        },
+        "network-api": {
+          "host": "${NETWORK_API_VIP}",
+          "nodes": ${NETWORK_API_NODES},
+          "host_if": "${NETWORK_API_VIP_IF}",
+          "cluster": ${NETWORK_API_CLUSTER}
+        },
+        "metering-api": {
+          "host": "${METERING_API_VIP}",
+          "nodes": ${METERING_API_NODES},
+          "host_if": "${METERING_API_VIP_IF}",
+          "cluster": ${METERING_API_CLUSTER}
+        }
+      },
+      "secret": {
+        "key_path": "/etc/chef/encrypted_data_bag_secret"
+      }
+    },
+    "glance_ha": ${GLANCE_API_HA},
+    "cinder_api_ha": ${CINDER_API_HA},
+    "nova_api_ha": ${NOVA_API_HA},
+    "ec2_api_ha": ${EC2_API_HA},
+    "quantum_server_ha": ${QUANTUM_SERVER_HA},
+    "mysql": {
+      "allow_remote_root": true,
+      "db": {
+        "bind_host": "0.0.0.0"
+      },
+      "tunable": {
+        "skip-name-resolve": true
+      },
+      "root_network_acl": "%"
+    },
+    "gpfs": {
+      "gpfs_repo": {
+         "url": "${GPFS_REPO_URL}"
+      },
+      "upgrade_rpms":"${GPFS_UPGRADE_RPMS_URL}",
+      "max_data_replicas": "2",
+      "default_data_replicas": "2",
+      "max_metadata_replicas": "2",
+      "default_metadata_replicas": "1",
+      "block_size": "1M",
+      "layoutMap": "cluster",
+      "numNodes": "32",
+      "writeAffinityDepth": "1",
+      "logfilesize": "4M",
+      "gpfs_device_name": "gpfs_dev",
+      "cluster_name" : "${GPFS_CLUSTER_NAME}"
+    },
+    "yum": {
+      "rhel": {
+        "url": "${RHEL_REPO}",
+	      "enabled": "1"
+      },
+      "openstack": {
+        "url": "${OPENSTACK_REPO}",
+	      "enabled": "1"
+      },
+      "sce": {
+        "url": "${SCE_REPO}",
+	      "enabled": "0"
+      },
+      "epel": {
+        "url": "${EPEL_REPO}",
+	      "enabled": "1"
+      },
+      "addition": {
+	      "url": "${MIDDLEWARE_REPO}",
+	      "enabled": "1"
+      }
+    }
+  }
+}

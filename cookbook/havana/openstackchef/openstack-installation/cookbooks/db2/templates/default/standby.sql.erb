@@ -1,0 +1,13 @@
+restore db <%= @params['db_name'] %> from <%= @params['backup_dir'] %> replace history file
+
+update db cfg for <%= @params['db_name'] %> using HADR_REMOTE_INST <%= @params['instance_username'] %> HADR_SYNCMODE NEARSYNC HADR_TIMEOUT 120 HADR_PEER_WINDOW 30 LOGARCHMETH1 LOGRETAIN LOGINDEXBUILD ON SELF_TUNING_MEM OFF AUTO_MAINT OFF AUTORESTART OFF
+
+update db cfg for <%= @params['db_name'] %> using HADR_REMOTE_HOST <%= @params['primary_host'] %>
+
+update db cfg for <%= @params['db_name'] %> using HADR_LOCAL_HOST <%= @params['standby_host'] %>
+
+update db cfg for <%= @params['db_name'] %> using HADR_REMOTE_SVC <%= @params['primary_port'] %>
+
+update db cfg for <%= @params['db_name'] %> using HADR_LOCAL_SVC <%= @params['standby_port'] %>
+
+start hadr on db <%= @params['db_name'] %> as standby
